@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//Users/tamdur/**)",
+      "mcp__claude_ai_Flaim_Fantasy__get_standings",
+      "mcp__claude_ai_Flaim_Fantasy__get_free_agents",
+      "mcp__claude_ai_Flaim_Fantasy__get_ancient_history",
+      "mcp__claude_ai_Flaim_Fantasy__get_matchups",
+      "mcp__claude_ai_Flaim_Fantasy__get_transactions",
+      "mcp__claude_ai_Flaim_Fantasy__get_roster",
+      "mcp__claude_ai_Flaim_Fantasy__get_league_info",
+      "Bash(gh repo:*)"
+    ]
+  }
+}
