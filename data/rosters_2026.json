@@ -1,0 +1,2666 @@
+{
+  "1": {
+    "team_id": 1,
+    "team_name": "TBD's H0E$",
+    "players": [
+      {
+        "name": "Tarik Skubal",
+        "espn_id": 42409,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Det",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Elly De La Cruz",
+        "espn_id": 4917694,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "Cin",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Bryce Harper",
+        "espn_id": 30951,
+        "position": "2B",
+        "eligible_positions": [],
+        "pro_team": "Phi",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Rafael Devers",
+        "espn_id": 33859,
+        "position": "CF",
+        "eligible_positions": [],
+        "pro_team": "SF",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "William Contreras",
+        "espn_id": 39895,
+        "position": "1B",
+        "eligible_positions": [],
+        "pro_team": "Mil",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Kyle Schwarber",
+        "espn_id": 33712,
+        "position": "CF",
+        "eligible_positions": [],
+        "pro_team": "Phi",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Cody Bellinger",
+        "espn_id": 33912,
+        "position": "2B/SS",
+        "eligible_positions": [],
+        "pro_team": "NYY",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Seiya Suzuki",
+        "espn_id": 4142424,
+        "position": "CF",
+        "eligible_positions": [],
+        "pro_team": "ChC",
+        "acquisition_type": "DRAFT",
+        "injury_status": "OUT",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jacob deGrom",
+        "espn_id": 32796,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Tex",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Joe Ryan",
+        "espn_id": 42450,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Min",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Xander Bogaerts",
+        "espn_id": 31606,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "SD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Kerry Carpenter",
+        "espn_id": 42714,
+        "position": "LF",
+        "eligible_positions": [],
+        "pro_team": "Det",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Pete Crow-Armstrong",
+        "espn_id": 4717833,
+        "position": "1B/3B",
+        "eligible_positions": [],
+        "pro_team": "ChC",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Andres Munoz",
+        "espn_id": 40939,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Sea",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Heliot Ramos",
+        "espn_id": 39642,
+        "position": "2B/SS",
+        "eligible_positions": [],
+        "pro_team": "SF",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Bryan Abreu",
+        "espn_id": 41208,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Hou",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "MacKenzie Gore",
+        "espn_id": 39636,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Tex",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Nico Hoerner",
+        "espn_id": 41219,
+        "position": "3B",
+        "eligible_positions": [],
+        "pro_team": "ChC",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Eury Perez",
+        "espn_id": 4917854,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Mia",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Tyler Rogers",
+        "espn_id": 34026,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Tor",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Michael Busch",
+        "espn_id": 42415,
+        "position": "2B",
+        "eligible_positions": [],
+        "pro_team": "ChC",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Bryan King",
+        "espn_id": 5201821,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Hou",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Carlos Correa",
+        "espn_id": 32653,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "Hou",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Cade Horton",
+        "espn_id": 4692526,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "ChC",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Giancarlo Stanton",
+        "espn_id": 30583,
+        "position": "CF",
+        "eligible_positions": [],
+        "pro_team": "NYY",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Andrew Abbott",
+        "espn_id": 4414528,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Cin",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Gavin Williams",
+        "espn_id": 4345076,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Cle",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      }
+    ]
+  },
+  "3": {
+    "team_id": 3,
+    "team_name": "Latte Nate",
+    "players": [
+      {
+        "name": "Paul Skenes",
+        "espn_id": 4719507,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Pit",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Mookie Betts",
+        "espn_id": 33039,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "LAD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Corey Seager",
+        "espn_id": 32691,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "Tex",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jose Altuve",
+        "espn_id": 31662,
+        "position": "3B",
+        "eligible_positions": [],
+        "pro_team": "Hou",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Chris Sale",
+        "espn_id": 30948,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Atl",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Yoshinobu Yamamoto",
+        "espn_id": 4872587,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "LAD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "James Wood",
+        "espn_id": 4918256,
+        "position": "2B/SS",
+        "eligible_positions": [],
+        "pro_team": "Wsh",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Lawrence Butler",
+        "espn_id": 4917919,
+        "position": "LF",
+        "eligible_positions": [],
+        "pro_team": "Oak",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Bryan Woo",
+        "espn_id": 4629089,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Sea",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Nick Pivetta",
+        "espn_id": 36071,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "SD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Tyler Soderstrom",
+        "espn_id": 4686066,
+        "position": "2B/SS",
+        "eligible_positions": [],
+        "pro_team": "Oak",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jacob Wilson",
+        "espn_id": 4719300,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "Oak",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Roman Anthony",
+        "espn_id": 5080767,
+        "position": "LF",
+        "eligible_positions": [],
+        "pro_team": "Bos",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Byron Buxton",
+        "espn_id": 32655,
+        "position": "1B/3B",
+        "eligible_positions": [],
+        "pro_team": "Min",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Hunter Goodman",
+        "espn_id": 4416591,
+        "position": "1B",
+        "eligible_positions": [],
+        "pro_team": "Col",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jacob Misiorowski",
+        "espn_id": 5080761,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Mil",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Nick Kurtz",
+        "espn_id": 4966637,
+        "position": "2B",
+        "eligible_positions": [],
+        "pro_team": "Oak",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jakob Marsee",
+        "espn_id": 4866735,
+        "position": "1B/3B",
+        "eligible_positions": [],
+        "pro_team": "Mia",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Nolan McLean",
+        "espn_id": 4433874,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "NYM",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Trevor Story",
+        "espn_id": 32150,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "Bos",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jeremiah Jackson",
+        "espn_id": 41264,
+        "position": "LF",
+        "eligible_positions": [],
+        "pro_team": "Bal",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Dansby Swanson",
+        "espn_id": 34895,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "ChC",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jose Ferrer",
+        "espn_id": 5119607,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Sea",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Josh Bell",
+        "espn_id": 32517,
+        "position": "CF",
+        "eligible_positions": [],
+        "pro_team": "Min",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Dylan Cease",
+        "espn_id": 34943,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Tor",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Shawn Armstrong",
+        "espn_id": 33499,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Cle",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jackson Holliday",
+        "espn_id": 5080633,
+        "position": "3B",
+        "eligible_positions": [],
+        "pro_team": "Bal",
+        "acquisition_type": "ADD",
+        "injury_status": "OUT",
+        "stats": {
+          "0": {}
+        }
+      }
+    ]
+  },
+  "4": {
+    "team_id": 4,
+    "team_name": "Big Pfaadt Tatis",
+    "players": [
+      {
+        "name": "Jose Ramirez",
+        "espn_id": 32801,
+        "position": "SS",
+        "eligible_positions": [],
+        "pro_team": "Cle",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Fernando Tatis Jr.",
+        "espn_id": 35983,
+        "position": "LF",
+        "eligible_positions": [],
+        "pro_team": "SD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Matt Olson",
+        "espn_id": 32767,
+        "position": "2B",
+        "eligible_positions": [],
+        "pro_team": "Atl",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Pete Alonso",
+        "espn_id": 37498,
+        "position": "2B",
+        "eligible_positions": [],
+        "pro_team": "Bal",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Manny Machado",
+        "espn_id": 31097,
+        "position": "SS",
+        "eligible_positions": [],
+        "pro_team": "SD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Anthony Santander",
+        "espn_id": 36084,
+        "position": "CF",
+        "eligible_positions": [],
+        "pro_team": "Tor",
+        "acquisition_type": "DRAFT",
+        "injury_status": "OUT",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Cal Raleigh",
+        "espn_id": 41292,
+        "position": "1B",
+        "eligible_positions": [],
+        "pro_team": "Sea",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Edwin Diaz",
+        "espn_id": 35394,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "LAD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Brandon Woodruff",
+        "espn_id": 37515,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Mil",
+        "acquisition_type": "ADD",
+        "injury_status": "DAY_TO_DAY",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Gleyber Torres",
+        "espn_id": 33804,
+        "position": "3B",
+        "eligible_positions": [],
+        "pro_team": "Det",
+        "acquisition_type": "ADD",
+        "injury_status": "DAY_TO_DAY",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Carlos Estevez",
+        "espn_id": 34861,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "KC",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Andy Pages",
+        "espn_id": 42468,
+        "position": "1B/3B",
+        "eligible_positions": [],
+        "pro_team": "LAD",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Willy Adames",
+        "espn_id": 33675,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "SF",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Chase Burns",
+        "espn_id": 4927516,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Cin",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Trevor Rogers",
+        "espn_id": 39640,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Bal",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Quinn Priester",
+        "espn_id": 42449,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Mil",
+        "acquisition_type": "ADD",
+        "injury_status": "OUT",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Trevor Megill",
+        "espn_id": 40080,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Mil",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Trent Grisham",
+        "espn_id": 34995,
+        "position": "1B/3B",
+        "eligible_positions": [],
+        "pro_team": "NYY",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Hurston Waldrep",
+        "espn_id": 4740117,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Atl",
+        "acquisition_type": "ADD",
+        "injury_status": "OUT",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Zach Neto",
+        "espn_id": 4666100,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "LAA",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Luis Morales",
+        "espn_id": 5150939,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Oak",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Ryne Nelson",
+        "espn_id": 4916269,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Ari",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Daylen Lile",
+        "espn_id": 4917889,
+        "position": "LF",
+        "eligible_positions": [],
+        "pro_team": "Wsh",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Ryan Pepiot",
+        "espn_id": 4208281,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "TB",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Otto Kemp",
+        "espn_id": 5136835,
+        "position": "SS",
+        "eligible_positions": [],
+        "pro_team": "Phi",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Nick Lodolo",
+        "espn_id": 42433,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Cin",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Slade Cecconi",
+        "espn_id": 41462,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Cle",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      }
+    ]
+  },
+  "5": {
+    "team_id": 5,
+    "team_name": "Special K",
+    "players": [
+      {
+        "name": "Juan Soto",
+        "espn_id": 36969,
+        "position": "LF",
+        "eligible_positions": [],
+        "pro_team": "NYM",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Corbin Carroll",
+        "espn_id": 42404,
+        "position": "LF",
+        "eligible_positions": [],
+        "pro_team": "Ari",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Trea Turner",
+        "espn_id": 33710,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "Phi",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Julio Rodriguez",
+        "espn_id": 41044,
+        "position": "1B/3B",
+        "eligible_positions": [],
+        "pro_team": "Sea",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Brent Rooker",
+        "espn_id": 40926,
+        "position": "CF",
+        "eligible_positions": [],
+        "pro_team": "Oak",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Framber Valdez",
+        "espn_id": 36581,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Det",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Bryce Miller",
+        "espn_id": 4654313,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Sea",
+        "acquisition_type": "DRAFT",
+        "injury_status": "OUT",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Hunter Greene",
+        "espn_id": 39635,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Cin",
+        "acquisition_type": "DRAFT",
+        "injury_status": "OUT",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Ryan Helsley",
+        "espn_id": 39909,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Bal",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Michael Harris II",
+        "espn_id": 42470,
+        "position": "1B/3B",
+        "eligible_positions": [],
+        "pro_team": "Atl",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Junior Caminero",
+        "espn_id": 4905921,
+        "position": "SS",
+        "eligible_positions": [],
+        "pro_team": "TB",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Mark Vientos",
+        "espn_id": 41034,
+        "position": "SS",
+        "eligible_positions": [],
+        "pro_team": "NYM",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Josh Hader",
+        "espn_id": 32760,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Hou",
+        "acquisition_type": "DRAFT",
+        "injury_status": "OUT",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Raisel Iglesias",
+        "espn_id": 33618,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Atl",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Matt Chapman",
+        "espn_id": 33857,
+        "position": "SS",
+        "eligible_positions": [],
+        "pro_team": "SF",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Dylan Crews",
+        "espn_id": 4719511,
+        "position": "LF",
+        "eligible_positions": [],
+        "pro_team": "Wsh",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Shea Langeliers",
+        "espn_id": 42598,
+        "position": "1B",
+        "eligible_positions": [],
+        "pro_team": "Oak",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Masyn Winn",
+        "espn_id": 4683365,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "StL",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jhoan Duran",
+        "espn_id": 41109,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Phi",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Eugenio Suarez",
+        "espn_id": 32367,
+        "position": "SS",
+        "eligible_positions": [],
+        "pro_team": "Cin",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Luis Garcia Jr.",
+        "espn_id": 40459,
+        "position": "3B",
+        "eligible_positions": [],
+        "pro_team": "Wsh",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Grayson Rodriguez",
+        "espn_id": 41196,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "LAA",
+        "acquisition_type": "DRAFT",
+        "injury_status": "DAY_TO_DAY",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Yandy Diaz",
+        "espn_id": 33481,
+        "position": "CF",
+        "eligible_positions": [],
+        "pro_team": "TB",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Josh Lowe",
+        "espn_id": 40557,
+        "position": "LF",
+        "eligible_positions": [],
+        "pro_team": "LAA",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Bryson Stott",
+        "espn_id": 42417,
+        "position": "3B",
+        "eligible_positions": [],
+        "pro_team": "Phi",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Lars Nootbaar",
+        "espn_id": 4448736,
+        "position": "2B/SS",
+        "eligible_positions": [],
+        "pro_team": "StL",
+        "acquisition_type": "ADD",
+        "injury_status": "OUT",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Bailey Ober",
+        "espn_id": 3107919,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Min",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Carson Kelly",
+        "espn_id": 32797,
+        "position": "1B",
+        "eligible_positions": [],
+        "pro_team": "ChC",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      }
+    ]
+  },
+  "6": {
+    "team_id": 6,
+    "team_name": "Shohei's Translator",
+    "players": [
+      {
+        "name": "Bobby Witt Jr.",
+        "espn_id": 42403,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "KC",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Zack Wheeler",
+        "espn_id": 31267,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Phi",
+        "acquisition_type": "DRAFT",
+        "injury_status": "OUT",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Freddie Freeman",
+        "espn_id": 30193,
+        "position": "2B",
+        "eligible_positions": [],
+        "pro_team": "LAD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Ketel Marte",
+        "espn_id": 32512,
+        "position": "3B",
+        "eligible_positions": [],
+        "pro_team": "Ari",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jackson Merrill",
+        "espn_id": 4872691,
+        "position": "1B/3B",
+        "eligible_positions": [],
+        "pro_team": "SD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Aaron Nola",
+        "espn_id": 33709,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Phi",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Adley Rutschman",
+        "espn_id": 42178,
+        "position": "1B",
+        "eligible_positions": [],
+        "pro_team": "Bal",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Logan Webb",
+        "espn_id": 41216,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "SF",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Marcus Semien",
+        "espn_id": 32146,
+        "position": "3B",
+        "eligible_positions": [],
+        "pro_team": "NYM",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Steven Kwan",
+        "espn_id": 41996,
+        "position": "2B/SS",
+        "eligible_positions": [],
+        "pro_team": "Cle",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Alex Bregman",
+        "espn_id": 34886,
+        "position": "SS",
+        "eligible_positions": [],
+        "pro_team": "ChC",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Ian Happ",
+        "espn_id": 34945,
+        "position": "2B/SS",
+        "eligible_positions": [],
+        "pro_team": "ChC",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Nolan Arenado",
+        "espn_id": 31261,
+        "position": "SS",
+        "eligible_positions": [],
+        "pro_team": "Ari",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Brendan Donovan",
+        "espn_id": 41773,
+        "position": "3B",
+        "eligible_positions": [],
+        "pro_team": "Sea",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Tanner Bibee",
+        "espn_id": 4345278,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Cle",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Ryan Walker",
+        "espn_id": 5000950,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "SF",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Tanner Scott",
+        "espn_id": 35135,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "LAD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jeff Hoffman",
+        "espn_id": 33841,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Tor",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Brandon Nimmo",
+        "espn_id": 32159,
+        "position": "2B/SS",
+        "eligible_positions": [],
+        "pro_team": "Tex",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Tommy Edman",
+        "espn_id": 39907,
+        "position": "3B",
+        "eligible_positions": [],
+        "pro_team": "LAD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "OUT",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jung Hoo Lee",
+        "espn_id": 5134621,
+        "position": "1B/3B",
+        "eligible_positions": [],
+        "pro_team": "SF",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "George Springer",
+        "espn_id": 32078,
+        "position": "CF",
+        "eligible_positions": [],
+        "pro_team": "Tor",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Geraldo Perdomo",
+        "espn_id": 41355,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "Ari",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Willson Contreras",
+        "espn_id": 32532,
+        "position": "2B",
+        "eligible_positions": [],
+        "pro_team": "Bos",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Zac Gallen",
+        "espn_id": 39910,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Ari",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Yusei Kikuchi",
+        "espn_id": 41415,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "LAA",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Merrill Kelly",
+        "espn_id": 32968,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Ari",
+        "acquisition_type": "ADD",
+        "injury_status": "OUT",
+        "stats": {
+          "0": {}
+        }
+      }
+    ]
+  },
+  "7": {
+    "team_id": 7,
+    "team_name": "Team Q",
+    "players": [
+      {
+        "name": "Kyle Tucker",
+        "espn_id": 34967,
+        "position": "LF",
+        "eligible_positions": [],
+        "pro_team": "LAD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Gunnar Henderson",
+        "espn_id": 42507,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "Bal",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jackson Chourio",
+        "espn_id": 4917869,
+        "position": "1B/3B",
+        "eligible_positions": [],
+        "pro_team": "Mil",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Austin Riley",
+        "espn_id": 34982,
+        "position": "SS",
+        "eligible_positions": [],
+        "pro_team": "Atl",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Wyatt Langford",
+        "espn_id": 4719324,
+        "position": "2B/SS",
+        "eligible_positions": [],
+        "pro_team": "Tex",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Oneil Cruz",
+        "espn_id": 39712,
+        "position": "1B/3B",
+        "eligible_positions": [],
+        "pro_team": "Pit",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Ozzie Albies",
+        "espn_id": 33783,
+        "position": "3B",
+        "eligible_positions": [],
+        "pro_team": "Atl",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Salvador Perez",
+        "espn_id": 31127,
+        "position": "1B",
+        "eligible_positions": [],
+        "pro_team": "KC",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Max Fried",
+        "espn_id": 32685,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "NYY",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Tyler Glasnow",
+        "espn_id": 33190,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "LAD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Josh Naylor",
+        "espn_id": 35066,
+        "position": "2B",
+        "eligible_positions": [],
+        "pro_team": "Sea",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Mason Miller",
+        "espn_id": 4730225,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "SD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Cristopher Sanchez",
+        "espn_id": 42359,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Phi",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Carlos Rodon",
+        "espn_id": 33696,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "NYY",
+        "acquisition_type": "DRAFT",
+        "injury_status": "OUT",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Christian Yelich",
+        "espn_id": 31283,
+        "position": "CF",
+        "eligible_positions": [],
+        "pro_team": "Mil",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jeremy Pena",
+        "espn_id": 41273,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "Hou",
+        "acquisition_type": "ADD",
+        "injury_status": "DAY_TO_DAY",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Kyle Stowers",
+        "espn_id": 42796,
+        "position": "2B/SS",
+        "eligible_positions": [],
+        "pro_team": "Mia",
+        "acquisition_type": "ADD",
+        "injury_status": "OUT",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Ben Rice",
+        "espn_id": 5016968,
+        "position": "2B",
+        "eligible_positions": [],
+        "pro_team": "NYY",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Abner Uribe",
+        "espn_id": 4917865,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Mil",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Adrian Morejon",
+        "espn_id": 40917,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "SD",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jeremiah Estrada",
+        "espn_id": 41014,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "SD",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jurickson Profar",
+        "espn_id": 31117,
+        "position": "2B/SS",
+        "eligible_positions": [],
+        "pro_team": "Atl",
+        "acquisition_type": "ADD",
+        "injury_status": "SUSPENSION",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Royce Lewis",
+        "espn_id": 40635,
+        "position": "SS",
+        "eligible_positions": [],
+        "pro_team": "Min",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Taylor Ward",
+        "espn_id": 34923,
+        "position": "2B/SS",
+        "eligible_positions": [],
+        "pro_team": "Bal",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Robbie Ray",
+        "espn_id": 32175,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "SF",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jorge Polanco",
+        "espn_id": 32525,
+        "position": "CF",
+        "eligible_positions": [],
+        "pro_team": "NYM",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Max Muncy",
+        "espn_id": 33303,
+        "position": "SS",
+        "eligible_positions": [],
+        "pro_team": "LAD",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "George Kirby",
+        "espn_id": 42406,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Sea",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      }
+    ]
+  },
+  "9": {
+    "team_id": 9,
+    "team_name": "Ya Like Jazz?",
+    "players": [
+      {
+        "name": "Aaron Judge",
+        "espn_id": 33192,
+        "position": "LF",
+        "eligible_positions": [],
+        "pro_team": "NYY",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Vladimir Guerrero Jr.",
+        "espn_id": 35002,
+        "position": "2B",
+        "eligible_positions": [],
+        "pro_team": "Tor",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Cole Ragans",
+        "espn_id": 41054,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "KC",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jarren Duran",
+        "espn_id": 41610,
+        "position": "2B/SS",
+        "eligible_positions": [],
+        "pro_team": "Bos",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "CJ Abrams",
+        "espn_id": 42402,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "Wsh",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jazz Chisholm Jr.",
+        "espn_id": 41433,
+        "position": "3B",
+        "eligible_positions": [],
+        "pro_team": "NYY",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Shota Imanaga",
+        "espn_id": 5134630,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "ChC",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Jordan Westburg",
+        "espn_id": 4298641,
+        "position": "SS",
+        "eligible_positions": [],
+        "pro_team": "Bal",
+        "acquisition_type": "DRAFT",
+        "injury_status": "OUT",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Spencer Schwellenbach",
+        "espn_id": 4424862,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Atl",
+        "acquisition_type": "DRAFT",
+        "injury_status": "SIXTY_DAY_DL",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Bo Bichette",
+        "espn_id": 38904,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "NYM",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Isaac Paredes",
+        "espn_id": 39706,
+        "position": "SS",
+        "eligible_positions": [],
+        "pro_team": "Hou",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Seth Lugo",
+        "espn_id": 34873,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "KC",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Robert Suarez",
+        "espn_id": 4148749,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Atl",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Cade Smith",
+        "espn_id": 4987924,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Cle",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Will Smith",
+        "espn_id": 38309,
+        "position": "1B",
+        "eligible_positions": [],
+        "pro_team": "LAD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Luke Weaver",
+        "espn_id": 33770,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "NYM",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Spencer Torkelson",
+        "espn_id": 4424286,
+        "position": "2B",
+        "eligible_positions": [],
+        "pro_team": "Det",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Casey Mize",
+        "espn_id": 41167,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Det",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Reese Olson",
+        "espn_id": 4734319,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Det",
+        "acquisition_type": "ADD",
+        "injury_status": "SIXTY_DAY_DL",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Ranger Suarez",
+        "espn_id": 39817,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Bos",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Lourdes Gurriel Jr.",
+        "espn_id": 36040,
+        "position": "2B/SS",
+        "eligible_positions": [],
+        "pro_team": "Ari",
+        "acquisition_type": "ADD",
+        "injury_status": "OUT",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Brandon Lowe",
+        "espn_id": 39961,
+        "position": "3B",
+        "eligible_positions": [],
+        "pro_team": "Pit",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Austin Wells",
+        "espn_id": 4683349,
+        "position": "1B",
+        "eligible_positions": [],
+        "pro_team": "NYY",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Lucas Giolito",
+        "espn_id": 32697,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "FA",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Will Vest",
+        "espn_id": 41606,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Det",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "David Bednar",
+        "espn_id": 38303,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "NYY",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Luis Robert Jr.",
+        "espn_id": 39631,
+        "position": "1B/3B",
+        "eligible_positions": [],
+        "pro_team": "NYM",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Angel Martinez",
+        "espn_id": 42497,
+        "position": "1B/3B",
+        "eligible_positions": [],
+        "pro_team": "Cle",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      }
+    ]
+  },
+  "10": {
+    "team_id": 10,
+    "team_name": "Brohei Brotanis",
+    "players": [
+      {
+        "name": "Shohei Ohtani",
+        "espn_id": 39832,
+        "position": "CF",
+        "eligible_positions": [],
+        "pro_team": "LAD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Yordan Alvarez",
+        "espn_id": 36018,
+        "position": "CF",
+        "eligible_positions": [],
+        "pro_team": "Hou",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Garrett Crochet",
+        "espn_id": 4297835,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Bos",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Francisco Lindor",
+        "espn_id": 32129,
+        "position": "OF",
+        "eligible_positions": [],
+        "pro_team": "NYM",
+        "acquisition_type": "DRAFT",
+        "injury_status": "DAY_TO_DAY",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Logan Gilbert",
+        "espn_id": 41221,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Sea",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Blake Snell",
+        "espn_id": 33748,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "LAD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "OUT",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Ronald Acuna Jr.",
+        "espn_id": 36185,
+        "position": "LF",
+        "eligible_positions": [],
+        "pro_team": "Atl",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Mike Trout",
+        "espn_id": 30836,
+        "position": "CF",
+        "eligible_positions": [],
+        "pro_team": "LAA",
+        "acquisition_type": "DRAFT",
+        "injury_status": "DAY_TO_DAY",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Freddy Peralta",
+        "espn_id": 39825,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "NYM",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Luis Castillo",
+        "espn_id": 35124,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Sea",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Kevin Gausman",
+        "espn_id": 32667,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Tor",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Hunter Brown",
+        "espn_id": 4717803,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "Hou",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Riley Greene",
+        "espn_id": 42179,
+        "position": "2B/SS",
+        "eligible_positions": [],
+        "pro_team": "Det",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Brice Turang",
+        "espn_id": 41179,
+        "position": "3B",
+        "eligible_positions": [],
+        "pro_team": "Mil",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Vinnie Pasquantino",
+        "espn_id": 4109109,
+        "position": "2B",
+        "eligible_positions": [],
+        "pro_team": "KC",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Luis Arraez",
+        "espn_id": 39572,
+        "position": "2B",
+        "eligible_positions": [],
+        "pro_team": "SF",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Randy Arozarena",
+        "espn_id": 36488,
+        "position": "2B/SS",
+        "eligible_positions": [],
+        "pro_team": "Sea",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Kodai Senga",
+        "espn_id": 4142421,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "NYM",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Nick Castellanos",
+        "espn_id": 31187,
+        "position": "LF",
+        "eligible_positions": [],
+        "pro_team": "SD",
+        "acquisition_type": "DRAFT",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Maikel Garcia",
+        "espn_id": 4905884,
+        "position": "SS",
+        "eligible_positions": [],
+        "pro_team": "KC",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Clay Holmes",
+        "espn_id": 32827,
+        "position": "C",
+        "eligible_positions": [],
+        "pro_team": "NYM",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Aroldis Chapman",
+        "espn_id": 30442,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Bos",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Agustin Ramirez",
+        "espn_id": 5132014,
+        "position": "1B",
+        "eligible_positions": [],
+        "pro_team": "Mia",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Ryan McMahon",
+        "espn_id": 33247,
+        "position": "SS",
+        "eligible_positions": [],
+        "pro_team": "NYY",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Brendon Little",
+        "espn_id": 39645,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Tor",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      },
+      {
+        "name": "Brad Keller",
+        "espn_id": 35292,
+        "position": "RF",
+        "eligible_positions": [],
+        "pro_team": "Phi",
+        "acquisition_type": "ADD",
+        "injury_status": "ACTIVE",
+        "stats": {
+          "0": {}
+        }
+      }
+    ]
+  }
+}

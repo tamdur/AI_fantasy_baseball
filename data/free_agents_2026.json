@@ -1,0 +1,2756 @@
+{
+  "year": 2026,
+  "count": 250,
+  "players": [
+    {
+      "name": "Jesus Luzardo",
+      "espn_id": 39667,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Phi",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Sonny Gray",
+      "espn_id": 32082,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Bos",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Devin Williams",
+      "espn_id": 33224,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "NYM",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Spencer Strider",
+      "espn_id": 4307825,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Atl",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Nathan Eovaldi",
+      "espn_id": 31174,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Tex",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Drake Baldwin",
+      "espn_id": 4810190,
+      "position": "1B",
+      "eligible_positions": [],
+      "pro_team": "Atl",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Kyle Bradish",
+      "espn_id": 4311625,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Bal",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Emilio Pagan",
+      "espn_id": 33403,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Cin",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Cam Schlittler",
+      "espn_id": 5134581,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "NYY",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Michael King",
+      "espn_id": 40429,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "SD",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Drew Rasmussen",
+      "espn_id": 42584,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "TB",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Yainer Diaz",
+      "espn_id": 4781491,
+      "position": "1B",
+      "eligible_positions": [],
+      "pro_team": "Hou",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Teoscar Hernandez",
+      "espn_id": 33377,
+      "position": "LF",
+      "eligible_positions": [],
+      "pro_team": "LAD",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Luke Keaschall",
+      "espn_id": 4977664,
+      "position": "3B",
+      "eligible_positions": [],
+      "pro_team": "Min",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Pete Fairbanks",
+      "espn_id": 42180,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Mia",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Matthew Boyd",
+      "espn_id": 34401,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "ChC",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Alec Burleson",
+      "espn_id": 4345070,
+      "position": "2B/SS",
+      "eligible_positions": [],
+      "pro_team": "StL",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Emmet Sheehan",
+      "espn_id": 4417806,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "LAD",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Griffin Jax",
+      "espn_id": 42604,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "TB",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Gerrit Cole",
+      "espn_id": 32081,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "NYY",
+      "injury_status": "OUT",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Sandy Alcantara",
+      "espn_id": 35241,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Mia",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Kenley Jansen",
+      "espn_id": 29630,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Det",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jack Flaherty",
+      "espn_id": 33837,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Det",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Ernie Clement",
+      "espn_id": 41287,
+      "position": "SS",
+      "eligible_positions": [],
+      "pro_team": "Tor",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Alejandro Kirk",
+      "espn_id": 42081,
+      "position": "1B",
+      "eligible_positions": [],
+      "pro_team": "Tor",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Bryan Reynolds",
+      "espn_id": 38980,
+      "position": "LF",
+      "eligible_positions": [],
+      "pro_team": "Pit",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Daniel Palencia",
+      "espn_id": 4875225,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "ChC",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Ceddanne Rafaela",
+      "espn_id": 4987382,
+      "position": "1B/3B",
+      "eligible_positions": [],
+      "pro_team": "Bos",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Kazuma Okamoto",
+      "espn_id": 5134636,
+      "position": "SS",
+      "eligible_positions": [],
+      "pro_team": "Tor",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Xavier Edwards",
+      "espn_id": 41326,
+      "position": "3B",
+      "eligible_positions": [],
+      "pro_team": "Mia",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Trey Yesavage",
+      "espn_id": 4949041,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Tor",
+      "injury_status": "OUT",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Caleb Durbin",
+      "espn_id": 5007615,
+      "position": "SS",
+      "eligible_positions": [],
+      "pro_team": "Bos",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jo Adell",
+      "espn_id": 40854,
+      "position": "1B/3B",
+      "eligible_positions": [],
+      "pro_team": "LAA",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Kris Bubic",
+      "espn_id": 41201,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "KC",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Sal Frelick",
+      "espn_id": 4417795,
+      "position": "LF",
+      "eligible_positions": [],
+      "pro_team": "Mil",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Tatsuya Imai",
+      "espn_id": 5330833,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Hou",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Christian Walker",
+      "espn_id": 32758,
+      "position": "2B",
+      "eligible_positions": [],
+      "pro_team": "Hou",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Edward Cabrera",
+      "espn_id": 40944,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "ChC",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Otto Lopez",
+      "espn_id": 41917,
+      "position": "OF",
+      "eligible_positions": [],
+      "pro_team": "Mia",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Bubba Chandler",
+      "espn_id": 4683325,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Pit",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Konnor Griffin",
+      "espn_id": 5218285,
+      "position": "OF",
+      "eligible_positions": [],
+      "pro_team": "Pit",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Shane Baz",
+      "espn_id": 39639,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Bal",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Shane Bieber",
+      "espn_id": 40912,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Tor",
+      "injury_status": "OUT",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Noelvi Marte",
+      "espn_id": 41307,
+      "position": "LF",
+      "eligible_positions": [],
+      "pro_team": "Cin",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Shane McClanahan",
+      "espn_id": 41199,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "TB",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Chandler Simpson",
+      "espn_id": 4679983,
+      "position": "1B/3B",
+      "eligible_positions": [],
+      "pro_team": "TB",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jac Caglianone",
+      "espn_id": 4926296,
+      "position": "LF",
+      "eligible_positions": [],
+      "pro_team": "KC",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jose Caballero",
+      "espn_id": 42135,
+      "position": "LF",
+      "eligible_positions": [],
+      "pro_team": "NYY",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Ryan O'Hearn",
+      "espn_id": 35183,
+      "position": "2B",
+      "eligible_positions": [],
+      "pro_team": "Pit",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Munetaka Murakami",
+      "espn_id": 4872595,
+      "position": "SS",
+      "eligible_positions": [],
+      "pro_team": "ChW",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Gabriel Moreno",
+      "espn_id": 42464,
+      "position": "1B",
+      "eligible_positions": [],
+      "pro_team": "Ari",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Samuel Basallo",
+      "espn_id": 4917646,
+      "position": "1B",
+      "eligible_positions": [],
+      "pro_team": "Bal",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Alec Bohm",
+      "espn_id": 41169,
+      "position": "SS",
+      "eligible_positions": [],
+      "pro_team": "Phi",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Roki Sasaki",
+      "espn_id": 5134638,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "LAD",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Robert Garcia",
+      "espn_id": 5125167,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Tex",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Sal Stewart",
+      "espn_id": 5080771,
+      "position": "2B",
+      "eligible_positions": [],
+      "pro_team": "Cin",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "JJ Wetherholt",
+      "espn_id": 4941056,
+      "position": "OF",
+      "eligible_positions": [],
+      "pro_team": "StL",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Ian Seymour",
+      "espn_id": 4669425,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "TB",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Matt McLain",
+      "espn_id": 4422899,
+      "position": "3B",
+      "eligible_positions": [],
+      "pro_team": "Cin",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Miguel Vargas",
+      "espn_id": 42453,
+      "position": "SS",
+      "eligible_positions": [],
+      "pro_team": "ChW",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Addison Barger",
+      "espn_id": 4997589,
+      "position": "SS",
+      "eligible_positions": [],
+      "pro_team": "Tor",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "J.T. Realmuto",
+      "espn_id": 32177,
+      "position": "1B",
+      "eligible_positions": [],
+      "pro_team": "Phi",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Joe Musgrove",
+      "espn_id": 34848,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "SD",
+      "injury_status": "OUT",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Wilyer Abreu",
+      "espn_id": 4990055,
+      "position": "LF",
+      "eligible_positions": [],
+      "pro_team": "Bos",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Dennis Santana",
+      "espn_id": 39801,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Pit",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Garrett Whitlock",
+      "espn_id": 39674,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Bos",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Adolis Garcia",
+      "espn_id": 35537,
+      "position": "LF",
+      "eligible_positions": [],
+      "pro_team": "Phi",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "TJ Friedl",
+      "espn_id": 36020,
+      "position": "1B/3B",
+      "eligible_positions": [],
+      "pro_team": "Cin",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Noah Cameron",
+      "espn_id": 4417208,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "KC",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Mitch Keller",
+      "espn_id": 33722,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Pit",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jonathan India",
+      "espn_id": 41171,
+      "position": "3B",
+      "eligible_positions": [],
+      "pro_team": "KC",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jason Adam",
+      "espn_id": 32145,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "SD",
+      "injury_status": "DAY_TO_DAY",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Daulton Varsho",
+      "espn_id": 40963,
+      "position": "1B/3B",
+      "eligible_positions": [],
+      "pro_team": "Tor",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Marcell Ozuna",
+      "espn_id": 31668,
+      "position": "CF",
+      "eligible_positions": [],
+      "pro_team": "Pit",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jose Soriano",
+      "espn_id": 40973,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "LAA",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Brenton Doyle",
+      "espn_id": 42462,
+      "position": "1B/3B",
+      "eligible_positions": [],
+      "pro_team": "Col",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Michael Wacha",
+      "espn_id": 32640,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "KC",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Justin Steele",
+      "espn_id": 41022,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "ChC",
+      "injury_status": "OUT",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jonathan Aranda",
+      "espn_id": 40810,
+      "position": "2B",
+      "eligible_positions": [],
+      "pro_team": "TB",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jack Leiter",
+      "espn_id": 4622181,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Tex",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Kevin McGonigle",
+      "espn_id": 5149072,
+      "position": "OF",
+      "eligible_positions": [],
+      "pro_team": "Det",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Colson Montgomery",
+      "espn_id": 4872685,
+      "position": "OF",
+      "eligible_positions": [],
+      "pro_team": "ChW",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Seranthony Dominguez",
+      "espn_id": 37793,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "ChW",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Brady Singer",
+      "espn_id": 41172,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Cin",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Shane Smith",
+      "espn_id": 5201814,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "ChW",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Brayan Bello",
+      "espn_id": 4720856,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Bos",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Carter Jensen",
+      "espn_id": 4917812,
+      "position": "1B",
+      "eligible_positions": [],
+      "pro_team": "KC",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Andrew Painter",
+      "espn_id": 4872683,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Phi",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Kyle Teel",
+      "espn_id": 4743772,
+      "position": "1B",
+      "eligible_positions": [],
+      "pro_team": "ChW",
+      "injury_status": "OUT",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Edwin Uceta",
+      "espn_id": 41308,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "TB",
+      "injury_status": "OUT",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Willi Castro",
+      "espn_id": 34230,
+      "position": "LF",
+      "eligible_positions": [],
+      "pro_team": "Col",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Cody Ponce",
+      "espn_id": 34999,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Tor",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Ivan Herrera",
+      "espn_id": 41889,
+      "position": "CF",
+      "eligible_positions": [],
+      "pro_team": "StL",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Luis Gil",
+      "espn_id": 40626,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "NYY",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Ezequiel Tovar",
+      "espn_id": 4905919,
+      "position": "OF",
+      "eligible_positions": [],
+      "pro_team": "Col",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Chris Bassitt",
+      "espn_id": 33148,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Bal",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Corbin Burnes",
+      "espn_id": 39878,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Ari",
+      "injury_status": "SIXTY_DAY_DL",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Pablo Lopez",
+      "espn_id": 39671,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Min",
+      "injury_status": "SIXTY_DAY_DL",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "JoJo Romero",
+      "espn_id": 40456,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "StL",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Francisco Alvarez",
+      "espn_id": 41253,
+      "position": "1B",
+      "eligible_positions": [],
+      "pro_team": "NYM",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Joey Cantillo",
+      "espn_id": 42488,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Cle",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Spencer Steer",
+      "espn_id": 4722857,
+      "position": "2B",
+      "eligible_positions": [],
+      "pro_team": "Cin",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Alex Vesia",
+      "espn_id": 42622,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "LAD",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jake Cronenworth",
+      "espn_id": 36364,
+      "position": "3B",
+      "eligible_positions": [],
+      "pro_team": "SD",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Ramon Laureano",
+      "espn_id": 35142,
+      "position": "2B/SS",
+      "eligible_positions": [],
+      "pro_team": "SD",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Kyle Manzardo",
+      "espn_id": 4917927,
+      "position": "CF",
+      "eligible_positions": [],
+      "pro_team": "Cle",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Hunter Gaddis",
+      "espn_id": 4187661,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Cle",
+      "injury_status": "OUT",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "David Peterson",
+      "espn_id": 40921,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "NYM",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jeff McNeil",
+      "espn_id": 33900,
+      "position": "3B",
+      "eligible_positions": [],
+      "pro_team": "Oak",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Zach McKinstry",
+      "espn_id": 38420,
+      "position": "SS",
+      "eligible_positions": [],
+      "pro_team": "Det",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Braxton Ashcraft",
+      "espn_id": 41282,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Pit",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Andrew Vaughn",
+      "espn_id": 42394,
+      "position": "2B",
+      "eligible_positions": [],
+      "pro_team": "Mil",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Colt Keith",
+      "espn_id": 4683384,
+      "position": "CF",
+      "eligible_positions": [],
+      "pro_team": "Det",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "J.P. Crawford",
+      "espn_id": 33210,
+      "position": "OF",
+      "eligible_positions": [],
+      "pro_team": "Sea",
+      "injury_status": "DAY_TO_DAY",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Ryan Jeffers",
+      "espn_id": 41587,
+      "position": "1B",
+      "eligible_positions": [],
+      "pro_team": "Min",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Dillon Dingler",
+      "espn_id": 4345620,
+      "position": "1B",
+      "eligible_positions": [],
+      "pro_team": "Det",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Evan Carter",
+      "espn_id": 4917921,
+      "position": "1B/3B",
+      "eligible_positions": [],
+      "pro_team": "Tex",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Brooks Lee",
+      "espn_id": 4629081,
+      "position": "OF",
+      "eligible_positions": [],
+      "pro_team": "Min",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jasson Dominguez",
+      "espn_id": 42401,
+      "position": "2B/SS",
+      "eligible_positions": [],
+      "pro_team": "NYY",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Mike Burrows",
+      "espn_id": 4918155,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Hou",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Grant Taylor",
+      "espn_id": 4927630,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "ChW",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Tony Santillan",
+      "espn_id": 40950,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Cin",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Carson Benge",
+      "espn_id": 4925604,
+      "position": "1B/3B",
+      "eligible_positions": [],
+      "pro_team": "NYM",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Connelly Early",
+      "espn_id": 4863321,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Bos",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Ryan Weathers",
+      "espn_id": 41178,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "NYY",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Camilo Doval",
+      "espn_id": 41337,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "NYY",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Josh Smith",
+      "espn_id": 42884,
+      "position": "OF",
+      "eligible_positions": [],
+      "pro_team": "Tex",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Nolan Schanuel",
+      "espn_id": 4739755,
+      "position": "2B",
+      "eligible_positions": [],
+      "pro_team": "LAA",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Reid Detmers",
+      "espn_id": 4326697,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "LAA",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Colton Cowser",
+      "espn_id": 4416990,
+      "position": "1B/3B",
+      "eligible_positions": [],
+      "pro_team": "Bal",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jordan Lawlar",
+      "espn_id": 4872649,
+      "position": "SS",
+      "eligible_positions": [],
+      "pro_team": "Ari",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jared Jones",
+      "espn_id": 4918156,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Pit",
+      "injury_status": "SIXTY_DAY_DL",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Brandon Pfaadt",
+      "espn_id": 4721302,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Ari",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Anthony Volpe",
+      "espn_id": 42547,
+      "position": "OF",
+      "eligible_positions": [],
+      "pro_team": "NYY",
+      "injury_status": "OUT",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Justin Verlander",
+      "espn_id": 6341,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Det",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jake Burger",
+      "espn_id": 39882,
+      "position": "2B",
+      "eligible_positions": [],
+      "pro_team": "Tex",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Justin Crawford",
+      "espn_id": 5080642,
+      "position": "1B/3B",
+      "eligible_positions": [],
+      "pro_team": "Phi",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Chase DeLauter",
+      "espn_id": 4619649,
+      "position": "LF",
+      "eligible_positions": [],
+      "pro_team": "Cle",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Matt Brash",
+      "espn_id": 4894467,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Sea",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Riley O'Brien",
+      "espn_id": 41509,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "StL",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Brett Baty",
+      "espn_id": 42414,
+      "position": "SS",
+      "eligible_positions": [],
+      "pro_team": "NYM",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Reynaldo Lopez",
+      "espn_id": 33860,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Atl",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Logan Henderson",
+      "espn_id": 4917878,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Mil",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Chad Patrick",
+      "espn_id": 5131708,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Mil",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Will Warren",
+      "espn_id": 5132011,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "NYY",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Luis Severino",
+      "espn_id": 33263,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Oak",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Parker Messick",
+      "espn_id": 4619898,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Cle",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Matt Strahm",
+      "espn_id": 34862,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "KC",
+      "injury_status": "DAY_TO_DAY",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Kevin Ginkel",
+      "espn_id": 41432,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Ari",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Nick Martinez",
+      "espn_id": 33372,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "TB",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Javier Baez",
+      "espn_id": 32127,
+      "position": "OF",
+      "eligible_positions": [],
+      "pro_team": "Det",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Cade Cavalli",
+      "espn_id": 4308037,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Wsh",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jose Berrios",
+      "espn_id": 32811,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Tor",
+      "injury_status": "OUT",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Kyle Finnegan",
+      "espn_id": 36543,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Det",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Matthew Liberatore",
+      "espn_id": 41173,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "StL",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Cedric Mullins",
+      "espn_id": 35578,
+      "position": "1B/3B",
+      "eligible_positions": [],
+      "pro_team": "TB",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Mickey Moniak",
+      "espn_id": 36181,
+      "position": "LF",
+      "eligible_positions": [],
+      "pro_team": "Col",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Marcelo Mayer",
+      "espn_id": 4872648,
+      "position": "SS",
+      "eligible_positions": [],
+      "pro_team": "Bos",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Logan O'Hoppe",
+      "espn_id": 42047,
+      "position": "1B",
+      "eligible_positions": [],
+      "pro_team": "LAA",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Max Meyer",
+      "espn_id": 4345164,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Mia",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jeffrey Springs",
+      "espn_id": 35397,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Oak",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jordan Beck",
+      "espn_id": 4619460,
+      "position": "2B/SS",
+      "eligible_positions": [],
+      "pro_team": "Col",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Gavin Sheets",
+      "espn_id": 40700,
+      "position": "2B/SS",
+      "eligible_positions": [],
+      "pro_team": "SD",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Sean Manaea",
+      "espn_id": 33244,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "NYM",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Harrison Bader",
+      "espn_id": 35062,
+      "position": "1B/3B",
+      "eligible_positions": [],
+      "pro_team": "SF",
+      "injury_status": "DAY_TO_DAY",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Lucas Erceg",
+      "espn_id": 36618,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "KC",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Louis Varland",
+      "espn_id": 4917888,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Tor",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Andrew Benintendi",
+      "espn_id": 34986,
+      "position": "2B/SS",
+      "eligible_positions": [],
+      "pro_team": "ChW",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Nolan Gorman",
+      "espn_id": 41174,
+      "position": "SS",
+      "eligible_positions": [],
+      "pro_team": "StL",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Chase Meidroth",
+      "espn_id": 5136929,
+      "position": "OF",
+      "eligible_positions": [],
+      "pro_team": "ChW",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Grant Holmes",
+      "espn_id": 33840,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Atl",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Mick Abel",
+      "espn_id": 4718970,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Min",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Javier Sanoja",
+      "espn_id": 5073992,
+      "position": "2B/SS",
+      "eligible_positions": [],
+      "pro_team": "Mia",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Matt Shaw",
+      "espn_id": 4867667,
+      "position": "SS",
+      "eligible_positions": [],
+      "pro_team": "ChC",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Cam Smith",
+      "espn_id": 5080766,
+      "position": "LF",
+      "eligible_positions": [],
+      "pro_team": "Hou",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Andres Gimenez",
+      "espn_id": 37729,
+      "position": "3B",
+      "eligible_positions": [],
+      "pro_team": "Tor",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jameson Taillon",
+      "espn_id": 31258,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "ChC",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Dustin May",
+      "espn_id": 40937,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "StL",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Max Scherzer",
+      "espn_id": 28976,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Tor",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Luisangel Acuna",
+      "espn_id": 42411,
+      "position": "3B",
+      "eligible_positions": [],
+      "pro_team": "ChW",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Clayton Beeter",
+      "espn_id": 4313143,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Wsh",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Coby Mayo",
+      "espn_id": 4683371,
+      "position": "2B",
+      "eligible_positions": [],
+      "pro_team": "Bal",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Kirby Yates",
+      "espn_id": 32623,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "LAA",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Garrett Cleavinger",
+      "espn_id": 36429,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "TB",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Bryce Eldridge",
+      "espn_id": 5149064,
+      "position": "CF",
+      "eligible_positions": [],
+      "pro_team": "SF",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Cristian Javier",
+      "espn_id": 41261,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Hou",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Moises Ballesteros",
+      "espn_id": 4987418,
+      "position": "CF",
+      "eligible_positions": [],
+      "pro_team": "ChC",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Owen Caissie",
+      "espn_id": 4917685,
+      "position": "LF",
+      "eligible_positions": [],
+      "pro_team": "Mia",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Mike Yastrzemski",
+      "espn_id": 33341,
+      "position": "LF",
+      "eligible_positions": [],
+      "pro_team": "Atl",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Zack Littell",
+      "espn_id": 36052,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Wsh",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Josh Jung",
+      "espn_id": 42437,
+      "position": "SS",
+      "eligible_positions": [],
+      "pro_team": "Tex",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Rhys Hoskins",
+      "espn_id": 35291,
+      "position": "2B",
+      "eligible_positions": [],
+      "pro_team": "Cle",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Mauricio Dubon",
+      "espn_id": 35304,
+      "position": "2B/SS",
+      "eligible_positions": [],
+      "pro_team": "Atl",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Dylan Beavers",
+      "espn_id": 4959037,
+      "position": "2B/SS",
+      "eligible_positions": [],
+      "pro_team": "Bal",
+      "injury_status": "DAY_TO_DAY",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Carlos Narvaez",
+      "espn_id": 5012120,
+      "position": "1B",
+      "eligible_positions": [],
+      "pro_team": "Bos",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Victor Scott II",
+      "espn_id": 4807220,
+      "position": "1B/3B",
+      "eligible_positions": [],
+      "pro_team": "StL",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Tyler Mahle",
+      "espn_id": 34973,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "SF",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Matt Wallner",
+      "espn_id": 42427,
+      "position": "LF",
+      "eligible_positions": [],
+      "pro_team": "Min",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Travis Bazzana",
+      "espn_id": 5007707,
+      "position": "3B",
+      "eligible_positions": [],
+      "pro_team": "Cle",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Trevor Larnach",
+      "espn_id": 41205,
+      "position": "CF",
+      "eligible_positions": [],
+      "pro_team": "Min",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Gabe Speier",
+      "espn_id": 40327,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Sea",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Zach Eflin",
+      "espn_id": 32804,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Bal",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Fernando Cruz",
+      "espn_id": 34068,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "NYY",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Zebby Matthews",
+      "espn_id": 4791597,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Min",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Tyler Stephenson",
+      "espn_id": 34975,
+      "position": "1B",
+      "eligible_positions": [],
+      "pro_team": "Cin",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Payton Tolle",
+      "espn_id": 4966140,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Bos",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Phil Maton",
+      "espn_id": 36161,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "ChC",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Lenyn Sosa",
+      "espn_id": 41684,
+      "position": "3B",
+      "eligible_positions": [],
+      "pro_team": "ChW",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Bo Naylor",
+      "espn_id": 41183,
+      "position": "1B",
+      "eligible_positions": [],
+      "pro_team": "Cle",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Brandon Marsh",
+      "espn_id": 40803,
+      "position": "1B/3B",
+      "eligible_positions": [],
+      "pro_team": "Phi",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Dominic Canzone",
+      "espn_id": 4345621,
+      "position": "LF",
+      "eligible_positions": [],
+      "pro_team": "Sea",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Paul Goldschmidt",
+      "espn_id": 31027,
+      "position": "2B",
+      "eligible_positions": [],
+      "pro_team": "NYY",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jacob Lopez",
+      "espn_id": 42239,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Oak",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Paul Sewald",
+      "espn_id": 35009,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Ari",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Eduardo Rodriguez",
+      "espn_id": 32675,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Ari",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Didier Fuentes",
+      "espn_id": 5291189,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Atl",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Braxton Garrett",
+      "espn_id": 40971,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Mia",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Rhett Lowder",
+      "espn_id": 4758873,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Cin",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Max Muncy",
+      "espn_id": 4872686,
+      "position": "SS",
+      "eligible_positions": [],
+      "pro_team": "Oak",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jonah Tong",
+      "espn_id": 5214984,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "NYM",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Johan Oviedo",
+      "espn_id": 41405,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Bos",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Kyle Leahy",
+      "espn_id": 5006093,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "StL",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Hyeseong Kim",
+      "espn_id": 5134614,
+      "position": "3B",
+      "eligible_positions": [],
+      "pro_team": "LAD",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Leo De Vries",
+      "espn_id": 5196124,
+      "position": "OF",
+      "eligible_positions": [],
+      "pro_team": "Oak",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Walker Jenkins",
+      "espn_id": 5148963,
+      "position": "1B/3B",
+      "eligible_positions": [],
+      "pro_team": "Min",
+      "injury_status": "OUT",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jack Dreyer",
+      "espn_id": 5136082,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "LAD",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Spencer Jones",
+      "espn_id": 4867424,
+      "position": "1B/3B",
+      "eligible_positions": [],
+      "pro_team": "NYY",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Taj Bradley",
+      "espn_id": 42480,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Min",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Max Clark",
+      "espn_id": 5148964,
+      "position": "1B/3B",
+      "eligible_positions": [],
+      "pro_team": "Det",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Kyle Harrison",
+      "espn_id": 4683375,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Mil",
+      "injury_status": "DAY_TO_DAY",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Colt Emerson",
+      "espn_id": 5149068,
+      "position": "OF",
+      "eligible_positions": [],
+      "pro_team": "Sea",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Spencer Horwitz",
+      "espn_id": 4228472,
+      "position": "2B",
+      "eligible_positions": [],
+      "pro_team": "Pit",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Austin Hays",
+      "espn_id": 36928,
+      "position": "2B/SS",
+      "eligible_positions": [],
+      "pro_team": "ChW",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Ryan Waldschmidt",
+      "espn_id": 5129344,
+      "position": "2B/SS",
+      "eligible_positions": [],
+      "pro_team": "Ari",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Triston Casas",
+      "espn_id": 41180,
+      "position": "2B",
+      "eligible_positions": [],
+      "pro_team": "Bos",
+      "injury_status": "OUT",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jorge Soler",
+      "espn_id": 32558,
+      "position": "LF",
+      "eligible_positions": [],
+      "pro_team": "LAA",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Tyler Holton",
+      "espn_id": 3983833,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Det",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Ben Joyce",
+      "espn_id": 4867388,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "LAA",
+      "injury_status": "OUT",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jesus Made",
+      "espn_id": 5196211,
+      "position": "OF",
+      "eligible_positions": [],
+      "pro_team": "Mil",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Cole Young",
+      "espn_id": 5080641,
+      "position": "3B",
+      "eligible_positions": [],
+      "pro_team": "Sea",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Robby Snelling",
+      "espn_id": 5080753,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Mia",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Brandon Sproat",
+      "espn_id": 4621041,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Mil",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Charlie Condon",
+      "espn_id": 5033089,
+      "position": "2B",
+      "eligible_positions": [],
+      "pro_team": "Col",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Masataka Yoshida",
+      "espn_id": 4872598,
+      "position": "CF",
+      "eligible_positions": [],
+      "pro_team": "Bos",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Matt Svanson",
+      "espn_id": 4649953,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "StL",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Keibert Ruiz",
+      "espn_id": 38827,
+      "position": "1B",
+      "eligible_positions": [],
+      "pro_team": "Wsh",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Dean Kremer",
+      "espn_id": 38295,
+      "position": "C",
+      "eligible_positions": [],
+      "pro_team": "Bal",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Jose Alvarado",
+      "espn_id": 36063,
+      "position": "RF",
+      "eligible_positions": [],
+      "pro_team": "Phi",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Kristian Campbell",
+      "espn_id": 5201569,
+      "position": "3B",
+      "eligible_positions": [],
+      "pro_team": "Bos",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    },
+    {
+      "name": "Miguel Andujar",
+      "espn_id": 33743,
+      "position": "SS",
+      "eligible_positions": [],
+      "pro_team": "SD",
+      "injury_status": "ACTIVE",
+      "stats": {
+        "0": {}
+      }
+    }
+  ]
+}

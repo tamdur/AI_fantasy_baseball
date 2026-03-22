@@ -9,7 +9,9 @@
       "mcp__claude_ai_Flaim_Fantasy__get_transactions",
       "mcp__claude_ai_Flaim_Fantasy__get_roster",
       "mcp__claude_ai_Flaim_Fantasy__get_league_info",
-      "Bash(gh repo:*)"
+      "Bash(gh repo:*)",
+      "WebSearch",
+      "Bash(python3:*)"
     ]
   }
 }

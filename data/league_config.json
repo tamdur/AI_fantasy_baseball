@@ -1,0 +1,193 @@
+{
+  "league_id": 84209353,
+  "league_name": "Magic Conch 2025",
+  "year": 2026,
+  "scoring_type": "H2H_MOST_CATEGORIES",
+  "team_count": 8,
+  "reg_season_matchups": 22,
+  "playoff_teams": 4,
+  "scoring_categories": [
+    {
+      "stat_id": 20,
+      "name": "R",
+      "is_reverse": false,
+      "is_batting": true
+    },
+    {
+      "stat_id": 5,
+      "name": "HR",
+      "is_reverse": false,
+      "is_batting": true
+    },
+    {
+      "stat_id": 21,
+      "name": "RBI",
+      "is_reverse": false,
+      "is_batting": true
+    },
+    {
+      "stat_id": 47,
+      "name": "ERA",
+      "is_reverse": true,
+      "is_batting": false
+    },
+    {
+      "stat_id": 8,
+      "name": "TB",
+      "is_reverse": false,
+      "is_batting": true
+    },
+    {
+      "stat_id": 25,
+      "name": "SBN",
+      "is_reverse": false,
+      "is_batting": true
+    },
+    {
+      "stat_id": 41,
+      "name": "WHIP",
+      "is_reverse": true,
+      "is_batting": false
+    },
+    {
+      "stat_id": 63,
+      "name": "QS",
+      "is_reverse": false,
+      "is_batting": false
+    },
+    {
+      "stat_id": 48,
+      "name": "K",
+      "is_reverse": false,
+      "is_batting": false
+    },
+    {
+      "stat_id": 17,
+      "name": "OBP",
+      "is_reverse": false,
+      "is_batting": true
+    },
+    {
+      "stat_id": 82,
+      "name": "KBB",
+      "is_reverse": false,
+      "is_batting": false
+    },
+    {
+      "stat_id": 83,
+      "name": "SVHD",
+      "is_reverse": false,
+      "is_batting": false
+    }
+  ],
+  "roster_slots": {
+    "C": 1,
+    "1B": 1,
+    "2B": 1,
+    "SS": 1,
+    "3B": 1,
+    "OF": 5,
+    "MI": 1,
+    "CI": 1,
+    "UTIL": 1,
+    "P": 9,
+    "BE": 3,
+    "IL": 3
+  },
+  "draft": {
+    "type": "SNAKE",
+    "date": "2026-03-24T20:00:00",
+    "date_display": "Tuesday March 24, 2026 at 08:00 PM",
+    "pick_order": [
+      6,
+      9,
+      5,
+      10,
+      1,
+      7,
+      4,
+      3
+    ],
+    "time_per_pick_seconds": 60,
+    "keeper_count": 3,
+    "keeper_order_penalty": null
+  },
+  "divisions": [
+    {
+      "id": 0,
+      "name": "Chicago",
+      "size": 4
+    },
+    {
+      "id": 1,
+      "name": "The World",
+      "size": 4
+    }
+  ],
+  "teams": [
+    {
+      "team_id": 1,
+      "team_name": "TBD's H0E$",
+      "owner_first": "Matt",
+      "owner_last": "Banna",
+      "owner_display": "Wackoman1",
+      "division": "The World"
+    },
+    {
+      "team_id": 3,
+      "team_name": "Latte Nate",
+      "owner_first": "Nate",
+      "owner_last": "Carlson",
+      "owner_display": "nkc8",
+      "division": "The World"
+    },
+    {
+      "team_id": 4,
+      "team_name": "Big Pfaadt Tatis",
+      "owner_first": "Andrew",
+      "owner_last": "Van Sickle",
+      "owner_display": "greenriver8",
+      "division": "Chicago"
+    },
+    {
+      "team_id": 5,
+      "team_name": "Special K",
+      "owner_first": "Kristina",
+      "owner_last": "Caldwell",
+      "owner_display": "Kristina7",
+      "division": "The World"
+    },
+    {
+      "team_id": 6,
+      "team_name": "Shohei's Translator",
+      "owner_first": "Simon",
+      "owner_last": "Jensen",
+      "owner_display": "simon.jensen13",
+      "division": "Chicago"
+    },
+    {
+      "team_id": 7,
+      "team_name": "Team Q",
+      "owner_first": "Steve",
+      "owner_last": "Q",
+      "owner_display": "GoYankees2451",
+      "division": "Chicago"
+    },
+    {
+      "team_id": 9,
+      "team_name": "Ya Like Jazz?",
+      "owner_first": "Joseph",
+      "owner_last": "Pecora",
+      "owner_display": "DetroitLoserFan",
+      "division": "The World"
+    },
+    {
+      "team_id": 10,
+      "team_name": "Brohei Brotanis",
+      "owner_first": "Teddy",
+      "owner_last": "Amdur",
+      "owner_display": "MichiCubsFan9",
+      "division": "Chicago"
+    }
+  ]
+}
