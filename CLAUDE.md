@@ -17,12 +17,14 @@ See `SKILL.md` for full napkin specification.
 
 ## Key Files
 - `research.md` — Deep analysis of Mr. Cheatsheet WERTH methodology, SGP vs z-scores, projection data assessment
+- `fangraphs_guide.md` — FanGraphs REST API documentation, projection type parameters, bulk download patterns, data inventory
 - `flaim_assessment.md` — Flaim MCP capabilities and limitations
-- `existing-tools/` — Mr. Cheatsheet spreadsheet, FanGraphs CSVs (Steamer + ATC), SFBB Player ID Map
+- `existing-tools/` — Mr. Cheatsheet spreadsheet, 23 FanGraphs projection CSVs, SFBB Player ID Map
 - `SKILL.md` — Napkin runbook skill definition
 
 ## Data Architecture
-- **Projections**: FanGraphs Steamer + ATC CSVs in `existing-tools/`
+- **Projections**: 23 FanGraphs CSVs in `existing-tools/` covering 8 projection systems (Steamer, ATC, THE BAT X, ZiPS, Depth Charts, OOPSY, OOPSYPeak, Steamer600) plus platoon splits and ZiPS 3yr aging curves. See `fangraphs_guide.md` for full inventory.
+- **FanGraphs API**: Undocumented REST API at `/api/projections?type={TYPE}&stats={bat|pit}&pos=all&team=0&players=0&lg=all`. See `fangraphs_guide.md` for all type parameters.
 - **Player ID bridge**: SFBB ID Map (join via MLBAM ID: FanGraphs `xMLBAMID` → SFBB `MLBID` → `ESPNID`)
 - **Live league data**: Flaim MCP for rosters/standings; `espn-api` for stats/draft history
 - **Valuation**: Z-score (WERTH) methodology ported from Mr. Cheatsheet, not SGP
