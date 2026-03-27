@@ -127,8 +127,8 @@ def compute_category_state(our_matchup):
 
     category_state = {}
     for cat_name, cat_data in our_matchup["categories"].items():
-        our_val = cat_data.get(our_key, 0) or 0
-        opp_val = cat_data.get(opp_key, 0) or 0
+        our_val = float(cat_data.get(our_key, 0) or 0)
+        opp_val = float(cat_data.get(opp_key, 0) or 0)
 
         # For lower-is-better stats (ERA, WHIP), lower = winning
         if cat_name in LOWER_IS_BETTER:
