@@ -104,6 +104,9 @@ DV and MV are biased toward hitters (avg DV: 10.58 hitters vs 4.83 pitchers). Ro
 ### Calibration Data Needed
 After 5+ completed matchups, run `calibration_report()` to assess whether P(win) estimates are well-calibrated. If not, tune the triage thresholds in `preprocess.py`.
 
+### USER: Draft tool is functionally useless
+When I attempted to use it in my snake draft yesterday, I found that the indexing of draft order was totally incorrect, leading to the tool being functionally useless. Fixing this is a low priority because the draft is concluded and there is no need for this tool for the coming year, but any return to this code base for next year's draft, or for fantasy football, needs to consider fixing this and developing a full test suite to ensure that day-of glitches like this don't happen again.
+
 ---
 
 ## File Structure
@@ -112,9 +115,9 @@ After 5+ completed matchups, run `calibration_report()` to assess whether P(win)
 AI_fantasy_baseball/
 ├── CLAUDE.md                    # Project instructions (loaded every session)
 ├── STATE_OF_REPO.md             # This file
-├── SKILL.md                     # Napkin runbook skill definition
 ├── .claude/
 │   ├── napkin.md                # Live runbook
+│   ├── SKILL.md                 # Napkin runbook skill definition
 │   ├── commands/generate.md     # /generate slash command
 │   └── projects/.../memory/     # Persistent memory
 ├── docs/                        # GitHub Pages (https://tamdur.github.io/AI_fantasy_baseball/)
@@ -123,6 +126,7 @@ AI_fantasy_baseball/
 ├── in_season/daily_digest/      # ---- ACTIVE DEVELOPMENT ----
 │   ├── run_newsletter.py        # Pipeline orchestrator
 │   ├── config.py                # Credentials, stat/slot/position maps
+│   ├── http_utils.py            # Shared rate limiting + JSON caching
 │   ├── fetch_espn.py            # ESPN API + schedule JSON loader
 │   ├── fetch_fangraphs.py       # FanGraphs RoS projections
 │   ├── fetch_savant.py          # Savant xStats (sample-size gated)
@@ -141,7 +145,8 @@ AI_fantasy_baseball/
 │   │   ├── synthesizer.md
 │   │   └── mvp_analyst.md
 │   └── output/                  # (gitignored) caches, newsletters, logs
-├── model/                       # Pre-draft valuation model
+├── model/                       # Pre-draft valuation model + shared league module
+│   ├── league.py                # ★ Shared constants & ID bridge (used by both model/ and in_season/)
 │   ├── data_pipeline.py         # Load, derive, join, merge projections
 │   ├── valuation_engine.py      # WERTH z-scores
 │   ├── correlated_uncertainty.py
@@ -159,16 +164,15 @@ AI_fantasy_baseball/
 │   ├── league_schedule_2026.json # Matchup dates/opponents (authoritative)
 │   ├── league_schedule_2026.pdf  # Source ESPN schedule
 │   ├── league_config.json
-│   ├── FanGraphs/               # Raw projection CSVs
 │   ├── historical_stats/        # FanGraphs end-of-season 2022-2025
 │   ├── drafts/                  # 2021-2025 draft picks
 │   ├── matchups/                # 2021-2025 per-category results
 │   └── standings/               # 2021-2025 W/L/T
 ├── existing-tools/              # FanGraphs CSVs, SFBB ID Map, Mr. Cheatsheet
+├── reference/                   # API documentation (FanGraphs guide)
 ├── analysis/                    # League history, keeper, uncertainty, waiver floor
 ├── research/                    # WERTH methodology, data assessment, newsletter infra
-├── plans/                       # Build plans and cowork prompts
-└── fangraphs_guide.md           # FanGraphs REST API documentation
+└── plans/                       # Build plans, roadmap, and cowork prompts
 ```
 
 ## How to Run

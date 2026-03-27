@@ -10,39 +10,15 @@ Additional data fetchers identified by Tactician/Actuary persona research:
 import re
 import json
 import logging
-from datetime import datetime, timedelta
 from io import StringIO
 
 import requests
 import pandas as pd
 
 from config import OUTPUT_DIR, EXISTING_TOOLS
+from http_utils import cache_valid, load_cache, save_cache
 
 log = logging.getLogger(__name__)
-
-
-# ---- Caching helpers ----
-
-def _cache_path(name):
-    return OUTPUT_DIR / f"cache_{name}.json"
-
-
-def _cache_valid(name, max_hours):
-    p = _cache_path(name)
-    if not p.exists():
-        return False
-    mtime = datetime.fromtimestamp(p.stat().st_mtime)
-    return (datetime.now() - mtime) < timedelta(hours=max_hours)
-
-
-def _load_cache(name):
-    with open(_cache_path(name)) as f:
-        return json.load(f)
-
-
-def _save_cache(name, data):
-    with open(_cache_path(name), "w") as f:
-        json.dump(data, f, default=str)
 
 
 # ---- Park Factors ----
@@ -118,8 +94,8 @@ def fetch_team_offense_quality():
     Cached daily. Returns dict of team_abbrev -> wRC+.
     """
     cache_name = "team_wrcplus"
-    if _cache_valid(cache_name, 24):
-        return _load_cache(cache_name)
+    if cache_valid(cache_name, 24):
+        return load_cache(cache_name)
 
     try:
         url = "https://www.fangraphs.com/api/leaders/major-league/data"
@@ -152,7 +128,7 @@ def fetch_team_offense_quality():
                 team_quality[team] = float(wrc)
 
         if team_quality:
-            _save_cache(cache_name, team_quality)
+            save_cache(cache_name, team_quality)
             log.info(f"Fetched team wRC+ for {len(team_quality)} teams")
             return team_quality
 
@@ -195,8 +171,8 @@ def fetch_vegas_lines():
         return {}
 
     cache_name = "vegas_lines"
-    if _cache_valid(cache_name, 6):  # 6 hour cache
-        return _load_cache(cache_name)
+    if cache_valid(cache_name, 6):  # 6 hour cache
+        return load_cache(cache_name)
 
     try:
         url = "https://api.the-odds-api.com/v4/sports/baseball_mlb/odds/"
@@ -236,7 +212,7 @@ def fetch_vegas_lines():
                             result[game_key]["away_ml"] = outcome.get("price")
 
         if result:
-            _save_cache(cache_name, result)
+            save_cache(cache_name, result)
             log.info(f"Fetched Vegas lines for {len(result)} games")
 
         # Log remaining API requests
@@ -260,8 +236,8 @@ def fetch_closer_info():
     Falls back to a static reference if scraping fails.
     """
     cache_name = "closer_roles"
-    if _cache_valid(cache_name, 24):
-        return _load_cache(cache_name)
+    if cache_valid(cache_name, 24):
+        return load_cache(cache_name)
 
     try:
         url = "https://www.rosterresource.com/mlb-bullpen-depth-chart/"
@@ -277,7 +253,7 @@ def fetch_closer_info():
         from html.parser import HTMLParser
         roles = _parse_roster_resource(r.text)
         if roles:
-            _save_cache(cache_name, roles)
+            save_cache(cache_name, roles)
             log.info(f"Fetched closer roles for {len(roles)} teams")
         return roles
 

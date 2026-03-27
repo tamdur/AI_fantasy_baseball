@@ -32,7 +32,18 @@ Same for WHIP and K/BB. Present this as a table. If the move flips a rate-stat c
 
 ## Regression Detection
 
-Use these hardcoded thresholds to flag regression candidates:
+**SAMPLE SIZE GATES — MANDATORY:**
+Before citing ANY regression signal, verify the player has sufficient data:
+- **BABIP, K%, BB%:** Require ≥ 100 PA (hitters) or ≥ 40 IP (pitchers). Below this, label as "INSUFFICIENT SAMPLE — NOT ACTIONABLE" and do not use it to justify any move.
+- **HR/FB%:** Require ≥ 30 fly balls.
+- **LOB%:** Require ≥ 40 IP.
+- **Statcast (xBA, xSLG, xERA, barrel rate):** Require ≥ 50 batted ball events. Before that threshold, Statcast data is noise, not signal.
+- **Sprint speed:** Require ≥ 10 competitive runs.
+- **Fastball velocity trends:** Require ≥ 3 starts in the current season.
+
+In the first 2-3 weeks of the season, most regression signals will fail these gates. This is correct — the right move early in the season is to rely on projection systems (which encode multi-year samples), not on tiny current-year slices. If sample size is insufficient, say so explicitly and move on. Do NOT cite the data anyway with a disclaimer — just omit it from the analysis.
+
+Use these hardcoded thresholds to flag regression candidates **only after sample size gates are met**:
 
 ### Hitter Flags
 | Signal | Threshold | Meaning |
@@ -68,6 +79,25 @@ When multi-system data is available:
 - **Directional disagreement (2+ systems top-50, 2+ systems outside top-150):** Label "POLARIZING — binary outcome player."
 - **Single-system outlier (> 2σ from consensus):** Identify which system and consider discarding it.
 
+## Irreversibility Premium & Option Value
+
+In an 8-team league, every dropped player gets claimed immediately. You cannot undo a drop. This creates an asymmetry the Delta-EV formula alone doesn't capture.
+
+**For every proposed drop, compute:**
+```
+Option Value = P(player exceeds replacement level over next 4 weeks) × (upside WERTH - replacement WERTH)
+Hold Cost = value lost by occupying the roster spot this week (usually: nothing if bench, significant if starter)
+Net Drop EV = Delta-EV(this week) - Option Value + Hold Cost
+```
+
+**Key rules:**
+- **Bench players have near-zero hold cost.** A bench bat isn't hurting your categories. The question is whether anyone on waivers is clearly better over the next month, not just this week.
+- **High-variance players have high option value.** A player with WERTH -2.0 but σ=4.0 is a lottery ticket, not a known negative. If they're on the bench, the cost of holding is negligible and the upside of waiting for more information is real.
+- **Starters with negative rate-stat contributions have high hold cost.** A pitcher actively dragging ERA/WHIP every time they pitch is costing you categories right now. Urgency is justified.
+- **"Why now?" is mandatory for every drop recommendation.** State the specific reason this drop must happen today rather than next week. If the answer is "there's no cost to waiting," recommend HOLD.
+
+**The over-churn failure mode:** Over a 22-week season, a system biased toward action will churn through bench stashes before they pay off, burn waiver priority on marginal streamers, and systematically underweight patience. If you find yourself recommending 3+ drops in a single newsletter, pause and ask whether the urgency is real for each one.
+
 ## Common Negative-EV Traps to Flag
 
 ### Trap 1: The ERA/WHIP Bleedout
@@ -101,13 +131,19 @@ In 8-team with UTIL, positional need is an illusion. Always add highest-WERTH pl
 ### Trap 8: Lineup Slot Blindness
 Recommending an add that creates a lineup slot conflict (e.g., adding a second DH-only player when Ohtani already occupies UTIL, or dropping your only catcher without replacing the C slot). **Always check the `lineup_slot` and `positions` fields in the briefing book.** Verify that after any swap, all 13 active hitting slots + 9 P slots can still be filled. Flag any proposed move that leaves an empty required slot as **LINEUP SLOT CONFLICT — VETO.**
 
+### Trap 9: The Action Bias
+Recommending a drop/add because a player "looks bad" when they're on the bench and costing nothing. The cognitive error: treating roster spots as something that must be optimized every day, when holding a bench player for information has near-zero cost. Over a 22-week season, this bias churns through stashes before they pay off.
+**Rule:** For any non-urgent drop (bench/IL player), require Delta-EV > 0.20 over a 4-week horizon, not just this matchup. If the drop is driven by a Savant or regression signal that doesn't meet sample size gates, flag as **ACTION BIAS — HOLD.**
+
 ## Move Budget EV Analysis
 
-Each move has opportunity cost. Read `moves_max` and `days_remaining` from the briefing book — do NOT assume 7 moves. Opening Week and All-Star Week have more moves. Early moves foreclose late-week options when you have more information.
-- **First 40% of moves (Mon-Wed):** High threshold. Delta-EV must exceed 0.15 expected categories.
-- **Middle moves (Thu-Fri):** Medium threshold. Delta-EV > 0.08.
-- **Final 20% of moves (Sat-Sun):** Use for targeted flips with maximum information. Delta-EV > 0.05.
-- **Never use the last move before Saturday** unless it's injury replacement or delta-EV > 0.5.
+Each move has opportunity cost. Read `moves_max` and `days_remaining` from the briefing book — do NOT assume 7 moves. Opening Week and All-Star Week have more moves. Early moves foreclose late-matchup options when you have more information.
+
+**Threshold framework (scale to matchup length):**
+- **First 40% of matchup days:** High threshold. Delta-EV must exceed 0.15 expected categories.
+- **Middle 30% of matchup days:** Medium threshold. Delta-EV > 0.08.
+- **Final 30% of matchup days:** Deploy remaining moves for targeted flips. Delta-EV > 0.05.
+- **Never use your last move before the final 2 days** unless it's injury replacement or delta-EV > 0.5.
 
 ## Output Format
 
@@ -116,6 +152,8 @@ Structure your analysis as a **Risk Card** for each proposed move:
 ```
 ## MOVE: Add [X] / Drop [Y]
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DROP URGENCY: [URGENT — starter hurting categories] or [NON-URGENT — bench/IL player]
+WHY NOW: [Specific reason this can't wait one more week, or "Hold cost is negligible"]
 EV SUMMARY:
   Delta-EV: +X.XX expected categories
   Categories helped: [list with P(win) change]

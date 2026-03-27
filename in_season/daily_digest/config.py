@@ -66,9 +66,9 @@ PRO_TEAM_ABBREV = {
     25: "SD", 26: "SF", 27: "COL", 28: "MIA", 29: "ARI", 30: "TB",
 }
 
-# Import league constants from model
+# League constants and ID utilities (shared module in model/)
 sys.path.insert(0, str(ROOT / "model"))
-from data_pipeline import (
+from league import (
     HITTING_CATS, PITCHING_CATS, ALL_CATS, LOWER_IS_BETTER,
     NUM_TEAMS, ROSTER_SLOTS, load_id_map, join_ids,
 )

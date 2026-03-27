@@ -4,7 +4,6 @@ All functions use cookie-based auth and the mBoxscore/mRoster views.
 """
 
 import json as _json
-import time
 import logging
 from datetime import date, datetime
 from pathlib import Path
@@ -16,6 +15,7 @@ from config import (
     SCORING_CAT_IDS, STATS_MAP, POS_MAP, SLOT_MAP, PRO_TEAM_ABBREV,
     ROOT,
 )
+from http_utils import RateLimiter
 
 
 # ---- League schedule (parsed from PDF, see data/league_schedule_2026.json) ----
@@ -38,22 +38,18 @@ def _load_schedule():
 
 log = logging.getLogger(__name__)
 
-_last_request_time = 0.0
+_rate = RateLimiter(ESPN_RATE_LIMIT)
 
 
 def _espn_get(views, params=None):
     """Make a rate-limited ESPN API request."""
-    global _last_request_time
-    elapsed = time.time() - _last_request_time
-    if elapsed < ESPN_RATE_LIMIT:
-        time.sleep(ESPN_RATE_LIMIT - elapsed)
+    _rate.throttle()
 
     p = {"view": views}
     if params:
         p.update(params)
 
     r = requests.get(ESPN_BASE_URL, params=p, cookies=ESPN_COOKIES)
-    _last_request_time = time.time()
 
     if r.status_code == 401 or (r.status_code == 200 and not r.text.strip()):
         raise PermissionError(
@@ -367,10 +363,7 @@ def fetch_free_agents(count=250):
     }
     headers = {"x-fantasy-filter": json.dumps(filter_obj)}
 
-    global _last_request_time
-    elapsed = time.time() - _last_request_time
-    if elapsed < ESPN_RATE_LIMIT:
-        time.sleep(ESPN_RATE_LIMIT - elapsed)
+    _rate.throttle()
 
     r = requests.get(
         ESPN_BASE_URL,
@@ -378,7 +371,6 @@ def fetch_free_agents(count=250):
         cookies=ESPN_COOKIES,
         headers=headers,
     )
-    _last_request_time = time.time()
 
     if r.status_code == 401:
         raise PermissionError("ESPN API auth failed — cookies likely expired.")

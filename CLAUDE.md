@@ -6,7 +6,7 @@ Every session, before doing any other work:
 2. Curate: re-prioritize, merge duplicates, remove stale items, enforce max 10 per category.
 3. During work, update the napkin whenever you learn something reusable (frequent gotchas, user directives, non-obvious tactics). Each entry must have a date and "Do instead:" line.
 
-See `SKILL.md` for full napkin specification.
+See `.claude/SKILL.md` for full napkin specification.
 
 ## League Context
 - 8-team ESPN H2H Most Categories keeper league (League ID: 84209353)
@@ -26,6 +26,8 @@ See `SKILL.md` for full napkin specification.
 
 ### In-Season Pipeline (active)
 - `in_season/daily_digest/run_newsletter.py` — Pipeline orchestrator (run this or use `/generate`)
+- `in_season/daily_digest/config.py` — Credentials, stat maps, SLOT_MAP, POS_MAP, PRO_TEAM_ABBREV
+- `in_season/daily_digest/http_utils.py` — Shared rate limiting (`RateLimiter`) and JSON file caching
 - `in_season/daily_digest/fetch_espn.py` — ESPN API fetchers (rosters, matchups, standings, FAs)
 - `in_season/daily_digest/fetch_fangraphs.py` — FanGraphs RoS projections + leaderboards
 - `in_season/daily_digest/fetch_savant.py` — Baseball Savant xStats (sample size gated: 50 BBE min)
@@ -36,12 +38,14 @@ See `SKILL.md` for full napkin specification.
 - `in_season/daily_digest/publish.py` — HTML rendering + GitHub Pages publishing with prev/next nav
 - `in_season/daily_digest/calibration.py` — Prediction logging and calibration reports
 - `in_season/daily_digest/prompts/` — Agent system prompts (tactician, actuary, synthesizer, mvp_analyst)
-- `in_season/daily_digest/config.py` — Credentials, stat maps, SLOT_MAP, POS_MAP, PRO_TEAM_ABBREV
+
+### Shared Module
+- `model/league.py` — League constants (categories, roster slots, team count) and ID bridge utilities (`load_id_map`, `join_ids`). Imported by both pre-draft model and in-season pipeline.
 
 ### Schedule & Data
 - `data/league_schedule_2026.json` — Authoritative matchup dates/opponents (from PDF). MP1=12d, MP15=14d, rest=7d.
 - `data/league_schedule_2026.pdf` — Source ESPN schedule screenshot
-- `fangraphs_guide.md` — FanGraphs REST API documentation
+- `reference/fangraphs_guide.md` — FanGraphs REST API documentation
 
 ### Pre-Draft Model (complete, reference only)
 - `model/valuation_engine.py` — WERTH z-score pipeline
@@ -53,7 +57,8 @@ See `SKILL.md` for full napkin specification.
 ### Research & Analysis
 - `research/` — Research docs (WERTH methodology, data assessment, Flaim assessment, newsletter infra)
 - `analysis/` — League history, keeper analysis, uncertainty methodology, waiver floor reports
-- `plans/` — Build plans and cowork prompts
+- `plans/` — Build plans, roadmap, and cowork prompts
+- `reference/` — API documentation (FanGraphs guide)
 
 ### Published Output
 - `docs/index.html` — Latest newsletter (GitHub Pages: https://tamdur.github.io/AI_fantasy_baseball/)
@@ -61,7 +66,7 @@ See `SKILL.md` for full napkin specification.
 
 ## Data Architecture
 - **Projections**: 23 FanGraphs CSVs in `existing-tools/` + RoS projections fetched live via API
-- **FanGraphs API**: REST at `/api/projections?type={TYPE}&stats={bat|pit}&pos=all`. See `fangraphs_guide.md`.
+- **FanGraphs API**: REST at `/api/projections?type={TYPE}&stats={bat|pit}&pos=all`. See `reference/fangraphs_guide.md`.
 - **Player ID bridge**: SFBB ID Map (FanGraphs `xMLBAMID` → SFBB `MLBID` → `ESPNID`)
 - **Live league data**: Direct ESPN API with cookie auth (`mBoxscore`, `mRoster`, `mSettings` views)
 - **Matchup schedule**: `data/league_schedule_2026.json` (not ESPN API — API mapping is unreliable early season)

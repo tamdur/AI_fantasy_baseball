@@ -4,9 +4,7 @@ FanGraphs API fetchers for RoS projections and leaderboard stats.
 
 import re
 import json
-import time
 import logging
-from datetime import datetime, timedelta
 from pathlib import Path
 
 import requests
@@ -18,10 +16,11 @@ from config import (
     ROS_MULTI_SYSTEMS, FANGRAPHS_CACHE_HOURS, MULTI_SYSTEM_CACHE_DAYS,
     OUTPUT_DIR, EXISTING_TOOLS,
 )
+from http_utils import RateLimiter, cache_valid, load_cache, save_cache
 
 log = logging.getLogger(__name__)
 
-_last_request_time = 0.0
+_rate = RateLimiter(FANGRAPHS_RATE_LIMIT)
 
 FANGRAPHS_PROJ_URL = "https://www.fangraphs.com/api/projections"
 FANGRAPHS_LEADERS_URL = "https://www.fangraphs.com/api/leaders/major-league/data"
@@ -29,37 +28,11 @@ FANGRAPHS_LEADERS_URL = "https://www.fangraphs.com/api/leaders/major-league/data
 
 def _fg_get(url, params):
     """Rate-limited GET to FanGraphs API."""
-    global _last_request_time
-    elapsed = time.time() - _last_request_time
-    if elapsed < FANGRAPHS_RATE_LIMIT:
-        time.sleep(FANGRAPHS_RATE_LIMIT - elapsed)
-
+    _rate.throttle()
     r = requests.get(url, params=params, timeout=30)
-    _last_request_time = time.time()
     r.raise_for_status()
     return r.json()
 
-
-def _cache_path(name):
-    return OUTPUT_DIR / f"cache_{name}.json"
-
-
-def _cache_valid(name, max_hours):
-    p = _cache_path(name)
-    if not p.exists():
-        return False
-    mtime = datetime.fromtimestamp(p.stat().st_mtime)
-    return (datetime.now() - mtime) < timedelta(hours=max_hours)
-
-
-def _load_cache(name):
-    with open(_cache_path(name)) as f:
-        return json.load(f)
-
-
-def _save_cache(name, data):
-    with open(_cache_path(name), "w") as f:
-        json.dump(data, f)
 
 
 # ---- RoS Projections ----
@@ -71,9 +44,9 @@ def fetch_ros_projections(stats="bat"):
     Falls back to pre-season ATC CSVs if RoS not available.
     """
     cache_name = f"ros_{stats}"
-    if _cache_valid(cache_name, FANGRAPHS_CACHE_HOURS):
+    if cache_valid(cache_name, FANGRAPHS_CACHE_HOURS):
         log.info(f"Using cached RoS {stats} projections")
-        df = pd.DataFrame(_load_cache(cache_name))
+        df = pd.DataFrame(load_cache(cache_name))
         return _normalize_fg_df(df, stats)
 
     # Try RoS ATC first, then Steamer RoS
@@ -91,7 +64,7 @@ def fetch_ros_projections(stats="bat"):
             if data and len(data) > 10:
                 log.info(f"Fetched {len(data)} {stats} RoS projections ({proj_type})")
                 df = pd.DataFrame(data)
-                _save_cache(cache_name, data)
+                save_cache(cache_name, data)
                 return _normalize_fg_df(df, stats)
         except Exception as e:
             log.warning(f"RoS {proj_type} {stats} fetch failed: {e}")
@@ -183,9 +156,9 @@ def fetch_leaderboard(stats="bat"):
     Returns DataFrame with BABIP, K%, HR/FB%, Hard%, etc.
     """
     cache_name = f"leaders_{stats}"
-    if _cache_valid(cache_name, 12):  # 12 hour cache for actuals
+    if cache_valid(cache_name, 12):  # 12 hour cache for actuals
         log.info(f"Using cached leaderboard {stats}")
-        return pd.DataFrame(_load_cache(cache_name))
+        return pd.DataFrame(load_cache(cache_name))
 
     try:
         params = {
@@ -207,7 +180,7 @@ def fetch_leaderboard(stats="bat"):
 
         if records and len(records) > 0:
             df = pd.DataFrame(records)
-            _save_cache(cache_name, records)
+            save_cache(cache_name, records)
             return _normalize_fg_df(df, stats)
     except Exception as e:
         log.warning(f"Leaderboard fetch failed: {e}")
@@ -223,9 +196,9 @@ def fetch_multi_system_ros(stats="bat"):
     disagreement (std dev) per player per stat. Cached weekly.
     """
     cache_name = f"multi_system_{stats}"
-    if _cache_valid(cache_name, MULTI_SYSTEM_CACHE_DAYS * 24):
+    if cache_valid(cache_name, MULTI_SYSTEM_CACHE_DAYS * 24):
         log.info(f"Using cached multi-system disagreement {stats}")
-        return pd.DataFrame(_load_cache(cache_name))
+        return pd.DataFrame(load_cache(cache_name))
 
     all_systems = {}
     for sys_type in ROS_MULTI_SYSTEMS:
@@ -298,5 +271,5 @@ def fetch_multi_system_ros(stats="bat"):
 
     result = pd.DataFrame(merged_rows)
     if len(result) > 0:
-        _save_cache(cache_name, result.to_dict(orient="records"))
+        save_cache(cache_name, result.to_dict(orient="records"))
     return result

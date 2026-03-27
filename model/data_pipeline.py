@@ -8,25 +8,13 @@ import numpy as np
 import json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
-DATA = ROOT / "data"
-TOOLS = ROOT / "existing-tools"
-
-# League config
-NUM_TEAMS = 8
-ROSTER_SLOTS = {
-    "C": 1, "1B": 1, "2B": 1, "SS": 1, "3B": 1,
-    "OF": 5, "MI": 1, "CI": 1, "UTIL": 1, "P": 9,
-    "BE": 3, "IL": 3,
-}
-HITTING_SLOTS = {k: v for k, v in ROSTER_SLOTS.items() if k not in ("P", "BE", "IL")}
-PITCHING_SLOTS = {"P": ROSTER_SLOTS["P"]}
-
-# Scoring categories
-HITTING_CATS = ["R", "HR", "TB", "RBI", "SBN", "OBP"]
-PITCHING_CATS = ["K", "QS", "ERA", "WHIP", "KBB", "SVHD"]
-ALL_CATS = HITTING_CATS + PITCHING_CATS
-LOWER_IS_BETTER = {"ERA", "WHIP"}  # K/BB is higher=better in this league
+# League constants and ID utilities (shared with in-season pipeline)
+from league import (
+    ROOT, DATA, TOOLS,
+    NUM_TEAMS, ROSTER_SLOTS, HITTING_SLOTS, PITCHING_SLOTS,
+    HITTING_CATS, PITCHING_CATS, ALL_CATS, LOWER_IS_BETTER,
+    load_id_map, join_ids,
+)
 
 
 def load_atc_batters():
@@ -98,20 +86,6 @@ def load_steamer_pitchers():
     return df
 
 
-def load_id_map():
-    """Load SFBB Player ID Map for cross-referencing."""
-    df = pd.read_csv(TOOLS / "SFBB Player ID Map - PLAYERIDMAP.csv",
-                     low_memory=False)
-    # Key columns: MLBID (= MLBAM ID), ESPNID, IDFANGRAPHS
-    # Convert to numeric, coercing errors
-    for col in ["MLBID", "ESPNID"]:
-        df[col] = pd.to_numeric(df[col], errors="coerce")
-    df = df[["MLBID", "ESPNID", "PLAYERNAME", "POS", "TEAM", "IDFANGRAPHS"]].copy()
-    # Deduplicate on MLBID (e.g., Ohtani has two rows)
-    df = df.drop_duplicates(subset=["MLBID"], keep="first")
-    return df
-
-
 def load_espn_projections():
     """Load ESPN projections as secondary source."""
     with open(DATA / "projections_2026.json") as f:
@@ -170,22 +144,6 @@ def load_rosters():
                 "acquisition_type": p.get("acquisition_type", ""),
             })
     return pd.DataFrame(rows)
-
-
-def join_ids(fg_df, id_map):
-    """Join FanGraphs data to ESPN IDs via MLBAM ID bridge."""
-    # FanGraphs mlbam_id → SFBB MLBID → ESPNID
-    merged = fg_df.merge(
-        id_map[["MLBID", "ESPNID"]].dropna(subset=["MLBID"]),
-        left_on="mlbam_id",
-        right_on="MLBID",
-        how="left",
-    )
-    merged = merged.rename(columns={"ESPNID": "espn_id"})
-    # Drop the redundant MLBID column
-    if "MLBID" in merged.columns:
-        merged = merged.drop(columns=["MLBID"])
-    return merged
 
 
 def build_unified_table():
