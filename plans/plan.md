@@ -57,5 +57,32 @@
 - [x] Surface historical findings — swing category stars (QS/SVHD/HR) + manager tendency notes per team
 - [x] ADP integration — NFBC ADP from Steamer, STEAL/REACH badges, ADP column + sort
 
+## Phase 6.5: Correlated Uncertainty & Injury Model (March 23-24)
+- [x] Correlated uncertainty model replacing scalar-sigma approach — `model/correlated_uncertainty.py`
+  - Uses 8 projection systems' cross-system disagreement as variance proxy
+  - Cholesky decomposition for correlated multivariate normal draws across categories
+  - Batter correlations: HR/TB/RBI at r≈0.96, OBP independent at r≈0.3
+  - Pitcher correlations: ERA/WHIP r≈0.48, SVHD independent of everything
+  - Variance inflation: cross-system disagreement underestimates true variance by ~50%, corrected via ATC InterSD/IntraSD
+  - 2000 MC simulations per player, recentered on ATC-based pos_adj_werth
+  - Truncated expectation E[max(X, waiver_floor)] for option value
+  - Produces: risk_adj_werth_mc, draft_value_mc, werth_std_sim, werth_q10_sim, werth_q90_sim, werth_skew_sim
+- [x] Differentiated waiver floors — position players use 4th-best FA, SP/RP use 16th-best FA
+- [x] Projection-based injury model — `model/injury_model.py`
+  - PA gap between Steamer600 (full-season) and realistic projections as structural risk proxy
+  - Irreducible floor of 8+ games for position players, 10+ for pitchers (even healthy players get hurt)
+  - Cross-system PA/IP disagreement as additional risk signal
+  - Outputs: model/output/injury_risk_batters.csv, injury_risk_pitchers.csv
+- [x] Current injury overlay — `model/current_injuries.py`
+  - ~30 players with hand-curated games-missed estimates from March 24 sources
+  - merge_injury_data() adds games_missed_proj, games_missed_current, games_missed_total, injury_note
+- [x] Updated export pipeline — `model/export_rankings.py`
+  - Maps MC columns to legacy names for draft tool HTML compatibility (risk_adj_werth_mc → risk_adj_werth, etc.)
+  - Merges injury data into combined rankings before export
+  - JSON includes games_missed and injury_note per player
+- [x] Methodology writeup — `analysis/correlated_uncertainty_methodology.md`
+- [x] **Surface injury info in draft tool HTML** — red "IL (Xg)" badge on player name, GM column between MV and zR
+- [x] **Integrate games_missed into WERTH penalty** — discount risk_adj_werth by games_missed_current/162 (current injuries only, avoids double-counting projection-based risk)
+
 ## Remaining Work
 1. Sanity-check rankings against Mr. Cheatsheet output

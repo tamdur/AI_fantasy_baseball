@@ -533,3 +533,56 @@ All 12 league categories are fully derivable:
 FanGraphs projections (xMLBAMID) → SFBB ID Map (MLBID) → ESPN ID (ESPNID)
 ```
 74% of active players have ESPN IDs. Coverage for fantasy-relevant players in an 8-team league should be ~95%+.
+
+---
+
+## 9. Correlated Uncertainty Model
+
+### 9.1 Why Scalar Sigma Falls Short
+
+The original `risk_adjusted_werth.py` used Steamer wOBA/ERA quantiles to estimate a single σ per player, then applied `E[max(X, w)]` with a normal assumption. This has three problems: (1) it treats all categories as independent — a "bad season" for HR doesn't correlate with RBI, which is wrong; (2) it relies on scipy (unavailable in our environment); (3) it uses only one projection system's quantiles.
+
+### 9.2 Cross-System Disagreement as Variance Proxy
+
+The new model (`model/correlated_uncertainty.py`) uses 8 FanGraphs projection systems' disagreement as a proxy for outcome uncertainty. For each player-category pair with ≥3 systems reporting, we compute the standard deviation of projections across systems. This captures both "the projection community disagrees about this player" and "this player has a wide range of plausible outcomes."
+
+Cross-system disagreement underestimates true variance by approximately 50% (projection systems share methodology and data). We correct this using ATC's published InterSD and IntraSD metrics, which measure between-system and within-system variance respectively. The inflation factor is `sqrt(1 + IntraSD²/InterSD²)`.
+
+### 9.3 Correlation Structure
+
+Empirical correlations from cross-system residuals (2666 batters, 4053 pitchers):
+
+**Batters**: HR/TB/RBI form a tightly correlated cluster (r≈0.96). SBN is moderately correlated with counting stats (r≈0.7). OBP is largely independent (r≈0.3 with everything). PA drives all counting stats (r>0.9 with R/TB/RBI).
+
+**Pitchers**: IP/K are tightly correlated (r=0.97). ERA/WHIP are moderately correlated (r=0.48). KBB is inversely correlated with ERA (r=-0.4). SVHD is independent of everything (r<0.05) — this makes sense since saves/holds depend on team role, not performance quality.
+
+### 9.4 Simulation Engine
+
+For each player: (1) build a variance vector from cross-system disagreement + inflation; (2) use Cholesky decomposition on the category correlation matrix; (3) draw 2000 correlated multivariate normal samples; (4) convert each sample through the z-score/WERTH chain; (5) apply truncated expectation against waiver floor. The resulting distribution gives risk_adj_werth_mc (mean of max(sim, waiver_floor)), werth_std_sim (σ of WERTH outcomes), and percentile/skew statistics.
+
+Key design: simulations are **recentered** on the ATC-based pos_adj_werth. The MC engine provides the distribution *shape* (spread, skew, tails), but the *center* comes from the ATC point estimate. This prevents the multi-system consensus from overriding ATC's curated projections.
+
+### 9.5 Waiver Floor Differentiation
+
+Position players use the 4th-best free agent at their position as waiver floor. Pitchers (SP/RP) use the 16th-best, reflecting much deeper pitching waiver pools in practice. This matters because a higher waiver floor increases the option value of dropping a busted player — pitchers are more replaceable via waivers, so the "insurance" from the waiver wire is worth more for pitchers.
+
+### 9.6 Injury Model
+
+`model/injury_model.py` estimates expected games missed using:
+- **PA/IP gap**: difference between full-season benchmark (680 PA for position players, 200 IP for SP, 65 IP for RP) and realistic projection. Healthy everyday players project 620-660 PA, creating a natural 4-12 game gap.
+- **Irreducible floor**: 8 games for position players, 10 for pitchers — even fully healthy players average ~8 games missed per season.
+- **Cross-system disagreement bonus**: high PA/IP disagreement across systems adds up to 10 additional expected missed games.
+
+`model/current_injuries.py` overlays real-time injury data (as of draft day) with hand-curated games-missed estimates. The `merge_injury_data()` function takes max(projection-based, current) to avoid double-counting.
+
+### 9.7 Integration Points for Claude Code
+
+The pipeline runs: `run_valuation()` → `run_correlated_uncertainty()` → `build_combined_rankings()` → `merge_injury_data()` → `export_csv()` + `export_draft_tool_json()`.
+
+**What's in the JSON** (per player): All existing fields plus `games_missed` (float, expected games missed), `injury_note` (string, e.g. "IL (30g)"), `werth_q10`/`werth_q90` (10th/90th percentile WERTH), `werth_skew` (distribution asymmetry).
+
+**What still needs building in the draft tool HTML**:
+1. Injury badge in the player row (e.g., red "IL 30g" chip next to player name)
+2. Tooltip or column for games_missed_total
+3. Optional: color-code werth_sigma column using q10/q90 range
+4. Optional: integrate games_missed into draft value (PA-discount the WERTH by expected missed fraction)

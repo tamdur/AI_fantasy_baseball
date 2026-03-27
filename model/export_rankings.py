@@ -12,7 +12,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent))
 
 from valuation_engine import run_valuation, HITTING_CATS, PITCHING_CATS, ALL_CATS
-from risk_adjusted_werth import run_risk_adjustment
+from correlated_uncertainty import run_correlated_uncertainty
+from current_injuries import merge_injury_data
 from data_pipeline import ROOT, DATA
 
 OUTPUT = ROOT / "model" / "output"
@@ -20,15 +21,29 @@ OUTPUT.mkdir(parents=True, exist_ok=True)
 
 
 def build_combined_rankings(hitters, pitchers):
-    """Build combined rankings DataFrame."""
-    # Hitter columns
+    """Build combined rankings DataFrame.
+
+    Maps new MC column names to the legacy names expected by the draft tool:
+      risk_adj_werth_mc  → risk_adj_werth
+      draft_value_mc     → draft_value
+      werth_std_sim      → werth_sigma
+    Also carries through the new q10/q90/skew columns.
+    """
+    # Hitter columns  (src → dst)
     h_cols = {
         "name": "name", "Team": "team", "primary_position": "position",
         "fg_id": "fg_id", "mlbam_id": "mlbam_id", "espn_id": "espn_id",
         "PA": "PA", "pos_adj_werth": "pos_adj_werth",
         "total_werth": "total_werth", "is_two_way": "is_two_way",
-        "risk_adj_werth": "risk_adj_werth", "draft_value": "draft_value",
-        "werth_sigma": "werth_sigma", "adp": "adp",
+        # New MC columns → legacy names for draft tool compatibility
+        "risk_adj_werth_mc": "risk_adj_werth",
+        "draft_value_mc": "draft_value",
+        "werth_std_sim": "werth_sigma",
+        # New columns passed through as-is
+        "werth_q10_sim": "werth_q10",
+        "werth_q90_sim": "werth_q90",
+        "werth_skew_sim": "werth_skew",
+        "adp": "adp",
     }
     for cat in HITTING_CATS:
         h_cols[f"z_{cat}"] = f"z_{cat}"
@@ -53,8 +68,13 @@ def build_combined_rankings(hitters, pitchers):
         "fg_id": "fg_id", "mlbam_id": "mlbam_id", "espn_id": "espn_id",
         "IP": "IP", "pos_adj_werth": "pos_adj_werth",
         "total_werth": "total_werth",
-        "risk_adj_werth": "risk_adj_werth", "draft_value": "draft_value",
-        "werth_sigma": "werth_sigma", "adp": "adp",
+        "risk_adj_werth_mc": "risk_adj_werth",
+        "draft_value_mc": "draft_value",
+        "werth_std_sim": "werth_sigma",
+        "werth_q10_sim": "werth_q10",
+        "werth_q90_sim": "werth_q90",
+        "werth_skew_sim": "werth_skew",
+        "adp": "adp",
     }
     for cat in PITCHING_CATS:
         p_cols[f"z_{cat}"] = f"z_{cat}"
@@ -88,8 +108,10 @@ def load_roster_data():
 def export_csv(combined):
     """Export rankings as CSV."""
     csv_cols = ["name", "team", "position", "type", "pos_adj_werth", "total_werth",
-                "risk_adj_werth", "draft_value", "werth_sigma", "adp",
-                "espn_id", "PA", "IP"]
+                "risk_adj_werth", "draft_value", "werth_sigma",
+                "werth_q10", "werth_q90", "werth_skew",
+                "games_missed_current", "games_missed_total", "injury_note",
+                "adp", "espn_id", "PA", "IP"]
     for cat in ALL_CATS:
         csv_cols.append(f"z_{cat}")
     # Add raw stats
@@ -116,10 +138,19 @@ def export_draft_tool_json(combined, rosters, config):
             "total_werth": round(row.get("total_werth", 0), 2),
             "espn_id": int(row["espn_id"]) if pd.notna(row.get("espn_id")) else None,
             "is_two_way": bool(row.get("is_two_way", False)),
+            # MC-based risk fields (mapped to legacy names for HTML compatibility)
             "risk_adj_werth": round(row.get("risk_adj_werth", 0), 2) if pd.notna(row.get("risk_adj_werth")) else 0,
             "draft_value": round(row.get("draft_value", 0), 2) if pd.notna(row.get("draft_value")) else 0,
             "werth_sigma": round(row.get("werth_sigma", 0), 2) if pd.notna(row.get("werth_sigma")) else 0,
             "adp": round(row.get("adp", 0), 1) if pd.notna(row.get("adp")) else None,
+            # New uncertainty fields
+            "werth_q10": round(row.get("werth_q10", 0), 2) if pd.notna(row.get("werth_q10")) else None,
+            "werth_q90": round(row.get("werth_q90", 0), 2) if pd.notna(row.get("werth_q90")) else None,
+            "werth_skew": round(row.get("werth_skew", 0), 2) if pd.notna(row.get("werth_skew")) else None,
+            # Injury fields
+            "games_missed": round(row.get("games_missed_total", 0), 0) if pd.notna(row.get("games_missed_total")) else 0,
+            "games_missed_current": round(row.get("games_missed_current", 0), 0) if pd.notna(row.get("games_missed_current")) else 0,
+            "injury_note": row.get("injury_note", "") if pd.notna(row.get("injury_note")) else "",
         }
         # Z-scores
         for cat in ALL_CATS:
@@ -180,15 +211,34 @@ if __name__ == "__main__":
     print("Running valuation engine...")
     hitters, pitchers, pos_repl, pit_repl = run_valuation()
 
-    print("\nRunning risk adjustment...")
-    hitters, pitchers, waiver_floors = run_risk_adjustment(hitters, pitchers, pos_repl)
+    print("\nRunning correlated uncertainty model...")
+    hitters, pitchers, metadata = run_correlated_uncertainty(
+        hitters, pitchers, pos_repl, pit_repl)
 
     print("\nBuilding combined rankings...")
     combined = build_combined_rankings(hitters, pitchers)
 
+    print("\nMerging injury data...")
+    combined = merge_injury_data(combined)
+
+    # Apply injury discount for CURRENT injuries only (late-breaking, not in projections).
+    # Projection-based injury risk is already reflected in reduced PA/IP → lower counting
+    # stats → lower z-scores → lower WERTH.  Only games_missed_current is incremental.
+    gm_current = combined["games_missed_current"].fillna(0)
+    injury_discount = (gm_current / 162.0).clip(0, 1)
+    # Derive waiver floor from existing values so we can recompute draft_value
+    waiver_floor = combined["risk_adj_werth"] - combined["draft_value"]
+    combined["risk_adj_werth"] = combined["risk_adj_werth"] * (1 - injury_discount)
+    combined["draft_value"] = combined["risk_adj_werth"] - waiver_floor
+
+    n_discounted = (injury_discount > 0).sum()
+    print(f"  Applied injury discount to {n_discounted} currently-injured players")
+
     print(f"\nTotal ranked players: {len(combined)}")
     print(f"  Hitters: {(combined['type'] == 'H').sum()}")
     print(f"  Pitchers: {(combined['type'] == 'P').sum()}")
+    injured = combined[combined["injury_note"].str.len() > 0]
+    print(f"  Currently injured: {len(injured)}")
 
     export_csv(combined)
 

@@ -60,6 +60,7 @@ tr.keeper {{ background: #3f2a1e !important; }}
 .z-neg {{ color: #f87171; }}
 .z-elite {{ color: #fbbf24; font-weight: bold; }}
 .value-alert {{ background: #fbbf24; color: #000; padding: 1px 4px; border-radius: 3px; font-size: 10px; font-weight: bold; }}
+.injury-badge {{ background: #dc2626; color: white; padding: 1px 5px; border-radius: 3px; font-size: 10px; font-weight: bold; margin-left: 4px; white-space: nowrap; }}
 .draft-btn {{ background: #059669; color: white; border: none; padding: 2px 8px; border-radius: 3px; cursor: pointer; font-size: 11px; }}
 .draft-btn:hover {{ background: #10b981; }}
 .sidebar {{ background: #111827; border-left: 2px solid #1e40af; display: flex; flex-direction: column; overflow-y: auto; }}
@@ -146,9 +147,11 @@ tr.keeper {{ background: #3f2a1e !important; }}
       </select>
       <select id="sortBy" onchange="sortPlayers()">
         <option value="werth">WERTH</option>
+        <option value="risk_adj_werth">Injury-Adj WERTH</option>
         <option value="draft_value">Draft Value</option>
         <option value="adp">ADP</option>
         <option value="marginal">Marginal Value</option>
+        <option value="games_missed">Games Missed</option>
         <option value="z_R">z_R</option>
         <option value="z_HR">z_HR</option>
         <option value="z_TB">z_TB</option>
@@ -183,9 +186,11 @@ tr.keeper {{ background: #3f2a1e !important; }}
             <th onclick="sortByCol('position')">Pos</th>
             <th onclick="sortByCol('adp')" title="NFBC Average Draft Position">ADP</th>
             <th onclick="sortByCol('werth')">WERTH</th>
+            <th onclick="sortByCol('risk_adj_werth')" title="Injury-adjusted WERTH (discounted by current injury games missed)">iW</th>
             <th onclick="sortByCol('draft_value')" title="Risk-adjusted value of drafting vs waiver wire">DV</th>
             <th onclick="sortByCol('werth_sigma')" title="Projection uncertainty (higher = more volatile)">σ</th>
             <th onclick="sortByCol('marginal')" title="Marginal value to your team">MV</th>
+            <th onclick="sortByCol('games_missed')" title="Projected games missed (total)">GM</th>
             <th onclick="sortByCol('z_R')">zR</th>
             <th onclick="sortByCol('z_HR')">zHR</th>
             <th onclick="sortByCol('z_TB')">zTB</th>
@@ -236,7 +241,12 @@ tr.keeper {{ background: #3f2a1e !important; }}
     <h2>Enter Keepers</h2>
     <p style="color:#9ca3af;margin-bottom:12px;font-size:12px;">Enter up to 3 keepers per team. These players will be removed from the draft pool.</p>
     <div id="keeperInputs"></div>
-    <button onclick="applyKeepers()" style="margin-top:12px;padding:8px 16px;">Apply Keepers</button>
+    <div style="margin-top:12px;display:flex;gap:8px;align-items:center;">
+      <button onclick="applyKeepers()" style="padding:8px 16px;">Apply Keepers</button>
+      <button onclick="exportKeepersJSON()" style="padding:8px 12px;background:#374151;font-size:12px;" title="Download keepers as JSON file">Export</button>
+      <button onclick="importKeepersJSON()" style="padding:8px 12px;background:#374151;font-size:12px;" title="Load keepers from JSON file">Import</button>
+      <span style="font-size:11px;color:#6b7280;">Keepers auto-save to browser storage</span>
+    </div>
   </div>
 </div>
 
@@ -262,6 +272,45 @@ let numTeams = DATA.draft_config.num_teams;
 let sortCol = 'werth';
 let sortDir = -1; // -1 = descending
 let keeperSelections = {{}};
+
+// --- Keeper Persistence ---
+const KEEPER_STORAGE_KEY = 'brohei_draft_2026_keepers';
+function saveKeepersToStorage() {{
+    try {{ localStorage.setItem(KEEPER_STORAGE_KEY, JSON.stringify(keeperSelections)); }} catch(e) {{}}
+}}
+function loadKeepersFromStorage() {{
+    try {{
+        const saved = localStorage.getItem(KEEPER_STORAGE_KEY);
+        if (saved) {{ keeperSelections = JSON.parse(saved); return true; }}
+    }} catch(e) {{}}
+    return false;
+}}
+function exportKeepersJSON() {{
+    const blob = new Blob([JSON.stringify(keeperSelections, null, 2)], {{type: 'application/json'}});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'keepers_2026.json';
+    a.click();
+}}
+function importKeepersJSON() {{
+    const input = document.createElement('input');
+    input.type = 'file';
+    input.accept = '.json';
+    input.onchange = e => {{
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = ev => {{
+            try {{
+                keeperSelections = JSON.parse(ev.target.result);
+                saveKeepersToStorage();
+                applyKeepers();
+            }} catch(err) {{ alert('Invalid keepers JSON file'); }}
+        }};
+        reader.readAsText(file);
+    }};
+    input.click();
+}}
 
 const ALL_CATS = ['R','HR','TB','RBI','SBN','OBP','K','QS','ERA','WHIP','KBB','SVHD'];
 const SWING_CATS = new Set(['QS', 'SVHD', 'HR']); // Categories that flip the most matchups
@@ -352,8 +401,8 @@ function computeMarginalValues() {{
             const zVal = p[zCol] || 0;
             if (zVal > 0) mv += zVal * 1.5; // boost for helping weak cats
         }});
-        // Also add some base WERTH
-        mv += (p.werth || 0) * 0.3;
+        // Also add some base WERTH (use risk-adjusted to incorporate injury discount)
+        mv += (p.risk_adj_werth || p.werth || 0) * 0.3;
         p.marginal = mv;
     }});
 
@@ -413,14 +462,16 @@ function renderTable() {{
         html += `<tr class="${{rowClass}}" data-idx="${{players.indexOf(p)}}">
             <td>${{p.originalRank}}</td>
             <td>${{actionHtml}}</td>
-            <td>${{p.name}}${{p.is_two_way ? ' <span style="color:#fbbf24;font-size:10px;">2W</span>' : ''}}</td>
+            <td>${{p.name}}${{p.is_two_way ? ' <span style="color:#fbbf24;font-size:10px;">2W</span>' : ''}}${{p.injury_note ? ' <span class="injury-badge" title="' + p.injury_note + '">' + p.injury_note + '</span>' : ''}}</td>
             <td>${{p.team}}</td>
             <td><span class="pos-badge ${{posClass}}">${{p.position}}</span></td>
             <td style="font-size:11px;color:#9ca3af">${{p.adp ? p.adp.toFixed(0) : '-'}}${{adpBadge(p)}}</td>
             <td style="font-weight:bold">${{p.werth.toFixed(1)}}</td>
+            <td style="color:${{p.risk_adj_werth < p.werth - 0.1 ? '#f87171' : '#9ca3af'}};font-weight:${{p.risk_adj_werth < p.werth - 0.1 ? 'bold' : 'normal'}}">${{(p.risk_adj_werth || 0).toFixed(1)}}</td>
             <td style="color:${{p.draft_value > 10 ? '#34d399' : p.draft_value > 5 ? '#fbbf24' : p.draft_value > 0 ? '#9ca3af' : '#f87171'}};font-weight:${{p.draft_value > 10 ? 'bold' : 'normal'}}">${{(p.draft_value || 0).toFixed(1)}}</td>
             <td style="color:${{p.werth_sigma > 5 ? '#fbbf24' : '#6b7280'}};font-size:11px">${{(p.werth_sigma || 0).toFixed(1)}}</td>
             <td class="marginal-col" style="color:${{p.marginal > 3 ? '#34d399' : p.marginal > 1 ? '#fbbf24' : '#9ca3af'}}">${{p.marginal > -900 ? p.marginal.toFixed(1) : '-'}}</td>
+            <td style="color:${{p.games_missed >= 30 ? '#f87171' : p.games_missed >= 15 ? '#fbbf24' : '#6b7280'}};font-size:11px">${{p.games_missed > 0 ? Math.round(p.games_missed) : '-'}}</td>
             <td>${{fmtZ(p.z_R)}}</td>
             <td>${{fmtZ(p.z_HR)}}</td>
             <td>${{fmtZ(p.z_TB)}}</td>
@@ -754,11 +805,13 @@ function onKeeperKeydown(e, input) {{
 
 function selectKeeper(key, playerName) {{
     keeperSelections[key] = playerName;
+    saveKeepersToStorage();
     showKeepersModal(); // re-render to show chip
 }}
 
 function clearKeeper(key) {{
     delete keeperSelections[key];
+    saveKeepersToStorage();
     showKeepersModal(); // re-render
 }}
 
@@ -863,7 +916,11 @@ document.addEventListener('keydown', e => {{
     }}
 }});
 
-// Initialize
+// Initialize — restore saved keepers if any
+if (loadKeepersFromStorage() && Object.keys(keeperSelections).length > 0) {{
+    applyKeepers();
+    console.log('Restored ' + Object.keys(keeperSelections).length + ' keeper selections from storage');
+}}
 computeMarginalValues();
 updateUI();
 </script>

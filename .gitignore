@@ -3,3 +3,7 @@ __pycache__/
 *.pyc
 .env
 credentials.*
+
+# Pipeline output (caches, generated newsletters, logs)
+in_season/daily_digest/output/
+in_season/daily_digest/calibration/
