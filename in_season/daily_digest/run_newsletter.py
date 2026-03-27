@@ -30,6 +30,58 @@ logging.basicConfig(
 log = logging.getLogger("newsletter")
 
 
+def _log_completed_matchup_actuals():
+    """
+    Check if any matchup periods have completed since last actuals logging.
+    If so, fetch and log the actual results for calibration.
+
+    This runs at the start of each pipeline invocation. It compares the
+    current matchup period against what's already in actuals.csv to avoid
+    double-logging.
+    """
+    from calibration import ACTUALS_CSV, CALIBRATION_DIR, log_actuals_from_espn
+    from fetch_espn import fetch_current_matchup_period
+    import csv
+
+    meta = fetch_current_matchup_period()
+    current_mp = meta.get("matchup_period_id", 1)
+
+    # If we're in MP 1, there are no completed matchup periods yet
+    if current_mp <= 1:
+        log.info("  No completed matchup periods yet (still in MP 1)")
+        return
+
+    # Determine which matchup periods we've already logged actuals for
+    logged_mps = set()
+    if ACTUALS_CSV.exists():
+        with open(ACTUALS_CSV, "r") as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                mp = row.get("matchup_period")
+                if mp:
+                    try:
+                        logged_mps.add(int(mp))
+                    except (ValueError, TypeError):
+                        pass
+
+    # Log actuals for any completed periods we haven't logged yet
+    # All periods from 1 to (current_mp - 1) are completed
+    for mp in range(1, current_mp):
+        if mp not in logged_mps:
+            log.info(f"  Logging actuals for completed matchup period {mp}...")
+            try:
+                results = log_actuals_from_espn(mp)
+                if results:
+                    wins = sum(1 for r in results.values() if r["result"] == "win")
+                    losses = sum(1 for r in results.values() if r["result"] == "loss")
+                    ties = sum(1 for r in results.values() if r["result"] == "tie")
+                    log.info(f"  MP {mp} result: {wins}W-{losses}L-{ties}T")
+                else:
+                    log.warning(f"  No results returned for MP {mp}")
+            except Exception as e:
+                log.warning(f"  Failed to log actuals for MP {mp}: {e}")
+
+
 def main():
     """Run the full daily newsletter pipeline."""
     log.info("=" * 60)
@@ -47,6 +99,13 @@ def main():
                 data_warnings.append(f"⚠ {issue} — will use fallback newsletter")
             else:
                 data_warnings.append(f"⚠ {issue}")
+
+    # ---- Step 0: Log actuals for any completed matchup periods ----
+    log.info("Step 0: Checking for completed matchup periods to log actuals...")
+    try:
+        _log_completed_matchup_actuals()
+    except Exception as e:
+        log.warning(f"Calibration actuals check failed (non-fatal): {e}")
 
     # ---- Step 1: Fetch ESPN data ----
     log.info("Step 1: Fetching ESPN data...")
@@ -356,6 +415,19 @@ def main():
             "error": str(e),
             "data_warnings": data_warnings + [f"🔴 Briefing book assembly failed: {e}"],
         }
+
+    # ---- Step 5b: Inject calibration summary into briefing book ----
+    try:
+        from calibration import ACTUALS_CSV, calibration_report
+        if ACTUALS_CSV.exists():
+            cal_summary = calibration_report()
+            if cal_summary and "Insufficient" not in cal_summary and "No actual" not in cal_summary:
+                briefing_book["calibration_summary"] = cal_summary
+                log.info("  Calibration summary injected into briefing book")
+            else:
+                log.info("  No calibration data available yet (need completed matchups)")
+    except Exception as e:
+        log.warning(f"Calibration summary injection failed (non-fatal): {e}")
 
     # ---- Step 6: Generate newsletter ----
     log.info("Step 6: Generating newsletter via Claude...")

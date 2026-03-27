@@ -397,6 +397,9 @@ def build_briefing_book(
     # Triage summary counts (so agents don't have to recount)
     triage_counts = {bucket: len(cats) for bucket, cats in category_triage.items()} if category_triage else {}
 
+    # Strategic posture (season-level strategy constraint for agents)
+    strategic_posture = _compute_strategic_posture(standings, matchup_week)
+
     # Assemble
     briefing = {
         "date": today,
@@ -410,6 +413,7 @@ def build_briefing_book(
         "moves_max": matchup_meta.get("moves_max"),
         "opponent": opponent_name,
         "opponent_team_id": opponent_team_id,
+        "strategic_posture": strategic_posture,
 
         "category_state": category_state,
         "category_triage": category_triage,
@@ -643,6 +647,110 @@ def _build_league_context(standings, matchup_week):
 
     week_str = f"Week {matchup_week} of 22" if matchup_week else "Season in progress"
     return f"{week_str}. You are {_ordinal(rank)} place ({record}). Top 4 make playoffs."
+
+
+def _compute_strategic_posture(standings, matchup_week):
+    """
+    Determine the season-level strategic posture based on standings and week.
+    This is injected into the briefing book and acts as a binding constraint
+    on agent recommendations.
+
+    Postures:
+    - ACCUMULATE: Build RoS roster quality (early season or playoff-locked late)
+    - OPTIMIZE: Balance weekly + RoS (mid-season, in the hunt)
+    - WIN_NOW: Fight for playoff spot (late season, on the bubble)
+    - PLAYOFF_PREP: Locked in, build for playoffs (late season, safe)
+    - PLAYOFFS: Maximize upside (playoff weeks)
+
+    Returns dict with posture name and reasoning.
+    """
+    week = matchup_week or 1
+
+    # Playoff weeks (23-24)
+    if week > 22:
+        return {
+            "posture": "PLAYOFFS",
+            "reason": f"Playoff week {week - 22}. Maximize upside. Higher-variance plays justified.",
+        }
+
+    # Determine our rank and playoff proximity
+    rank = None
+    record_str = ""
+    games_back_of_4th = 0
+    if standings:
+        my_team = next((s for s in standings if s["team_id"] == MY_TEAM_ID), None)
+        if my_team:
+            rank = next((i + 1 for i, s in enumerate(standings) if s["team_id"] == MY_TEAM_ID), None)
+            w, l = my_team.get("wins", 0), my_team.get("losses", 0)
+            t = my_team.get("ties", 0)
+            record_str = f"{w}-{l}" + (f"-{t}" if t else "")
+
+            # Compute games back of 4th place (playoff cutoff)
+            if rank and rank > 4 and len(standings) >= 4:
+                fourth = standings[3]
+                fourth_wins = fourth.get("wins", 0)
+                games_back_of_4th = fourth_wins - w
+
+    # Early season (weeks 1-5): always ACCUMULATE
+    if week <= 5:
+        return {
+            "posture": "ACCUMULATE",
+            "reason": f"Week {week} of 22 (early season). "
+                      f"Rank: {rank or '?'} ({record_str or 'no record'}). "
+                      "Build the strongest RoS roster. Accept single-week losses "
+                      "if the roster improves long-term. Patience is a weapon.",
+        }
+
+    # Late season (weeks 17-22): depends on playoff positioning
+    if week >= 17:
+        if rank is not None and rank <= 3:
+            # Comfortably in playoffs
+            return {
+                "posture": "PLAYOFF_PREP",
+                "reason": f"Week {week} of 22. Rank: {rank} ({record_str}). "
+                          "Playoff spot is likely secure. Build the strongest "
+                          "roster for playoffs. Do NOT burn assets for regular-season wins you don't need.",
+            }
+        elif rank is not None and rank >= 6:
+            # Long shot
+            return {
+                "posture": "WIN_NOW",
+                "reason": f"Week {week} of 22. Rank: {rank} ({record_str}). "
+                          f"{games_back_of_4th} games back of 4th. "
+                          "Must win every matchup. Short-term gains justified.",
+            }
+        else:
+            # On the bubble (rank 4-5)
+            return {
+                "posture": "WIN_NOW",
+                "reason": f"Week {week} of 22. Rank: {rank or '?'} ({record_str}). "
+                          "Fighting for playoff spot. Maximize this matchup "
+                          "while maintaining roster quality.",
+            }
+
+    # Mid season (weeks 6-16): depends on positioning
+    if rank is not None and rank <= 2:
+        # Top of standings — lean toward accumulation
+        return {
+            "posture": "OPTIMIZE",
+            "reason": f"Week {week} of 22. Rank: {rank} ({record_str}). "
+                      "Strong position. Balance weekly optimization with roster building. "
+                      "Don't sacrifice RoS value for marginal weekly gains.",
+        }
+    elif rank is not None and rank >= 7:
+        # Bottom — need to be more aggressive
+        return {
+            "posture": "WIN_NOW",
+            "reason": f"Week {week} of 22. Rank: {rank} ({record_str}). "
+                      f"{games_back_of_4th} games back of 4th. "
+                      "Need wins. Weekly optimization takes priority.",
+        }
+    else:
+        return {
+            "posture": "OPTIMIZE",
+            "reason": f"Week {week} of 22. Rank: {rank or '?'} ({record_str}). "
+                      "Mid-pack. Balance weekly category flips with RoS roster quality.",
+        }
 
 
 def _serialize_roster(players):
