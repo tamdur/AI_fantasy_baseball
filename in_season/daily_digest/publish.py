@@ -267,7 +267,7 @@ h3 {{
 }}
 p {{ margin-bottom: 0.5rem; white-space: pre-wrap; }}
 ul {{ list-style: none; margin: 0.5rem 0; }}
-li {{ padding-left: 1.2rem; position: relative; margin-bottom: 0.5rem; }}
+li {{ padding-left: 1.2rem; position: relative; margin-bottom: 0.5rem; white-space: normal; }}
 li::before {{ content: "•"; position: absolute; left: 0; color: #d4a574; }}
 strong {{ color: #fff; }}
 .warn {{ color: #e6c44d; }}
