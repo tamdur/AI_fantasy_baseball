@@ -386,8 +386,20 @@ def main():
         emergency_path.write_text(newsletter, encoding="utf-8")
         output_path = emergency_path
 
+    # ---- Step 8: Publish to docs/ for GitHub Pages ----
+    log.info("Step 8: Publishing to GitHub Pages...")
+    docs_path = None
+    try:
+        from publish import publish_newsletter
+        docs_path = publish_newsletter(newsletter, briefing_book)
+        log.info(f"  Published to: {docs_path}")
+    except Exception as e:
+        log.warning(f"Publish failed (non-fatal): {e}")
+
     log.info("=" * 60)
     log.info(f"PIPELINE COMPLETE — Newsletter: {output_path}")
+    if docs_path:
+        log.info(f"GitHub Pages: {docs_path}")
     if data_warnings:
         log.info(f"Data warnings ({len(data_warnings)}):")
         for w in data_warnings:
