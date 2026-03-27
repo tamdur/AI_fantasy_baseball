@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Daily Briefing — 2026-03-26 vs Schwarbo's H0E$</title>
+<title>Daily Briefing — 2026-03-27</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
@@ -88,168 +88,169 @@ footer a:hover { color: #d4a574; }
 <body>
 <header>
   <h1>⚾ Brohei Brotanis — Daily Briefing</h1>
-  <div class="date">2026-03-26 · Week 1</div>
+  <div class="date">2026-03-27 · Week 1</div>
 </header>
 <nav class="issue-nav">
-  <a href="archive/2026-03-26-4.html" class="nav-link nav-prev">← Previous</a>
+  <a href="archive/2026-03-26-5.html" class="nav-link nav-prev">← Previous</a>
   <a href="" class="nav-link nav-next" hidden>Next →</a>
 </nav>
 <main>
 <p>```
 <h2>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</h2>
-DAILY BRIEFING — Week 1 vs Schwarbo's H0E$
+DAILY BRIEFING — Week 1 vs [OPPONENT UNKNOWN]
 <div class="table-wrap"><table>
-<tr><td>Day 2/12</td><td>Moves: 0/12</td><td>Projected: 5-7 → 6-6 after moves</td></tr>
+<tr><td>Day ?/?</td><td>Moves: ?/?</td><td>Projected: N/A</td></tr>
 </table></div>
-<h2>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</h2></p><p><h2>━━━ TIER 1: DO THIS ━━━</h2></p><p><ul><li>Move Josh Hader (HOU RP) from BE → IL slot — Free BE spot, zero move cost.</li>
-</ul>  Do this first; it enables everything below. [Tactician ✓ Actuary ✓]</p><p><ul><li>Drop Giancarlo Stanton (NYY OF, 39.58% owned) → Albies (ATL 2B) slides BE → UTIL</li>
-</ul>  Stanton is actively starting and posting -2.29 R / -2.00 TB / -1.18 SBN z-scores from your
-  UTIL slot every single game. Albies (-0.18 WERTH) is worse on paper but Stanton (-6.09 WERTH)
-  is a historic level of wrong for a starting slot. Delta-EV: +0.40–0.50 expected categories.
+<h2>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</h2></p><p>⛔ DATA BLACKOUT — NEWSLETTER SUSPENDED</p><p>Both agents independently aborted analysis. No actionable
+recommendations can be made safely. Fabricating Tier 1/2/3
+actions from zero data would cause negative EV decisions.</p><p>ROOT CAUSE (from both agents, unanimously):
+  • ESPN_SWID and ESPN_S2 cookies not configured
+  • Proxy blocking outbound HTTPS to ESPN + MLB Stats API
+  • All live data is null: roster, opponent, categories,
+    free agents, probable pitchers, moves_max, days_remaining</p><p><h2>━━━ TIER 1: DO THIS ━━━</h2>
+<ul><li>Fix ESPN authentication — set ESPN_SWID and ESPN_S2</li>
+</ul>  in in_season/daily_digest/config.py (or as env vars),
+  then re-run /generate. This unblocks everything.
+  [Tactician ✓ Actuary ✓ — unanimous, zero dissent]</p><p><h2>━━━ TIER 2: JUDGMENT CALLS ━━━</h2>
+<ul><li>If the proxy (403 Forbidden) persists after setting</li>
+</ul>  credentials, the network layer itself is blocking
+  outbound HTTPS. This requires a separate fix from
+  credential configuration. Both issues may be present.
+  <span class="warn">⚠</span> Cannot distinguish credential failure from proxy
+    failure without attempting authenticated requests.</p><p><h2>━━━ TIER 3: CONSIDER ━━━</h2>
+<ul><li>Manual triage via ESPN app while pipeline is down.</li>
+</ul>  Check: (1) your current roster, (2) Week 1 opponent,
+  (3) moves_max for Opening Week [historically 12+ days
+  per schedule data — do NOT assume 7], (4) category
+  scores after Day 1-2.
+  
+  Tactician says: Your draft construction (Ohtani + Alvarez
+  hitting, Crochet + Gilbert pitching) should be competitive
+  out of the gate without any moves.
+  
+  Actuary says: It is Day 3. Zero statistical signals are
+  actionable. Hold your roster. Do not react to anything.</p><p><h2>━━━ MATCHUP DASHBOARD ━━━</h2>
 <div class="table-wrap"><table>
-<tr><td>Ownership 39.58% — no override applies. [Tactician ✓ Actuary ✓</td><td>Confidence: 9/10]</td></tr>
-</table></div></p><p><ul><li>Add Bailey Ober (MIN SP, 29.5% owned, 2 starts: vs BOS, vs BAL) — Both agents agree,</li>
-</ul>  execute today before he's claimed. See Tier 3 for who to drop. [Tactician ✓ Actuary ✓]</p><p><h2>━━━ TIER 2: JUDGMENT CALLS ━━━</h2></p><p><ul><li>Drop Ernie Clement (TOR 2B/3B/SS, 75.67% owned) → Add Bailey Ober to BE [1 move]</li>
-</ul>  Clement (WERTH -2.02) contributes zero from the bench. Ober lands in BE; on his two start
-  days you cycle Iglesias or Uribe out to make a P slot. This is the Actuary's preferred Ober
-  vehicle — it preserves Castillo on your roster while still getting Ober's two starts.
-  <span class="warn">⚠</span> Dissent: Actuary rates this POSITIVE EV (7/10) and explicitly says do NOT drop Castillo
-  yet. If you execute this path, Castillo's ERA/WHIP drag stays on your staff.
-  Rate-stat impact: Ober adds ~13 projected IP at ~3.50 ERA / ~1.22 WHIP — sets a favorable
-  early baseline. Castillo also pitches; net is diluted upside, not a clean ERA improvement.</p><p><h2>━━━ TIER 3: CONSIDER ━━━</h2></p><p><ul><li>Drop Castillo (SEA SP, 94.5% owned) → Ober takes P slot directly [alternative Ober vehicle]</li>
-</ul>
-  TACTICIAN says: Execute immediately. Castillo is in an active P slot posting ERA z -0.89,
-  WHIP z -0.27, KBB z -0.36 with WERTH -0.05. Every Castillo start actively hurts three
-  pitching categories. Swapping him out improves ERA P(win) from 38% → ~50%. Same 1-move
-  cost as the Clement path, but cleaner — Ober goes directly to P, no daily slot gymnastics.</p><p>  ACTUARY says: Hold Castillo through Week 3. At 94.5% ownership, consensus sees him
-  differently than the projection system does. His option value (1.5× multiplier per the
-  Actuary) means the right trigger is 4–5 confirmed bad starts (ERA &gt; 4.20), not projection
-  z-scores alone. The Clement path gets Ober's two starts without burning the Castillo bridge.</p><p>  Net cost is identical (1 move either way). Decision hinges on whether you trust the
-  projection signal or the ownership signal. The Tactician's ERA math is sound; the Actuary's
-  patience argument is also sound. This one is yours to call.</p><p><h2>━━━ MATCHUP DASHBOARD ━━━</h2></p><p><div class="table-wrap"><table>
 <tr><td>Cat</td><td>You</td><td>Opp</td><td>Status</td><td>P(win)</td><td>Action</td></tr>
-<tr><td>R</td><td>1</td><td>0</td><td>WINNING (+1)</td><td>~38%</td><td>Monitor — Stanton drop helps</td></tr>
-<tr><td>HR</td><td>0</td><td>0</td><td>TIED</td><td>~27%</td><td>CONCEDE — Schwarber/Rooker wall</td></tr>
-<tr><td>TB</td><td>2</td><td>0</td><td>WINNING (+2)</td><td>~22%</td><td>CONCEDE — structural deficit</td></tr>
-<tr><td>RBI</td><td>1</td><td>0</td><td>WINNING (+1)</td><td>~30%</td><td>Monitor</td></tr>
-<tr><td>SBN</td><td>0</td><td>0</td><td>TIED</td><td>~85%</td><td>LOCK — do not spend moves here</td></tr>
-<tr><td>OBP</td><td>.500</td><td>.125</td><td>WINNING (+.375)</td><td>~43%</td><td>Early lead; opp has depth, watch</td></tr>
-<tr><td>K</td><td>0</td><td>0</td><td>TIED</td><td>~42%</td><td>Ober 2 starts help; Skubal matches</td></tr>
-<tr><td>QS</td><td>0</td><td>0</td><td>TIED</td><td>~55%</td><td>PROTECT — Ober adds ~1.0 exp QS</td></tr>
-<tr><td>ERA</td><td>∞</td><td>∞</td><td>TIED</td><td>38%→50%</td><td>Get innings on board fast</td></tr>
-<tr><td>WHIP</td><td>∞</td><td>∞</td><td>TIED</td><td>~55%</td><td>PROTECT — no junk streamers</td></tr>
-<tr><td>KBB</td><td>0</td><td>0</td><td>TIED</td><td>~65%</td><td>PROTECT — Kirby/Woo/Crochet anchor</td></tr>
-<tr><td>SVHD</td><td>0</td><td>0</td><td>TIED</td><td>~55%</td><td>PROTECT — 3-closer depth holds</td></tr>
-</table></div></p><p>Projected outcome (before moves): 5-7 [SBN, KBB, WHIP, QS, SVHD]
-After Tier 1 + Tier 2 moves:     6-6 [adds ERA as competitive; Skubal is the wildcard]</p><p>Note: Actuary is more pessimistic than Tactician on pitching (opponent-favored in K/QS/ERA/WHIP/KBB
-due to Skubal's projected dominance). 6-6 is the optimistic target; 5-7 is realistic if Skubal
-dominates ERA/WHIP/KBB before you bank sufficient quality innings.</p><p><h2>━━━ TRANSACTION BUDGET ━━━</h2></p><p>Moves used: 0/12
-Today's allocation: 2 (Stanton drop + Ober add via Clement or Castillo)
-  — If you also drop Castillo separately, that's only 1 additional move today (3 total).
-    Budget can absorb 3, but Actuary recommends holding at 2.
-Reserved for rest of matchup: 10 (or 9 if you drop Castillo today)
-Target reserve for final 3 days (Apr 3–5): 4 minimum</p><p>Rationale: Both URGENT actions (Stanton, Ober add) clear the 30% flip-probability threshold
-for early-matchup spending. The Castillo question doesn't need to be resolved today — if you
-take the Clement path now, you can revisit Castillo at Day 5–6 once he's made a start.</p><p><h2>━━━ ROSTER HEALTH ━━━</h2></p><p><span class="crit">🔴</span> CRITICAL:
-  - Stanton (NYY UTIL) — execute drop today (Tier 1). Active slot, -6.09 WERTH.
-  - Hader (HOU RP) — move to IL immediately. Not a transaction; free slot recovery.</p><p><span class="note">🟡</span> MONITOR:
-  - Ohtani (LAD) slotted at P in briefing data but z-scores show only hitting categories.
-    Verify in ESPN that his batting stats are accumulating. If he's pitching-only in the P
-    slot with no batting contribution, moving him to UTIL/DH would be the highest-EV lineup
-    adjustment this entire matchup (R +3.33, HR +3.13, TB +2.82).
-  - Castillo (SEA SP) — ERA z -0.89 active drag. Monitor through Week 3 per Actuary;
-    Tactician wants him gone now. Your call per Tier 3 above.
-  - PCA and Happ (both CHC) — Wrigley today: 79% precip, 30mph N wind, 37°F. Moderate
-    PPD risk (MODERATE per weather data). If postponed, minor R/SBN hit today.
-  - Murakami (CHW 3B) — extreme platoon hitter (wRC+_vsRHP 127 vs wRC+_vsLHP 86).
-    Always start vs RHP; consider sitting vs LHP.</p><p><span class="ok">🟢</span> CLEAR:
-  - Crochet (BOS SP), Woo (SEA SP): ERA/WHIP/KBB anchors. Non-negotiable starts.
-  - Kirby (SEA SP): KBB anchor (z +2.48). Start every scheduled outing.
-  - C. Smith (CLE RP), Iglesias (ATL RP): SVHD depth is solid at 3 closers.
-  - Acuna (ATL OF), Ohtani (LAD): SBN/OBP/R anchors locked.</p><p><h2>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</h2>
+<tr><td>R</td><td>—</td><td>—</td><td>NO DATA</td><td>—</td><td>HOLD</td></tr>
+<tr><td>HR</td><td>—</td><td>—</td><td>NO DATA</td><td>—</td><td>HOLD</td></tr>
+<tr><td>TB</td><td>—</td><td>—</td><td>NO DATA</td><td>—</td><td>HOLD</td></tr>
+<tr><td>RBI</td><td>—</td><td>—</td><td>NO DATA</td><td>—</td><td>HOLD</td></tr>
+<tr><td>SBN</td><td>—</td><td>—</td><td>NO DATA</td><td>—</td><td>HOLD</td></tr>
+<tr><td>OBP</td><td>—</td><td>—</td><td>NO DATA</td><td>—</td><td>HOLD</td></tr>
+<tr><td>K</td><td>—</td><td>—</td><td>NO DATA</td><td>—</td><td>HOLD</td></tr>
+<tr><td>QS</td><td>—</td><td>—</td><td>NO DATA</td><td>—</td><td>HOLD</td></tr>
+<tr><td>ERA</td><td>—</td><td>—</td><td>NO DATA</td><td>—</td><td>HOLD</td></tr>
+<tr><td>WHIP</td><td>—</td><td>—</td><td>NO DATA</td><td>—</td><td>HOLD</td></tr>
+<tr><td>K÷BB</td><td>—</td><td>—</td><td>NO DATA</td><td>—</td><td>HOLD</td></tr>
+<tr><td>SVHD</td><td>—</td><td>—</td><td>NO DATA</td><td>—</td><td>HOLD</td></tr>
+</table></div></p><p>Projected outcome: Unknown → After moves: Unknown</p><p><h2>━━━ TRANSACTION BUDGET ━━━</h2>
+Moves used: ?/?
+Today's allocation: ZERO — no moves until data restores.
+Reserved: All moves.
+Rationale: Making roster moves without category state,
+opponent data, or free agent rankings is blind gambling.
+The anti-churn rule applies maximally here: no data =
+no action. Week 1 has 12+ days. There is no urgency.</p><p><h2>━━━ ROSTER HEALTH ━━━</h2>
+<span class="crit">🔴</span> CRITICAL: ESPN auth failure — pipeline blind.
+   Manual action required: set ESPN_SWID + ESPN_S2.
+   
+<span class="note">🟡</span> MONITOR (pre-season flags, apply once live):
+   • Shohei Ohtani (LAD DH) — wRC+ drops 39 pts vs LHP
+     (132 vs LHP, 171 vs RHP). Watch opponent SP handedness.
+   • Garrett Crochet — TJ history. Monitor early-season
+     workload/inning limits. Hold no matter what.
+   • Yordan Alvarez — oblique/knee history. Track ABs.
+     Any absence creates a UTIL slot gap.
+     
+<span class="ok">🟢</span> CLEAR (no pre-season flags):
+   • Francisco Lindor (NYM SS) — clean platoon profile.
+   • Logan Gilbert (SEA SP) — solid QS/K/WHIP profile,
+     no regression or workload flags.</p><p><h2>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</h2>
 <h2>━━━ APPENDIX: ANALYST NOTES ━━━</h2>
-<h2>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</h2></p><p>## CATEGORY WAR ROOM</p><p>### SBN — LOCK (P=85%)
-Your net SBN z-advantage is approximately +6 over this roster. PCA (+2.08), Story (+1.35),
-Acuna (+1.11) vs. their graveyard (Schwarber -0.58, W.Smith -1.06, Y.Diaz -1.06). Xavier
-Edwards (MIA, z +1.47) sits on their bench — if activated, he's irrelevant; SBN gap is
-too large. Zero investment needed. Do not burn moves chasing SBN upgrades.</p><p>### KBB — PROTECT (P=65%)
-Kirby (+2.48), Woo (+2.21), Crochet (+2.05), Ryan (+1.85) vs. their Skubal (+4.25)
-anchored by Gore (-0.84) and Glasnow (-0.51). We win this most weeks. Rule: never start
-any arm with BB/9 &gt; 3.5. The streamers available today (Soriano K/BB 2.16, Smith K/BB 2.66)
-are below threshold — do not burn a move on any of them. Actuary confirmed: all four
-today's streamers fail the rate-stat check.</p><p>### WHIP — PROTECT (P=55%)
-Woo (+2.53), Crochet (+1.98) are the foundation. Their Skubal (+3.75) is the best WHIP
-arm in the matchup, but Gore (-1.36) is a liability for them — two bad Gore starts could
-hand us this category. WHIP stays ahead as long as we don't stream junk. Sunday ban in effect:
-no streaming on Apr 5 unless WHIP cushion &gt; 0.08 at that point.</p><p>### ERA — ATTACK (P=38%→50%)
-The Ober add is the primary ERA lever. Secondary: Ryan (ERA z -0.58) is the second-biggest
-drag after Castillo. On his scheduled Day 5–6 start, check the matchup — if facing a
-top-5 offense, absorbing 0 IP may be better than risking 3 ER that flip ERA against us.
-Their ERA fragility: Gore (-0.83) and Sheehan (-0.75) both in their rotation. One bad Gore
-blowup could hand us ERA without any additional action on our end.</p><p>### OBP — WATCHFUL (P=43%, currently winning +.375)
-Current lead is real but fragile. Opponent's OBP depth is distributed (Alvarez +2.09,
-Freeman +1.34, Marte +1.30, Seager +1.11, Y.Diaz +1.19). Our anchors are elite (Ohtani
-+2.55, Acuna +2.40) but our tail drags hard (PCA -1.48, Story -1.39, Perez -1.30).
-Platoon lever: Perez (KC, OBP z -1.30) on days he faces a quality LHP — consider benching
-to reduce OBP dilution. Murakami vs. RHP only for similar reasons.</p><p>### TB — CONCEDE (P=22%)
-Schwarber (+1.17), Rooker (+1.47), Marte (+0.98), Freeman (+0.68) is a deep power
-lineup. We have Ohtani (+2.82) and not much else positive. Stanton (-2.00) dropping out
-helps slightly but doesn't close the 2.6 z-unit structural deficit. Accepted concession —
-do not burn moves trying to close this gap.</p><p>### HR — CONCEDE (P=27%)
-Schwarber (+2.48) + Rooker (+1.31) + Buxton (+0.66) are a genuine power wall. Our Ohtani
-(+3.13) is elite but Altuve (-0.38), Torres (-0.77), Burleson (-0.38) drag the average
-down. Near-concession. Do not stream HR-only hitters to chase.</p><p>---</p><p>## OPPONENT INTELLIGENCE</p><p><strong>Structural anchors:</strong> Skubal alone may be worth 3-4 pitching categories. He goes deep,
-limits walks, and his projected ERA (~2.3) will anchor their ERA/WHIP/KBB before most of
-our staff logs IP. This is the core matchup challenge — we need Crochet and Woo to log
-quality starts early.</p><p><strong>Structural vulnerabilities:</strong>
-- SBN: Over. They don't run.
-- MacKenzie Gore (TEX) is their ERA/WHIP time bomb. ERA z -0.83, WHIP z -1.36. One or two
-  bad starts flips these categories without us doing anything.
-- Closer depth is adequate but not dominant: Palencia (+1.99), Abreu (+0.70), Estrada (+0.47)
-  active; Jax (+1.15) on bench. Watch for Jax activation — it's likely. Even so, we match
-  with Smith (+1.84), Iglesias (+1.61), Uribe (+1.30) = 3 legitimate closers.</p><p><strong>Likely opponent adjustments:</strong>
-- Activate Griffin Jax (TB RP, BE) for SVHD. Doesn't flip the category; narrows gap.
-- Sheehan (LAD SP, ERA z -0.75) may get swapped mid-week for a streaming option.
-- Xavier Edwards (MIA BE) unlikely to be activated since their manager can see SBN is lost.</p><p>---</p><p>## STANTON DROP — EXTENDED REASONING</p><p>The +1.97 ownership change caught both agents' attention. Most likely explanation: Week 1
-desperation adds in shallower leagues, or managers adding him as a cheap HR flier.
-In our 8-team keeper context, his negative z-scores in 5 of 6 hitting categories are
-projection-system consensus, not small-sample noise. He is literally the worst-WERTH hitter
-on either 26-man roster (-6.09, 7th worst overall). The "but HR" argument (z +0.01) is
-approximately zero marginal value. Execute the drop without hesitation.</p><p>---</p><p>## OBER ADD — DECISION TREE</p><p><strong>Path A (Actuary): Drop Clement → Ober to BE</strong>
-- Ober start days: manually cycle Iglesias or Uribe to BE to open a P slot
-- Castillo stays: his ERA drag remains, but option value is preserved
-- Risk: slot management required on ~2 specific days; easy to execute if you check daily
-- When to revisit Castillo: Week 3 (around Apr 8–10), if he's made 3–4 starts with ERA &gt; 4.20</p><p><strong>Path B (Tactician): Drop Castillo → Ober directly to P</strong>
-- Immediate ERA roster improvement
-- Cleaner lineup — no slot gymnastics
-- Gives up Castillo's upside if projections are underestimating him
-- Same 1-move cost as Path A</p><p><strong>The Synthesizer lean:</strong> Path A is marginally safer given it's Day 2 and both ERA/WHIP are
-at infinity (first innings define the baseline regardless). The urgency argument for Castillo
-would be stronger mid-week once you have 15–20 IP banked and can see whether ERA/WHIP are
-trending. Take Path A today; evaluate the Castillo question at Day 5–6.</p><p>---</p><p>## IF-THEN TREES FOR REST OF WEEK</p><p><strong>If ERA/WHIP trend badly by Day 5 (team ERA &gt; 4.20, WHIP &gt; 1.35):</strong>
-→ Drop Castillo, add Seth Lugo (KC, 2 starts: vs TEX, vs ATL) if still available.
-→ Lugo matchups aren't great but the two-start volume matters.</p><p><strong>If Skubal dominates K/QS in first two starts:</strong>
-→ K and QS shift to probable losses; rebalance focus to ERA/WHIP/KBB where we have structural edges.
-→ Do not panic-stream Ks at the cost of rate-stat dilution.</p><p><strong>If Gore blows up twice:</strong>
-→ WHIP and ERA may flip toward us passively. Don't burn moves pre-empting what Gore may gift us.</p><p><strong>If SVHD falls behind by Day 7:</strong>
-→ Activate Hader off IL if he's returned (check status around Day 6–7).
-→ Keep Uribe regardless — third closer depth in a 55% toss-up is real insurance.</p><p>---</p><p>## DATA QUALITY FLAGS</p><p>1. <strong>Ohtani slot check (VERIFY IN ESPN):</strong> Briefing shows him as SP / P-slot with only
-   hitting z-scores. ESPN may be displaying him correctly (dual eligibility, batting stats
-   still accumulate in P slot). But if he is somehow pitching-only in your lineup with
-   batting stats zeroed out, moving him to DH/UTIL is the single highest-EV action available
-   this week. Log into ESPN and confirm both his batting and pitching stats are counting.</p><p>2. <strong>Two-start pitcher projections:</strong> Ober, Lugo, Singer, Wacha have no ros_werth in the
-   briefing data. Ober recommendation is based on matchup quality and FanGraphs-proxy math.
-   Full WERTH dilution calculation would improve confidence; consider this a data pipeline
-   enhancement for next week.</p><p>3. <strong>Hader IL move:</strong> ESPN may or may not count this against the 12-move limit depending on
-   platform configuration. Verify before assuming it's free.
+<h2>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</h2></p><p>## Why the Newsletter Is Suspended</p><p>The Synthesizer's job is to resolve disagreements between agents.
+When both agents agree completely — and both agree that producing
+analysis is harmful — the correct output is to say so clearly and
+explain what to do instead.</p><p>The Tactician and Actuary are in perfect agreement:
+- No roster data → no add/drop EV calculations
+- No category state → no P(win) estimates → no triage logic
+- No moves_max → cannot even frame a budget
+- No opponent → cannot model their behavior or strategy</p><p>Producing a fake newsletter with invented numbers would violate
+the Actuary's negative-EV veto. This is a VETO condition.</p><p>---</p><p>## Fix Sequence</p><p><strong>Step 1: ESPN Credentials</strong>
+Find your ESPN_SWID and ESPN_S2 cookies:
+- Log into ESPN Fantasy on a browser
+- Open DevTools → Application → Cookies → espn.com
+- Copy SWID (format: {XXXXXXXX-XXXX-...}) and espn_s2 (long string)
+- Add to in_season/daily_digest/config.py or set as env vars:
+  ESPN_SWID="{your-swid}"
+  ESPN_S2="your-s2-cookie"</p><p><strong>Step 2: Proxy Issue</strong>
+The 403 Forbidden proxy error is separate from credentials.
+Even with correct credentials, the proxy layer is rejecting
+outbound HTTPS. Possible causes:
+- Corporate/VPN proxy intercepting traffic
+- No-proxy list needs updating for lm-api-reads.fantasy.espn.com
+- Firewall rule blocking port 443 to ESPN domains</p><p><strong>Step 3: Re-run</strong>
+Once both issues are resolved: /generate</p><p>---</p><p>## Pre-Season Strategic Context (What We Know)</p><p>Since live data is unavailable, here is the full pre-season
+framework for Week 1 decision-making when data restores.</p><p>### Category Priority Order (Week 1)
+1. <strong>QS (swing 0.597)</strong> — highest-leverage category. Any pitcher
+   add must clear a QS hurdle first. A SP who cannot realistically
+   throw 6+ IP is unrosterable regardless of ERA profile.
+   
+2. <strong>SVHD (swing 0.523)</strong> — one save or hold flips this. If you
+   have a closer going into Week 1, protect him. If not, identify
+   FA closers immediately on data restore.</p><p>3. <strong>HR (swing 0.471)</strong> — volatile, easy to swing. Check if
+   opponent is stacking power hitters vs. your pitching.</p><p>4. <strong>WHIP (swing 0.412)</strong> — no ties ever in this league. WHIP
+   is contested every single week. Streaming decisions that
+   dilute WHIP need explicit rate-stat accounting.</p><p>### Early-Season Decision Rules (Weeks 1-4)
+Per the Actuary's standing directive:
+- No regression signal is actionable below 100 PA / 40 IP
+- Do not react to BABIP, ERA, OBP fluctuations — all noise
+- Projection systems (FanGraphs RoS) are the ground truth
+- Savant xStats require ≥50 BBE / ≥50 BF — gated until ~May</p><p>### Your Draft Construction Assessment
+<strong>Strengths entering Week 1:</strong>
+- K/QS/ERA/WHIP: Crochet + Gilbert is a top-3 SP duo in this
+  format. You should be competitive in all 4 pitching cats.
+- TB/HR/RBI: Ohtani + Alvarez is elite power production.
+- OBP: Ohtani and Lindor both carry strong walk rates.</p><p><strong>Potential gaps:</strong>
+- SVHD: SP-heavy draft (40% pitchers, R1-3 SP) may have left
+  you thin at closer. Check your bullpen depth immediately.
+- SBN: No speed-first hitters in R1-5 (Ohtani/Alvarez/Lindor
+  are not SBN contributors). Monitor FA speed options.
+- R: Dependent on lineup construction around your anchors.</p><p>### Opponent Intelligence (Historical, No 2026 Data)
+Cannot identify Week 1 opponent without ESPN data. When live:
+- Check opponent_tendencies for their draft archetype
+- Two-time champion Latte Nate is SP-heavy (44-48% pitchers,
+  R1-2 SP picks) — if matched up vs. them, expect pitching war
+- Big Pfaadt Tatis is hitter-heavy (32% pitchers, first SP Rd 5)
+  — if matched up vs. them, attack their pitching categories</p><p>### If-Then Decisions (Activate When Data Restores)
+- <strong>If SVHD = 0-0 and you have no closer:</strong> Priority add, burn
+  a move. SVHD swing is 0.523 — don't spot a free W.
+- <strong>If QS deficit after Day 3-4:</strong> Identify two-start pitchers
+  available (FA) with ≥6 IP ceiling and ERA proj &lt; 3.80.
+- <strong>If category is already LOCK (≥8 unit lead):</strong> Protect rate
+  stats, do not stream pitchers who dilute ERA/WHIP for it.
+- <strong>If WHIP within 0.020:</strong> Treat as live. Every start matters.
+  Do not add SP with ERA &gt; 4.50 into a competitive WHIP race.</p><p>### Platoon Flags for Lineup Management (Activate Weekly)
+Key players to monitor vs. opponent SP handedness:
+- Shohei Ohtani: -39 wRC+ pts vs LHP. Heavy LHP weeks,
+  his HR/OBP contribution drops meaningfully.
+- Corey Seager (if on opponent): -33 wRC+ vs LHP. Opponent
+  is weaker in LHP-heavy weeks — note if you can exploit.
+- Rafael Devers (TEX 3B): -41 wRC+ vs LHP — near replacement
+  level vs LHP. If on your roster or trade target, schedule
+  matters significantly.</p><p>---</p><p>## Data Quality Note for Future Runs
+Both agents flagged the extreme_platoon_players list is polluting
+context with 40+ irrelevant minor-league players. Consider adding
+a filter in preprocess.py to limit this to ESPN-rostered players
+only before passing to agents.
 ```</p>
 </main>
 <footer>
   <nav class="issue-nav">
-    <a href="archive/2026-03-26-4.html" class="nav-link nav-prev">← Previous</a>
+    <a href="archive/2026-03-26-5.html" class="nav-link nav-prev">← Previous</a>
     <a href="" class="nav-link nav-next" hidden>Next →</a>
   </nav>
-  <div class="archive-list">Past briefings: <a href="archive/2026-03-27.html">2026-03-27</a> · <a href="archive/2026-03-26.html">2026-03-26</a> · <a href="archive/2026-03-26-4.html">2026-03-26-4</a> · <a href="archive/2026-03-26-3.html">2026-03-26-3</a> · <a href="archive/2026-03-26-2.html">2026-03-26-2</a></div>
+  <div class="archive-list">Past briefings: <a href="archive/2026-03-27.html">2026-03-27</a> · <a href="archive/2026-03-26.html">2026-03-26</a> · <a href="archive/2026-03-26-5.html">2026-03-26-5</a> · <a href="archive/2026-03-26-4.html">2026-03-26-4</a> · <a href="archive/2026-03-26-3.html">2026-03-26-3</a> · <a href="archive/2026-03-26-2.html">2026-03-26-2</a></div>
   <p style="margin-top:0.5rem">Generated by <a href="https://github.com/tamdur/AI_fantasy_baseball">AI Fantasy Baseball</a></p>
 </footer>
 </body>
