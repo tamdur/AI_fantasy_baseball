@@ -48,7 +48,10 @@
    Do instead: Use Flaim only for roster lookups and basic standings. Use direct ESPN API for analytical data.
 
 ## Domain Behavior Guardrails
-1. **[2026-03-26] Savant regression signals need sample size gates**
+1. **[2026-03-26] Agent prompts have structural action bias — "no moves" must be the default**
+   Do instead: All three agent prompts (tactician, actuary, synthesizer) now enforce "no moves today" as the default. `strategic_posture` field in briefing book constrains agent recommendations by season phase. Confidence scores are calibrated (9/10 = right 90% of time). Don't revert these changes.
+
+2. **[2026-03-26] Savant regression signals need sample size gates**
    Do instead: Require ≥50 BBE for xBA/xSLG, ≥50 BF for xERA, ≥100 PA for BABIP, ≥40 IP for LOB%. In the first 2-3 weeks, most signals fail these gates — rely on projection systems instead.
 
 2. **[2026-03-22] QS, SVHD, and HR are the top swing categories in this league**
@@ -75,3 +78,9 @@
 
 3. **[2026-03-22] Files referenced in prompts may have wrong paths**
    Do instead: Check the project working directory first. Don't search the full filesystem without asking.
+
+4. **[2026-03-26] Weather data beyond today is noise — don't use it for decisions**
+   Do instead: Synthesizer prompt restricts weather references to today's games only. Future weather forecasts (next-day starts etc.) should not influence streaming or lineup decisions.
+
+5. **[2026-03-26] Calibration loop: actuals auto-logged at matchup boundaries**
+   Do instead: `run_newsletter.py` Step 0 checks for completed matchup periods and calls `log_actuals_from_espn()`. Calibration summary is injected into briefing book (Step 5b) when data exists. No manual intervention needed after MP 1 ends.
