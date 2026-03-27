@@ -542,6 +542,8 @@ def _find_streamable_pitchers(free_agents, probable_pitchers, ros_pitchers, id_m
             "proj_whip": _safe_float(proj.get("WHIP")),
             "proj_kbb": _safe_float(proj.get("KBB")),
             "ros_werth": _safe_float(proj.get("pos_adj_werth", proj.get("total_werth"))),
+            "pct_owned": fa.get("ownership_pct"),
+            "pct_owned_change": fa.get("ownership_pct_change"),
         }
 
         # ERA risk assessment
@@ -590,6 +592,8 @@ def _find_two_start_fas(free_agents, two_starters, ros_pitchers, id_map_df):
             "start_count": ts.get("start_count", 2),
             "matchups": matchup_strs,
             "positions": fa.get("positions", []),
+            "pct_owned": fa.get("ownership_pct"),
+            "pct_owned_change": fa.get("ownership_pct_change"),
         })
 
     return result
@@ -654,8 +658,10 @@ def _serialize_roster(players):
             entry["regression_flags"] = p["regression_flags"]
         if p.get("games_remaining_this_week") is not None:
             entry["games_remaining_this_week"] = p["games_remaining_this_week"]
-        if p.get("ownership_pct"):
-            entry["ownership_pct"] = p["ownership_pct"]
+        if p.get("ownership_pct") is not None:
+            entry["pct_owned"] = p["ownership_pct"]
+        if p.get("ownership_pct_change") is not None:
+            entry["pct_owned_change"] = p["ownership_pct_change"]
         if p.get("mlbam_id") is not None:
             entry["mlbam_id"] = _safe_int(p["mlbam_id"])
         result.append(entry)

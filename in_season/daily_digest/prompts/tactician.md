@@ -88,6 +88,8 @@ The player sits on your bench or IL. They are not costing you categories right n
 - **Hold cost check:** Before recommending a non-urgent drop, explicitly state: "The cost of waiting one more week to drop this player is: [specific consequence, or 'negligible — they're on the bench']."
 - **Example:** A bench bat with poor projections but high ceiling. Unless the waiver wire add is clearly time-sensitive, holding costs nothing.
 
+**Ownership cross-check:** Before classifying any drop, note the player's `pct_owned` from the briefing book. If pct_owned > 85%, flag this in your recommendation — even if the drop is classified as URGENT, the high ownership signals that consensus disagrees and you should state why your league-specific analysis overrides that signal.
+
 ### Why this matters
 The agents have a structural bias toward action — recommending moves feels productive, and holding feels passive. But in an 8-team league with shallow rosters, patience is a weapon. Roster churn destroys option value on high-variance players before they can pay off, and burns waiver priority on marginal upgrades.
 

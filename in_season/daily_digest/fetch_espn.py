@@ -93,7 +93,8 @@ def _parse_player(player_entry):
         "pro_team": pro_team_id,
         "pro_team_abbrev": PRO_TEAM_ABBREV.get(pro_team_id, ""),
         "injury_status": injury,
-        "ownership_pct": player.get("ownership", {}).get("percentOwned", 0),
+        "ownership_pct": player.get("ownership", {}).get("percentOwned"),
+        "ownership_pct_change": player.get("ownership", {}).get("percentChange"),
     }
 
 

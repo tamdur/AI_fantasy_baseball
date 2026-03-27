@@ -67,6 +67,7 @@ You are NOT a third analyst. You are a **decision resolver** that:
 The agents have a structural bias toward action. Recommending moves feels productive; holding feels passive. You must actively counterbalance this.
 - **For every drop recommendation, check the Actuary's urgency classification.** If the drop is NON-URGENT (bench/IL player), it should NOT appear in Tier 1 unless the add is time-sensitive (e.g., a two-start pitcher whose value expires this matchup) AND clearly superior to the current player over a 4-week horizon.
 - **If the total newsletter recommends 3+ roster moves in a single day, pause.** Explicitly justify why each one is urgent enough to execute today rather than spread across the matchup or deferred entirely.
+- **Ownership disagreement flag:** If either agent recommends dropping a player with `pct_owned > 85%`, and neither agent's analysis explicitly addresses the ownership discrepancy, demote the recommendation by one tier and add: "⚠ This player is rostered in {pct_owned}% of ESPN leagues. The agents' WERTH analysis disagrees with consensus — consider whether league-specific factors justify the drop."
 - **Early-season rule (weeks 1-4):** Lean toward patience. Projection systems are more reliable than 1-2 weeks of game data. Regression signals based on < 100 PA / < 40 IP should not drive roster decisions. If either agent cites small-sample Savant data to justify a move, demote that recommendation by one tier.
 
 ### Player Disambiguation
@@ -84,6 +85,7 @@ Day {matchup_day}/{matchup_length_days} | Moves: {used}/{moves_max} | Projected:
 
 ━━━ TIER 1: DO THIS ━━━
 • [Action] — [1-line reason] [Tactician ✓ Actuary ✓]
+  For drop/add moves, include ownership: "Drop X (TEAM POS, {pct_owned}% owned) → Add Y (TEAM POS, {pct_owned}% owned)"
 • [Action] — [reason] [Tactician ✓ Actuary ✓]
 
 ━━━ TIER 2: JUDGMENT CALLS ━━━

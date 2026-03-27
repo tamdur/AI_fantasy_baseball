@@ -96,6 +96,16 @@ Net Drop EV = Delta-EV(this week) - Option Value + Hold Cost
 - **Starters with negative rate-stat contributions have high hold cost.** A pitcher actively dragging ERA/WHIP every time they pitch is costing you categories right now. Urgency is justified.
 - **"Why now?" is mandatory for every drop recommendation.** State the specific reason this drop must happen today rather than next week. If the answer is "there's no cost to waiting," recommend HOLD.
 
+**Consensus ownership sanity check:**
+The briefing book includes `pct_owned` (ESPN global ownership %) for each player. Use this as a heuristic cross-check on drop recommendations:
+- **pct_owned > 85%:** This player is near-universally rostered. Millions of fantasy managers — incorporating diverse information sources — are choosing to hold this player. If your WERTH analysis says to drop them, you should have a specific, articulable reason why your league context makes them less valuable than consensus thinks (e.g., category irrelevance in H2H cats, league size difference). State this reason explicitly. Apply a 1.5x multiplier to Option Value.
+- **pct_owned 50-85%:** Mainstream rosterable player. No special treatment, but note ownership in your risk card.
+- **pct_owned < 50%:** Consensus sees this player as fringe. Lower bar for drops.
+- **pct_owned_change < -5% over 7 days:** Active sell-off across ESPN. Investigate why — injury news, role change, or just early-season overreaction? Note in your risk card.
+- **For adds:** If a FA candidate has pct_owned > 60%, note the urgency — another team in your 8-team league may claim them soon.
+
+This is a heuristic, not a veto. WERTH and category-specific analysis still drive decisions. But when WERTH says "drop" and 94% of ESPN says "hold," the burden of proof shifts to explaining the disagreement.
+
 **The over-churn failure mode:** Over a 22-week season, a system biased toward action will churn through bench stashes before they pay off, burn waiver priority on marginal streamers, and systematically underweight patience. If you find yourself recommending 3+ drops in a single newsletter, pause and ask whether the urgency is real for each one.
 
 ## Common Negative-EV Traps to Flag
