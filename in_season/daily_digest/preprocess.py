@@ -82,21 +82,31 @@ def merge_projections_to_roster(roster_players, ros_hitters, ros_pitchers, id_ma
             enriched.append(p)
             continue
 
-        proj = hit_lookup.get(int(eid))
-        if proj is None:
-            proj = pit_lookup.get(int(eid))
+        eid_int = int(eid)
+        hit_proj = hit_lookup.get(eid_int)
+        pit_proj = pit_lookup.get(eid_int)
+
+        # Primary projection for mlbam_id; combine WERTH for two-way players
+        proj = hit_proj or pit_proj
         if proj is not None:
             p["mlbam_id"] = proj.get("mlbam_id")
+            hit_werth = _safe_float(hit_proj.get("total_werth")) if hit_proj else 0
+            pit_werth = _safe_float(pit_proj.get("total_werth")) if pit_proj else 0
+            p["total_werth"] = round(hit_werth + pit_werth, 2)
             p["ros_werth"] = _safe_float(proj.get("pos_adj_werth", proj.get("total_werth")))
-            p["total_werth"] = _safe_float(proj.get("total_werth"))
 
-            # Per-category z-scores
+            # Two-way players (e.g. Ohtani) get z-scores from BOTH lookups
             z_scores = {}
-            cats = HITTING_CATS if int(eid) in hit_lookup else PITCHING_CATS
-            for cat in cats:
-                z = proj.get(f"z_{cat}")
-                if pd.notna(z):
-                    z_scores[cat] = round(float(z), 2)
+            if hit_proj is not None:
+                for cat in HITTING_CATS:
+                    z = hit_proj.get(f"z_{cat}")
+                    if pd.notna(z):
+                        z_scores[cat] = round(float(z), 2)
+            if pit_proj is not None:
+                for cat in PITCHING_CATS:
+                    z = pit_proj.get(f"z_{cat}")
+                    if pd.notna(z):
+                        z_scores[cat] = round(float(z), 2)
             p["z_scores"] = z_scores
         else:
             unmatched += 1
