@@ -22,6 +22,12 @@
 5. **[2026-03-22] All 12 league categories must be used in every valuation: R/HR/TB/RBI/SBN/OBP + K/QS/ERA/WHIP/K÷BB/SVHD**
    Do instead: Derive TB (1B+2×2B+3×3B+4×HR), SBN (SB-CS), and SVHD (SV+HLD) from component stats in projection data.
 
+## Shell & Command Reliability
+1. **[2026-05-31] Git on this Google Drive path throws stale `.git/*.lock` "File exists" with no git process running**
+   Do instead: Drive sync leaves stale locks. `pgrep -fl git` to confirm none running, then `rm -f .git/index.lock .git/HEAD.lock` and retry. Long git/ls commands here auto-background — poll the output file or wait for the completion notification rather than re-issuing (re-issuing creates a new lock conflict).
+2. **[2026-05-31] File reads on this path intermittently `ETIMEDOUT`**
+   Do instead: Just retry the Read — it's Drive latency, not a missing file. Don't assume the file is gone.
+
 ## Data & Infrastructure
 1. **[2026-03-22] FanGraphs has undocumented REST API at `/api/projections`**
    Do instead: Use `https://www.fangraphs.com/api/projections?type={TYPE}&stats={bat|pit}&pos=all&team=0&players=0&lg=all`. Returns JSON. See `fangraphs_guide.md` for full type parameter table.
