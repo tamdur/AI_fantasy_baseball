@@ -508,28 +508,54 @@ manual Routine test** (one real 1am-style run) before trusting automation — th
 
 ## 10. Todo list (phased; CC marks complete during implementation)
 
-**Phase 0 — Scaffolding & context backbone**
-- [ ] `advisor/__init__.py`, `advisor/config.py` (sys.path shim, re-exports, **`ADVISOR_SCRATCH`** +
-      Tier-1 committed-log paths per §1.1)
-- [ ] `.gitignore`: exclude `advisor/.scratch/` + all caches
-- [ ] `advisor/context.build_decision_context()` v0: reuse fetch→`compute_ros_werth`→preprocess → compact
-      context written to **Tier-2 scratch** (no sim/feasibility yet); import smoke test
-- [ ] Additive `fetch_espn._parse_player`: capture `raw_eligible_slots` / `il_eligible` (§4.4 #7) +
-      platoon-split magnitude (§4.4 #6)
+**Phase 0 — Scaffolding & context backbone** ✅ (tests: 4 passed)
+- [x] `advisor/__init__.py`, `advisor/config.py` (path shim in `__init__`, re-exports, `ADVISOR_SCRATCH`
+      + Tier-1 committed-log paths per §1.1; `ensure_scratch`/`scratch_path`/`context_path`/`archive_page_path`)
+- [x] `.gitignore`: exclude `advisor/.scratch/` (Tier-2). Backend `cache/`+`calibration/` already ignored
+      — flagged: `calibration/actuals.csv` may not persist into a fresh Routine checkout (kb gotcha)
+- [x] `advisor/context.build_decision_context()` v0: live fetch→WERTH→preprocess spine → compact context
+      to Tier-2 scratch; pure `assemble_context`/`compact_player`/`_build_lookups` helpers; `winprob`/
+      `lineup_today` = None hooks for P1/P2; `_compute_werth` indirection lets P2 swap in §4.4 valuation
+- [x] Additive `fetch_espn._parse_player`: capture `raw_eligible_slots` / `il_eligible` (§4.4 #7).
+      Platoon-magnitude (§4.4 #6) surfaced in `context.compact_player` (`platoon_obp_gap`) — splits are
+      keyed by mlbam_id so the join belongs in context, not the parser
+- [x] `tests/test_smoke.py`: import-shim, path split, IL capture, compaction + missing-WERTH flag
 
-**Phase 1 — Deterministic feasibility + lineup (highest correctness risk)**
-- [ ] `feasibility.il_eligible`, `optimal_daily_lineup`, `lineup_feasibility` (two-way + IL); consume
-      games-remaining (§4.4 #8) + platoon magnitude (§4.4 #6)
-- [ ] `tests/test_il.py`, `tests/test_feasibility.py`; Ohtani + IL fixtures
-- [ ] §4.4 #5 park-factor refresh (data fix + test)
+**Phase 1 — Deterministic feasibility + lineup (highest correctness risk)** ✅ (tests: 13 passed)
+- [x] `feasibility.il_eligible`, `optimal_daily_lineup`, `lineup_feasibility` (two-way + IL). Eligibility
+      from ESPN raw `eligibleSlots` (authoritative flex encoding); Kuhn's bipartite matching in desc-value
+      order = "start your best players, never bench a stud for a scrub"; IL slotting caps at N_IL_SLOTS
+      with overflow surfaced (not silently dropped). **Design fix from a test:** split `plays_today`
+      (hit/team-plays availability) from new `pitch_starts_today` (two-way PITCH gate) — Ohtani hits on
+      non-pitching days. §4.4 #8 games-remaining feeds via `plays_today`; §4.4 #6 platoon magnitude lands
+      in context (`compact_player`), the optimizer's `judgmental_swaps` consume it in P3.
+- [x] `tests/fixtures.py` (Ohtani two-way + IL star + DTD marginal + flex contention), `tests/test_il.py`
+      (4), `tests/test_feasibility.py` (6)
+- [x] §4.4 #5 park-factor refresh: additive `fetch_extras.fetch_current_park_factors()` with
+      validate-or-fallback (≥20 plausible teams else static 2024) + abbrev normalization (fixes latent
+      CWS/OAK→CHW/ATH bug). `tests/test_park_factors.py` (3). **Guts JSON endpoint needs live verification
+      (kb)** — degrades gracefully if the guess is wrong.
 
-**Phase 2 — Valuation fixes + matchup win-probability simulator (keystone)**
-- [ ] `valuation.py`: §4.4 #1 regulars-vs-bench pool, #3+#4 FA-pool replacement, #2 surface per-player σ
-      band — each with `test_context.py` assertions (validate-along-the-way, annotation #3)
-- [ ] `gamelogs.fetch_recent_gamelogs` (within-run cache, prior-season fallback, relevant-players-only)
-- [ ] `simulator.player_week_draws` (bootstrap + talent overlay via #2 σ + fallback)
-- [ ] `simulator.simulate_matchup`, `ev_of_move`; reuse correlated_uncertainty σ/Cholesky as overlay
-- [ ] `tests/test_simulator.py` + property + regression-golden; **calibration backtest** (§7)
+**Phase 2 — Valuation fixes + matchup win-probability simulator (keystone)** ✅ (tests: 32 passed)
+- [x] `valuation.py` wrapper (keeps ros_werth untouched): §4.4 #1 regulars-vs-bench pool (top-PT pool ≈
+      league starting lineups), #4 small-average FA replacement (top-k mean vs single skewed max), #3
+      FA-pool replacement already in backend (pass live fa_ids), #2 σ from `fetch_multi_system_ros`
+      surfaced in context + consumed by sim fallback. `proj_per_game` recovers consistent components
+      (BB=K/KBB, H=WHIP·IP−BB). `tests/test_valuation.py` (6)
+- [x] `gamelogs.fetch_recent_gamelogs` (MLB Stats API gameLog, Tier-2 scratch cache, prior-season
+      backfill, injectable `fetch_fn`); pure parser (IP→outs thirds, QS/TB/SBN/onbase, DNP exclusion).
+      `tests/test_gamelogs.py` (5)
+- [x] `simulator.py`: bootstrap whole-game lines + overlay-shrink + projection fallback; `team_totals`/
+      `add_banked`/`derive_cats` (**ratio cats sum-then-divide**, LOWER_IS_BETTER, zero-denom sentinels);
+      `simulate_matchup` (per-cat P(win) + record dist + p_win_matchup), `ev_of_move`, `run_matchup`.
+      `tests/test_simulator.py` (9: golden ratio agg, banked-once, lower-better, determinism,
+      monotonicity, EV, **regression-golden p_win=0.6067 locked**)
+- [x] Win-prob wired into context: `estimate_banked_components` (counting exact; rate-cat denominators
+      from elapsed-fraction × projected matchup totals — **v1 approximation, kb**), `attach_winprob`,
+      two-way detection, games-remaining approximation. `tests/test_context.py` (5)
+- [x] **Calibration backtest** (§7): `validation.reliability` (Brier + reliability-by-bin),
+      `load_actuals`/`pairs_from_predictions`. `tests/test_validation.py` (4). Full simulator-vs-history
+      replay deferred until decision history accrues (no prior advisor predictions exist).
 
 **Phase 3 — The analyst + tools**
 - [ ] `tools.py` CLI subcommands (winprob, stream_impact, player_form, feasibility, drop_check)
