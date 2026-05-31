@@ -557,25 +557,43 @@ manual Routine test** (one real 1am-style run) before trusting automation — th
       `load_actuals`/`pairs_from_predictions`. `tests/test_validation.py` (4). Full simulator-vs-history
       replay deferred until decision history accrues (no prior advisor predictions exist).
 
-**Phase 3 — The analyst + tools**
-- [ ] `tools.py` CLI subcommands (winprob, stream_impact, player_form, feasibility, drop_check)
-- [ ] `prompts/analyst.md` (principles, default-hold, self-critique-with-teeth, **stakes-scaled output**)
-- [ ] wire candidates + computed EV (D6 bar) into context
+**Phase 3 — The analyst + tools** ✅ (tests: 4 passed)
+- [x] `tools.py` CLI subcommands (winprob, feasibility, player_form, stream_impact, drop_check). EV tools
+      reload Tier-2 **sim-state** (`context.attach_winprob` writes player inputs + banked + seed) and
+      recompute `ev_of_move` deterministically. Pure `summarize_form`/`compute_stream_impact`/
+      `compute_drop_impact` tested (`tests/test_tools.py`)
+- [x] `prompts/analyst.md` — principle-driven (no persona), **action-is-expensive** framing, win-the-
+      matchup/Vegas-symmetric/ratio-fragile/IL-leverage/opportunity-cost principles, **self-critique with
+      teeth** (tentative→refute→final, overturning = success), stakes-scaled output, cite-don't-fabricate
+- [x] candidates + computed EV wired into context: `_populate_candidate_ev` scores today's probable-
+      starter FAs by Δ p_win_matchup (the D6 bar) + ranks FA adds by pos_adj_werth
 
-**Phase 4 — Decision page + decision log**
-- [ ] `decisions.py` (schema incl. `tier`, `log_decisions`, `score_process`); committed
-      `advisor/log/decisions.csv` (+ optional ≤few-KB `records/<date>.json`) per §1.1
-- [ ] `render.py` (stakes-tiered page + `<details>` drill-down + empty-with-closest-call; reuse publish
-      renderer) — §3.8
+**Phase 4 — Decision page + decision log** ✅ (tests: 8 passed)
+- [x] `decisions.py`: schema (FIELDS incl. `tier`), `log_decisions` (Tier-1 committed
+      `advisor/log/decisions.csv`), `write_daily_record` (≤few-KB `records/<date>.json`), `score_process`
+      (confidence-bucket hit-rate + overturn-rate + reliability). `tests/test_decisions.py`
+- [x] `render.py`: stakes-tiered page, native `<details>` drill-down (no JS), significant-first ordering,
+      hold-day "No moves." + closest-call, win-prob header + per-cat chips, `publish_page` writes
+      index+archive with prev/next nav. Self-contained renderer (chose over publish_newsletter for §3.8
+      layout control). `tests/test_render.py`
 
-**Phase 5 — Execution as Routine + ops**
-- [ ] `run.py` (`prepare`, `--dry-run`, **idempotency keyed off committed `docs/archive/<date>.html`**,
-      scratch handoff marker)
-- [ ] `routine.md` (the Routine prompt); no nested `claude --print`
-- [ ] git push-back (credentials, `pull --rebase`, branch choice); ESPN cookie auto-refresh;
-      network-allowlist + secrets doc; **manual Routine dry-run**
-- [ ] build-time verifications (§9 open list); validation: naive-baseline comparison + decision-log
-      calibration scaffolding
+**Phase 5 — Execution as Routine + ops** ✅ (tests: 4 passed; live dry-run in progress)
+- [x] `run.py`: `prepare` (idempotency keyed off committed `docs/archive/<date>.html` + scratch handoff
+      marker), `publish` (`--dry-run` scratch preview, `--no-push`), `score`, `check`. `tests/test_run.py`
+- [x] `routine.md`: session-is-the-analyst flow (prepare → read context → reason → write decisions →
+      publish), no nested `claude --print`, secrets/allowlist/ops notes
+- [x] git push-back (`pull --rebase` + commit + push of Tier-1 artifacts) in `run._git_commit_push`
+- [x] **manual Routine dry-run** (the safety gate — done): live `prepare` + `publish --dry-run` against
+      real ESPN/FanGraphs/MLB data. Validated the full fetch→WERTH→feasibility→simulator→render pipeline;
+      output correctly reads MP9 (winning 5 ratio cats, losing counting → realistic p_win≈0 on the last
+      day). **Flushed out 3 real bugs unit tests couldn't:** (1) ESPN tags slot-17/IL on EVERY player →
+      IL detection moved to `injuryStatus`; (2) `to_dict("records")` dropped duplicate columns → dedupe;
+      (3) banked rate-cat denominator needed full-matchup games, not remaining. Also: backend
+      `fetch_multi_system_ros` Series-truth crash → wrapped (σ band optional).
+- [ ] build-time verifications (§9 open list: MAX Routine billing, network allowlist, ESPN cookie
+      auto-refresh, live Ohtani/IL settings, git creds) — deferred to Routine setup
+- [x] validation scaffolding: `decisions.score_process` + `validation.reliability` (naive-baseline =
+      hold-only is the logged default; comparison accrues as the log fills)
 
 **Phase 6 — Explicitly deferred (NOT v1)**
 - [ ] player props (no free 1am source) — revisit only if a source appears

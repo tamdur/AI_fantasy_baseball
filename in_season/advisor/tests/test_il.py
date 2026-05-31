@@ -4,10 +4,17 @@ from advisor import feasibility as F
 from advisor.tests import fixtures as fx
 
 
-def test_il_eligible_detects_slot_17():
-    assert F.il_eligible([4, 6, 12, 16, 17]) is True
-    assert F.il_eligible([4, 6, 12, 16]) is False
-    assert F.il_eligible([]) is False
+def test_il_eligible_from_injury_status():
+    # Verified against live data: slot 17 is on EVERY player, so IL eligibility must come
+    # from the injury designation, not the slot.
+    assert F.il_eligible("FIFTEEN_DAY_DL") is True
+    assert F.il_eligible("TEN_DAY_DL") is True
+    assert F.il_eligible("SIXTY_DAY_DL") is True
+    assert F.il_eligible("INJURY_RESERVE") is True
+    assert F.il_eligible("OUT") is True
+    assert F.il_eligible("ACTIVE") is False
+    assert F.il_eligible("NORMAL") is False
+    assert F.il_eligible("DAY_TO_DAY") is False   # DTD is a bench cost, not IL-able
     assert F.il_eligible(None) is False
 
 

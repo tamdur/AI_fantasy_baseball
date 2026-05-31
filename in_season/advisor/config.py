@@ -92,6 +92,17 @@ def context_path(date_str: str) -> Path:
     return scratch_path(f"decision_context_{date_str}.json")
 
 
+def sim_state_path(date_str: str) -> Path:
+    """Scratch path for a day's simulator state (player inputs + banked + seed), used by
+    the EV tools to recompute ev_of_move deterministically. Tier-2 (ephemeral)."""
+    return scratch_path(f"sim_state_{date_str}.json")
+
+
 def archive_page_path(date_str: str) -> Path:
     """Committed path for a day's published page — the cross-run idempotency key (§1.1)."""
     return DOCS_ARCHIVE_DIR / f"{date_str}.html"
+
+
+def records_path(date_str: str) -> Path:
+    """Tier-1 committed path for a day's compact decision record (≤ few KB audit)."""
+    return RECORDS_DIR / f"{date_str}.json"

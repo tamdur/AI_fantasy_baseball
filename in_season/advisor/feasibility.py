@@ -41,13 +41,19 @@ _SLOT_SPECIFICITY = {
 _PITCHER_SLOTS = {"P"}
 
 
-def il_eligible(raw_eligible_slots):
-    """True if ESPN marks this player IL-eligible (slot 17 in eligibleSlots).
+_NOT_IL_STATUSES = {"ACTIVE", "NORMAL", "DAY_TO_DAY", ""}
 
-    Robust IL test (plan §3.2): preferred over parsing ``injuryStatus`` strings,
-    which can't distinguish "OUT today" from "on the IL".
+
+def il_eligible(injury_status):
+    """True if a player's injury DESIGNATION makes them IL-slot-eligible.
+
+    NOTE (verified against live data 2026-05-31): ESPN puts slot 17 (IL) in
+    eligibleSlots for *every* player, so the slot can't distinguish injured from
+    healthy — IL eligibility must come from ``injuryStatus``. The ``*_DAY_DL`` /
+    ``INJURY_RESERVE`` / ``OUT`` designations are IL-eligible; ACTIVE and DAY_TO_DAY
+    are NOT (DTD is a real bench cost, mechanically un-IL-able).
     """
-    return IL_SLOT_ID in (raw_eligible_slots or [])
+    return str(injury_status or "ACTIVE").upper() not in _NOT_IL_STATUSES
 
 
 def active_slot_instances():
