@@ -1,0 +1,19 @@
+{
+  "date": "2026-05-31",
+  "p_win_matchup": 0.0,
+  "expected_cats_won": 5.03,
+  "moves": [
+    {
+      "type": "stream",
+      "tier": "stream",
+      "players": [
+        "Zebby Matthews",
+        "Ernie Clement"
+      ],
+      "ev": 0.055,
+      "confidence": "med",
+      "overturned": false
+    }
+  ],
+  "closest_call": "Second open P slot: Merrill Kelly vs SEA (+0.050, ratio-safe) is the mirror option; stream him too only if you want the extra K/QS dart on a likely-lost week."
+}

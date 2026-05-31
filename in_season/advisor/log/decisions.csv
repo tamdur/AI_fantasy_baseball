@@ -1,0 +1,2 @@
+date,decision_id,matchup_period,type,tier,players,winprob_overall_before,winprob_overall_after,ev_estimate,confidence_qual,overturned_by_selfcritique,rationale_ref,realized_outcome
+2026-05-31,2026-05-31-0,9,stream,stream,Zebby Matthews;Ernie Clement,0.0,0.055,0.055,med,False,"+0.055 P(win), driven by QS (+0.6); ratio-safe. QS is a live 2-vs-3 cat.",
