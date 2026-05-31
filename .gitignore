@@ -4,6 +4,13 @@ __pycache__/
 .env
 credentials.*
 
-# Pipeline output (caches, generated newsletters, logs)
+# Pipeline output (generated newsletters, logs, working files)
 in_season/daily_digest/output/
+
+# Data caches (auto-populated by pipeline, not committed)
+in_season/daily_digest/cache/
 in_season/daily_digest/calibration/
+
+# Advisor Tier-2 run-scratch: ephemeral decision-context JSON + gamelog/HTTP caches.
+# Never committed (plan.md §1.1). Tier-1 advisor/log/ IS committed — do not ignore it.
+in_season/advisor/.scratch/

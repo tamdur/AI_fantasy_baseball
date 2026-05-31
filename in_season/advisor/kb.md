@@ -107,7 +107,57 @@ Things true across this task that shouldn't have to be re-discovered.
 - Confidence = qualitative **{low/med/high}** headline; rationale may cite p_win/Δ. No schema change.
 - **Direct cutover, no shadow week** — old pipeline retired/archived-in-place, not maintained.
 
+## Decisions (implementation — Phase 0+)
+- 2026-05-31 — **Import strategy:** advisor is a package under `in_season/`. `advisor/__init__.py`
+  inserts `daily_digest/` on sys.path so backend BARE imports (`from config import`, `import fetch_espn`)
+  resolve; daily_digest/config.py in turn inserts `model/` so `from league import` works. Advisor code
+  refers to its own config as `advisor.config` (dotted) — bare `config` always = daily_digest. Run advisor
+  CLIs from repo root via `python -m pytest in_season/advisor/tests` (pytest prepend-mode walks up past
+  advisor/+tests/ `__init__.py` to in_season/, putting `advisor` importable). For `-m advisor.run`, cwd
+  must be `in_season/` (or PYTHONPATH includes it) — git ops run at repo root separately.
+- 2026-05-31 — **No `hypothesis` dependency** (not installed; adding = needs approval). Property/invariant
+  tests are deterministic seeded loops instead — same coverage, zero new deps. requirements.txt =
+  pandas/numpy/python-dotenv/requests only; simulator uses numpy only (np.linalg.cholesky for overlay).
+- 2026-05-31 — **No pyproject/pytest.ini/ruff/mypy configured** in repo (cc-workflow: don't add silently).
+  Skipping lint/typecheck gates; relying on tests. Flag to Teddy if he wants ruff/mypy added.
+- 2026-05-31 — `context._compute_werth` is a thin indirection: tries `advisor.valuation.compute_werth`
+  (Phase 2 §4.4-fixed pool), falls back to raw `ros_werth.compute_ros_werth`. Lets P0 context run before
+  valuation.py exists, and P2 swap in without touching context.
+
+## Decisions (implementation — Phase 2 simulator)
+- 2026-05-31 — **Simulator component schema:** hitter=[R,HR,TB,RBI,SBN,onbase,pa];
+  pitcher=[K,QS,ER,outs,H,BB,SVHD]. Ratio cats built at TEAM level (sum components, THEN divide):
+  OBP=onbase/pa, ERA=27·ER/outs, WHIP=3·(H+BB)/outs, KBB=K/BB (BB=0→K/1). ERA/WHIP get sentinel 99
+  when outs=0 (team loses). `simulate_matchup` is PURE given draws → golden-testable. p_win_matchup =
+  P(my cats won > opp cats won); ties not a win.
+- 2026-05-31 — **v1 APPROXIMATIONS to refine** (documented, not bugs): (a) banked rate-cat components
+  use ACTUAL rate × (elapsed_fraction × projected-matchup denominator) — only the banked DENOMINATOR is
+  estimated; counting cats exact. (b) games_remaining: hitters≈days_remaining, SP≈round(days/5),
+  RP≈round(days·0.6) — refine with a today→matchup-end schedule fetch. (c) two-way live value split +
+  pitch_starts_today not yet wired from probables (Ohtani defaults HIT). (d) overlay shrink default 0.25.
+- 2026-05-31 — `valuation.compute_werth` wraps `ros_werth.compute_ros_werth` (untouched): passes a
+  REGULARS pool (top NUM_TEAMS×starting-slots by PA/IP, not all-rostered) for #1, then overrides hitter
+  replacement with top-k FA mean for #4. #3 (FA-pool replacement) already in backend. Backend retains raw
+  projection cols (PA/R/HR/.../IP/ERA/WHIP/KBB) so `proj_per_game` reads them off the werth row.
+- 2026-05-31 — **No `hypothesis`:** property tests = deterministic seeded loops (monotonicity within MC
+  noise tol, p∈[0,1], determinism under fixed seed). Regression-golden locks p_win_matchup=0.6067 ±0.01.
+
 ## Gotchas
+- 2026-05-31 — **Two-way `plays_today` is two signals, not one.** Ohtani's team plays daily (he hits) even
+  when he isn't pitching. `optimal_daily_lineup` takes BOTH `plays_today` (hit/team-plays gate) AND
+  `pitch_starts_today` (set of espn_ids with a probable pitch start) — the latter alone lets the two-way
+  entity choose PITCH. A test caught conflating them. Eligibility uses raw ESPN `eligibleSlots` IDs
+  (SLOT_NAME_TO_ID: C0 1B1 2B2 3B3 SS4 OF5 MI6 CI7 UTIL12 P13), not re-derived flex rules.
+- 2026-05-31 — **Static PARK_FACTORS table used legacy abbrevs CWS/OAK** but PRO_TEAM_ABBREV uses CHW/ATH
+  → those two parks silently read neutral (100). `fetch_current_park_factors` normalizes via `_norm_abbrev`
+  (`_PF_ABBREV_FIX`). The FanGraphs guts JSON endpoint (`/api/guts?type=pf`) is a GUESS — parser validates
+  (≥20 plausible teams) and falls back to static 2024, so a wrong endpoint degrades gracefully. Verify live.
+- 2026-05-31 — **`.gitignore` ignores `in_season/daily_digest/cache/` AND `calibration/`** (pre-existing,
+  contradicts http_utils.py's "cache committed" comment). Consequence: a fresh Routine checkout won't
+  inherit `calibration/actuals.csv` → the §7 simulator calibration backtest only runs LOCALLY (where the
+  file exists), not at Routine runtime. Fine (backtest is a local validation step), but flag to Teddy:
+  if we want the backtest reproducible in CI/Routine, un-ignore calibration/ or move actuals into Tier-1
+  `advisor/log/`.
 - 2026-05-31 — DON'T keep Python→`claude --print` subprocess for the unattended run: nested call hits
   `CLAUDECODE=1` "cannot launch inside another Claude Code session" guard; headless `claude -p` may
   bill at API rates (violates MAX-only). Fix = Routine session does the reasoning itself. (research.md D11)

@@ -15,7 +15,7 @@ from config import (
     SCORING_CAT_IDS, STATS_MAP, POS_MAP, SLOT_MAP, PRO_TEAM_ABBREV,
     ROOT,
 )
-from http_utils import RateLimiter
+from http_utils import RateLimiter, cache_valid, load_cache, save_cache, CACHE_FALLBACK_HOURS
 
 
 # ---- League schedule (parsed from PDF, see data/league_schedule_2026.json) ----
@@ -70,11 +70,16 @@ def _parse_player(player_entry):
     # Real position slots: 0=C, 1=1B, 2=2B, 3=3B, 4=SS, 5=OF, 14=SP, 15=RP
     # Aggregate slots (MI, CI, IF, UTIL, BE, IL, P, DH) are NOT positions.
     REAL_POSITION_SLOTS = {0, 1, 2, 3, 4, 5, 14, 15}
-    eligible = [SLOT_MAP.get(s, "") for s in player.get("eligibleSlots", [])
+    raw_eligible_slots = list(player.get("eligibleSlots", []))
+    eligible = [SLOT_MAP.get(s, "") for s in raw_eligible_slots
                 if s in REAL_POSITION_SLOTS]
     # Deduplicate while preserving order
     seen = set()
     eligible = [p for p in eligible if p and p not in seen and not seen.add(p)]
+    # IL eligibility: ESPN marks IL-eligible players with slot 17 (IL) in eligibleSlots.
+    # This is the robust IL test the advisor uses (preferred over parsing injuryStatus
+    # strings, which can't distinguish "OUT today" from "on the IL"). See advisor/feasibility.py.
+    il_eligible = 17 in raw_eligible_slots  # 17 = IL slot (SLOT_MAP)
 
     slot_id = player_entry.get("lineupSlotId", -1)
     lineup_slot = SLOT_MAP.get(slot_id, "")
@@ -93,6 +98,10 @@ def _parse_player(player_entry):
         "pro_team": pro_team_id,
         "pro_team_abbrev": PRO_TEAM_ABBREV.get(pro_team_id, ""),
         "injury_status": injury,
+        # Additive (advisor §4.4 #7): raw slot IDs + IL-eligibility flag. The advisor's
+        # feasibility optimizer needs slot 17, which `positions` deliberately drops.
+        "raw_eligible_slots": raw_eligible_slots,
+        "il_eligible": il_eligible,
         "ownership_pct": player.get("ownership", {}).get("percentOwned"),
         "ownership_pct_change": player.get("ownership", {}).get("percentChange"),
     }
@@ -144,9 +153,16 @@ def _get_team_name(team_data):
 
 def fetch_all_rosters():
     """Fetch all 8 teams' rosters. Returns dict of team_id -> roster info."""
-    data = _espn_get("mRoster")
-    rosters = {}
+    cache_name = "espn_rosters"
+    try:
+        data = _espn_get("mRoster")
+    except Exception as e:
+        if cache_valid(cache_name, CACHE_FALLBACK_HOURS):
+            log.warning(f"ESPN roster fetch failed ({e}), using cache")
+            return {int(k): v for k, v in load_cache(cache_name).items()}
+        raise
 
+    rosters = {}
     for team in data.get("teams", []):
         team_id = team["id"]
         team_name = _get_team_name(team)
@@ -162,6 +178,7 @@ def fetch_all_rosters():
             "players": players,
         }
 
+    save_cache(cache_name, rosters)
     return rosters
 
 
@@ -195,7 +212,16 @@ def fetch_current_matchup_period():
 
     Falls back to ESPN API if the schedule JSON is missing.
     """
-    data = _espn_get("mSettings")
+    cache_name = "espn_settings"
+    try:
+        data = _espn_get("mSettings")
+        save_cache(cache_name, data)
+    except Exception as e:
+        if cache_valid(cache_name, CACHE_FALLBACK_HOURS):
+            log.warning(f"ESPN settings fetch failed ({e}), using cache")
+            data = load_cache(cache_name)
+        else:
+            raise
     status = data.get("status", {})
     settings = data.get("settings", {})
 
@@ -273,7 +299,16 @@ def fetch_matchup_scores(scoring_period_id=None, matchup_period_id=None):
         data_settings = _espn_get("mSettings")
         matchup_period_id = data_settings.get("status", {}).get("currentMatchupPeriod", 1)
 
-    data = _espn_get("mBoxscore", {"scoringPeriodId": scoring_period_id})
+    cache_name = f"espn_boxscore_mp{matchup_period_id}"
+    try:
+        data = _espn_get("mBoxscore", {"scoringPeriodId": scoring_period_id})
+        save_cache(cache_name, data)
+    except Exception as e:
+        if cache_valid(cache_name, CACHE_FALLBACK_HOURS):
+            log.warning(f"ESPN boxscore fetch failed ({e}), using cache")
+            data = load_cache(cache_name)
+        else:
+            raise
 
     # Find our matchup — filter to current matchup period only
     our_matchup = None
@@ -355,6 +390,8 @@ def _parse_matchup_side(home, away, full_data):
 def fetch_free_agents(count=250):
     """Fetch top free agents with player details."""
     import json
+    cache_name = "espn_free_agents"
+
     filter_obj = {
         "players": {
             "filterStatus": {"value": ["FREEAGENT", "WAIVERS"]},
@@ -364,35 +401,50 @@ def fetch_free_agents(count=250):
     }
     headers = {"x-fantasy-filter": json.dumps(filter_obj)}
 
-    _rate.throttle()
+    try:
+        _rate.throttle()
 
-    r = requests.get(
-        ESPN_BASE_URL,
-        params={"view": "kona_player_info"},
-        cookies=ESPN_COOKIES,
-        headers=headers,
-    )
+        r = requests.get(
+            ESPN_BASE_URL,
+            params={"view": "kona_player_info"},
+            cookies=ESPN_COOKIES,
+            headers=headers,
+        )
 
-    if r.status_code == 401:
-        raise PermissionError("ESPN API auth failed — cookies likely expired.")
-    r.raise_for_status()
+        if r.status_code == 401:
+            raise PermissionError("ESPN API auth failed — cookies likely expired.")
+        r.raise_for_status()
 
-    data = r.json()
-    players = []
-    for entry in data.get("players", []):
-        p = _parse_player(entry)
-        players.append(p)
+        data = r.json()
+        players = []
+        for entry in data.get("players", []):
+            p = _parse_player(entry)
+            players.append(p)
 
-    return players
+        save_cache(cache_name, players)
+        return players
+
+    except Exception as e:
+        if cache_valid(cache_name, CACHE_FALLBACK_HOURS):
+            log.warning(f"ESPN free agents fetch failed ({e}), using cache")
+            return load_cache(cache_name)
+        raise
 
 
 # ---- Standings ----
 
 def fetch_standings():
     """Fetch current standings."""
-    data = _espn_get("mStandings")
-    standings = []
+    cache_name = "espn_standings"
+    try:
+        data = _espn_get("mStandings")
+    except Exception as e:
+        if cache_valid(cache_name, CACHE_FALLBACK_HOURS):
+            log.warning(f"ESPN standings fetch failed ({e}), using cache")
+            return load_cache(cache_name)
+        raise
 
+    standings = []
     for team in data.get("teams", []):
         tid = team["id"]
         team_name = _get_team_name(team)
@@ -410,4 +462,5 @@ def fetch_standings():
         })
 
     standings.sort(key=lambda x: (-x["wins"], x["losses"]))
+    save_cache(cache_name, standings)
     return standings

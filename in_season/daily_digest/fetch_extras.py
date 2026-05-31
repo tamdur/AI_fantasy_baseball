@@ -16,7 +16,7 @@ import requests
 import pandas as pd
 
 from config import OUTPUT_DIR, EXISTING_TOOLS
-from http_utils import cache_valid, load_cache, save_cache
+from http_utils import cache_valid, load_cache, save_cache, CACHE_FALLBACK_HOURS
 
 log = logging.getLogger(__name__)
 
@@ -86,6 +86,93 @@ def enrich_with_park_factors(games_or_pitchers):
     return games_or_pitchers
 
 
+# ---- Current-season park-factor refresh (advisor §4.4 #5) ----
+
+# The static PARK_FACTORS table uses legacy abbreviations (CWS, OAK). Normalize to
+# the PRO_TEAM_ABBREV convention (CHW, ATH, ...) so home-team lookups don't silently
+# fall through to neutral. This also fixes a latent bug in the static table.
+_PF_ABBREV_FIX = {
+    "CWS": "CHW", "OAK": "ATH", "WAS": "WSH", "KCR": "KC",
+    "SDP": "SD", "SFG": "SF", "TBR": "TB", "WSN": "WSH",
+}
+
+
+def _norm_abbrev(abbr):
+    a = re.sub(r"<[^>]+>", "", str(abbr)).strip().upper()
+    return _PF_ABBREV_FIX.get(a, a)
+
+
+def _static_park_factors():
+    """The static 2024 table, keyed by normalized (PRO_TEAM_ABBREV) abbreviations."""
+    return {_norm_abbrev(k): dict(v) for k, v in PARK_FACTORS.items()}
+
+
+def _pf_val(row, keys):
+    for k in keys:
+        if k in row and row[k] is not None:
+            try:
+                return float(row[k])
+            except (TypeError, ValueError):
+                continue
+    return None
+
+
+def fetch_current_park_factors(season=2026):
+    """Refresh park factors from the current-season FanGraphs guts (§4.4 #5).
+
+    Returns ``{team_abbrev -> {overall, hr, r}}`` keyed by PRO_TEAM_ABBREV. Falls back
+    to the static 2024 table on any failure OR implausible result, so callers never
+    get worse data than today. Cached a week (park factors barely move).
+
+    NOTE: the guts JSON endpoint/field names should be verified against live
+    FanGraphs; the parser validates the shape (≥20 teams, plausible 50–160 index)
+    and falls back if it doesn't match, so a wrong guess degrades gracefully.
+    """
+    cache_name = f"park_factors_{season}"
+    if cache_valid(cache_name, 24 * 7):
+        try:
+            return load_cache(cache_name)
+        except Exception:
+            pass
+
+    static = _static_park_factors()
+    try:
+        url = "https://www.fangraphs.com/api/guts"
+        params = {"type": "pf", "season": str(season), "teamid": "0"}
+        r = requests.get(url, params=params, timeout=15)
+        r.raise_for_status()
+        data = r.json()
+        rows = data.get("data", data) if isinstance(data, dict) else data
+
+        pf = {}
+        for row in rows or []:
+            team = _norm_abbrev(row.get("Team") or row.get("TeamNameAbb")
+                                or row.get("teamabbrev") or "")
+            overall = _pf_val(row, ["Basic", "basic", "PF", "pf"])
+            if not team or overall is None:
+                continue
+            hr = _pf_val(row, ["HR", "hr", "HRPF"])
+            runs = _pf_val(row, ["R", "r", "RPF", "Runs"])
+            pf[team] = {
+                "overall": int(round(overall)),
+                "hr": int(round(hr if hr is not None else overall)),
+                "r": int(round(runs if runs is not None else overall)),
+            }
+
+        plausible = [v for v in pf.values() if 50 <= v["overall"] <= 160]
+        if len(pf) >= 20 and len(plausible) >= 20:
+            for k, v in static.items():
+                pf.setdefault(k, v)  # fill any teams the refresh missed
+            save_cache(cache_name, pf)
+            log.info(f"Refreshed park factors for {len(pf)} teams (season {season})")
+            return pf
+        log.warning("Park-factor refresh returned implausible/short data; using static 2024")
+    except Exception as e:
+        log.warning(f"Park-factor refresh failed ({e}); using static 2024")
+
+    return static
+
+
 # ---- Team Offensive Quality (wRC+) ----
 
 def fetch_team_offense_quality():
@@ -134,6 +221,9 @@ def fetch_team_offense_quality():
 
     except Exception as e:
         log.warning(f"Team wRC+ fetch failed: {e}")
+        if cache_valid(cache_name, CACHE_FALLBACK_HOURS):
+            log.info("  Using stale cache for team wRC+")
+            return load_cache(cache_name)
 
     # Fallback: neutral for all teams
     return {}
@@ -224,6 +314,9 @@ def fetch_vegas_lines():
 
     except Exception as e:
         log.warning(f"Vegas lines fetch failed: {e}")
+        if cache_valid(cache_name, CACHE_FALLBACK_HOURS):
+            log.info("  Using stale cache for Vegas lines")
+            return load_cache(cache_name)
         return {}
 
 
@@ -259,6 +352,9 @@ def fetch_closer_info():
 
     except Exception as e:
         log.warning(f"Closer info fetch failed: {e}")
+        if cache_valid(cache_name, CACHE_FALLBACK_HOURS):
+            log.info("  Using stale cache for closer roles")
+            return load_cache(cache_name)
         return {}
 
 
