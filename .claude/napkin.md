@@ -22,6 +22,9 @@
 5. **[2026-03-22] All 12 league categories must be used in every valuation: R/HR/TB/RBI/SBN/OBP + K/QS/ERA/WHIP/K÷BB/SVHD**
    Do instead: Derive TB (1B+2×2B+3×3B+4×HR), SBN (SB-CS), and SVHD (SV+HLD) from component stats in projection data.
 
+3. **[2026-05-31] ESPN puts slot 17 (IL) in `eligibleSlots` for EVERY player, not just injured ones**
+   Do instead: Don't detect IL eligibility via `17 in eligibleSlots` (always True — the roster simply HAS IL slots). Use `injuryStatus`: IL-eligible = status NOT in {ACTIVE, NORMAL, DAY_TO_DAY}. The DL designations are TEN_DAY_DL/FIFTEEN_DAY_DL/SIXTY_DAY_DL/INJURY_RESERVE/OUT. DAY_TO_DAY is a real bench cost, not IL-able. (Verified on live roster; broke the advisor sim until fixed.)
+
 ## Shell & Command Reliability
 1. **[2026-05-31] Git on this Google Drive path throws stale `.git/*.lock` "File exists" with no git process running**
    Do instead: Drive sync leaves stale locks. `pgrep -fl git` to confirm none running, then `rm -f .git/index.lock .git/HEAD.lock` and retry. Long git/ls commands here auto-background — poll the output file or wait for the completion notification rather than re-issuing (re-issuing creates a new lock conflict).
