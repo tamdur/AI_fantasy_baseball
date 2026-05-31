@@ -76,10 +76,6 @@ def _parse_player(player_entry):
     # Deduplicate while preserving order
     seen = set()
     eligible = [p for p in eligible if p and p not in seen and not seen.add(p)]
-    # IL eligibility: ESPN marks IL-eligible players with slot 17 (IL) in eligibleSlots.
-    # This is the robust IL test the advisor uses (preferred over parsing injuryStatus
-    # strings, which can't distinguish "OUT today" from "on the IL"). See advisor/feasibility.py.
-    il_eligible = 17 in raw_eligible_slots  # 17 = IL slot (SLOT_MAP)
 
     slot_id = player_entry.get("lineupSlotId", -1)
     lineup_slot = SLOT_MAP.get(slot_id, "")
@@ -87,6 +83,13 @@ def _parse_player(player_entry):
     injury = player.get("injuryStatus", "ACTIVE")
     if injury == "NORMAL":
         injury = "ACTIVE"
+
+    # IL eligibility is driven by the injury DESIGNATION, not slot 17: ESPN puts slot 17
+    # (IL) in eligibleSlots for EVERY player (the roster has IL slots), so it can't tell
+    # injured from healthy (verified against live data 2026-05-31). The *_DAY_DL /
+    # INJURY_RESERVE / OUT statuses are IL-slot-eligible; ACTIVE and DAY_TO_DAY are NOT
+    # (DTD is a real bench cost). See advisor/feasibility.py.
+    il_eligible = injury.upper() not in ("ACTIVE", "NORMAL", "DAY_TO_DAY")
 
     pro_team_id = player.get("proTeamId", 0)
     return {

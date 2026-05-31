@@ -107,6 +107,9 @@ def _build_lookups(ros_hitters, ros_pitchers, id_map=None,
     for df in (ros_hitters, ros_pitchers):
         if df is None:
             continue
+        # Drop duplicate columns first — to_dict("records") silently omits columns when
+        # names aren't unique, which can wipe projection fields (PA/IP/...) feeding the sim.
+        df = df.loc[:, ~df.columns.duplicated()]
         for row in df.to_dict("records"):
             eid = row.get("espn_id")
             if eid is not None and not (isinstance(eid, float) and eid != eid):  # not NaN
@@ -227,8 +230,15 @@ def build_decision_context(date=None, *, write=True):
     id_map = cfg.load_id_map()
     ros_bat = cfg.join_ids(fg.fetch_ros_projections("bat"), id_map)
     ros_pit = cfg.join_ids(fg.fetch_ros_projections("pit"), id_map)
-    sigma_bat = fg.fetch_multi_system_ros("bat")
-    sigma_pit = fg.fetch_multi_system_ros("pit")
+    # §4.4 #2 disagreement σ band — an enhancement (widens the simulator's thin-sample
+    # fallback only). Degrade gracefully if the backend multi-system fetch fails (it has a
+    # latent pandas Series-truth bug on some data — kb); the bootstrap primary is unaffected.
+    try:
+        sigma_bat = fg.fetch_multi_system_ros("bat")
+        sigma_pit = fg.fetch_multi_system_ros("pit")
+    except Exception as e:
+        log.warning("multi-system σ band unavailable (%s); proceeding without it", e)
+        sigma_bat = sigma_pit = None
 
     rostered_ids = {p["espn_id"] for r in all_rosters.values() for p in r.get("players", [])
                     if p.get("espn_id")}
@@ -281,16 +291,84 @@ def build_decision_context(date=None, *, write=True):
         log.warning("lineup optimization failed: %s", e)
 
     # Phase 2: matchup win-probability (the real P(win) — replaces fabricated numbers).
+    # Phase 3: wire the computed EV bar (D6) into the streamer/add candidates.
     try:
-        attach_winprob(context, my_roster=my_roster, opponent_roster=opponent_roster,
-                       lookups=lookups, matchup_meta=matchup_meta,
-                       category_state=category_state, il_ids=il_ids, seed=1)
+        _winprob, draws, banked_my, banked_opp = attach_winprob(
+            context, my_roster=my_roster, opponent_roster=opponent_roster,
+            lookups=lookups, matchup_meta=matchup_meta,
+            category_state=category_state, il_ids=il_ids, seed=1)
+        try:
+            import fetch_mlb as mlb2
+            probables = mlb2.fetch_probable_pitchers()
+        except Exception as e:
+            log.warning("probable pitchers fetch failed: %s", e)
+            probables = []
+        _populate_candidate_ev(context, free_agents, probables, draws, banked_my,
+                               banked_opp, lookups,
+                               days_remaining=matchup_meta.get("days_remaining") or 0)
     except Exception as e:
-        log.warning("win-probability simulation failed: %s", e)
+        log.warning("win-probability / candidate-EV step failed: %s", e)
 
     if write:
         write_context(context, date_str)
     return context
+
+
+def _populate_candidate_ev(context, free_agents, probables_today, draws, banked_my,
+                           banked_opp, lookups, days_remaining, fetch_fn=None):
+    """Compute the streamer EV bar for today's probable-starter FAs, and rank FA adds.
+
+    Streamers: FAs starting today, scored by Δ p_win_matchup (the computed bar the
+    analyst's add must clear). Adds: top FAs by position-adjusted WERTH.
+    """
+    import numpy as np
+    from advisor import gamelogs, valuation
+    from advisor import simulator as sim
+
+    werth_by_espn, mlbam_by_espn, _platoon, _sigma = lookups
+    # n = draw length from ANY component of the first player (could be a pitcher → no "R").
+    n = len(next(iter(draws["my_list"][0].values()))) if draws["my_list"] else 200
+    rng = np.random.default_rng(8)
+    espn_by_mlbam = {v: k for k, v in mlbam_by_espn.items()}
+    fa_ids = {p["espn_id"] for p in free_agents if p.get("espn_id")}
+
+    streamers = []
+    for pr in probables_today or []:
+        mlbam = pr.get("mlbam_id")
+        eid = espn_by_mlbam.get(mlbam)
+        if eid is None or eid not in fa_ids:
+            continue  # only stream players actually on the wire
+        try:
+            rows = gamelogs.fetch_recent_gamelogs(mlbam, "pitcher", fetch_fn=fetch_fn)
+        except Exception:
+            rows = []
+        werth = werth_by_espn.get(eid)
+        proj = valuation.proj_per_game(werth, "pitcher") if werth is not None else {}
+        add_draws = sim.player_week_draws(rows, proj, 1, n, rng, kind="pitcher")
+        ev = sim.ev_of_move(draws["my_list"], draws["opp_list"], banked_my=banked_my,
+                            banked_opp=banked_opp, add_draws=add_draws,
+                            draws_by_id=draws["my_by_id"], n=n)
+        streamers.append({
+            "espn_id": eid, "mlbam_id": mlbam, "name": pr.get("name"),
+            "vs_team": pr.get("opponent"), "home_away": pr.get("home_away"),
+            "stream_impact": {"d_p_overall": ev["d_p_overall"], "ratio_safe": ev["ratio_safe"],
+                              "d_by_cat": ev["d_by_cat"]},
+        })
+    streamers.sort(key=lambda s: -s["stream_impact"]["d_p_overall"])
+
+    adds = []
+    for p in free_agents:
+        eid = p.get("espn_id")
+        w = werth_by_espn.get(eid)
+        if w is None:
+            continue
+        adds.append({"espn_id": eid, "name": p.get("name"),
+                     "team": p.get("pro_team_abbrev", ""), "positions": p.get("positions", []),
+                     "pos_adj_werth": _round(w.get("pos_adj_werth"))})
+    adds.sort(key=lambda a: (a["pos_adj_werth"] is not None, a["pos_adj_werth"] or 0), reverse=True)
+
+    context["candidates"]["streamers_today"] = streamers[:8]
+    context["candidates"]["adds"] = adds[:10]
 
 
 def _detect_two_way(roster):
@@ -398,8 +476,13 @@ def _games_remaining_for(kind, werth_row, days_remaining):
 
 
 def _sim_inputs(roster, *, werth_by_espn, mlbam_by_espn, sigma_by_mlbam, days_remaining,
-                il_ids, fetch_fn):
-    """Build simulator inputs for week-active players (non-IL). Live: fetches gamelogs."""
+                matchup_length, il_ids, fetch_fn):
+    """Build simulator inputs for week-active players (non-IL). Live: fetches gamelogs.
+
+    Returns (inputs, proj_match) where proj_match = projected FULL-matchup denominators
+    (pa, outs) — used to back out banked rate-cat denominators via elapsed_fraction. The
+    per-player draws use games-REMAINING; the banked denominator uses full-matchup games.
+    """
     from advisor import gamelogs, valuation
     inputs, proj_pa, proj_outs = [], 0.0, 0.0
     for p in roster:
@@ -420,10 +503,12 @@ def _sim_inputs(roster, *, werth_by_espn, mlbam_by_espn, sigma_by_mlbam, days_re
         sigma = sigma_by_mlbam.get(mlbam) if mlbam is not None else None
         inputs.append({"espn_id": eid, "gamelog": gl, "proj": proj, "kind": kind,
                        "games_remaining": gr, "sigma": sigma})
-        # Accumulate projected full-matchup denominators for banked estimation.
+        # Banked denominator uses FULL-matchup games (what accrued over elapsed days),
+        # not games-remaining — else early/late in the matchup the banked rate cats break.
         if proj:
-            proj_pa += float(proj.get("pa", 0.0)) * gr
-            proj_outs += float(proj.get("outs", 0.0)) * gr
+            full_games = _games_remaining_for(kind, werth, matchup_length)
+            proj_pa += float(proj.get("pa", 0.0)) * full_games
+            proj_outs += float(proj.get("outs", 0.0)) * full_games
     return inputs, {"pa": proj_pa, "outs": proj_outs}
 
 
@@ -439,12 +524,12 @@ def attach_winprob(context, *, my_roster, opponent_roster, lookups, matchup_meta
 
     my_inputs, my_proj_match = _sim_inputs(
         my_roster, werth_by_espn=werth_by_espn, mlbam_by_espn=mlbam_by_espn,
-        sigma_by_mlbam=sigma_by_mlbam, days_remaining=days_remaining, il_ids=il_ids,
-        fetch_fn=fetch_fn)
+        sigma_by_mlbam=sigma_by_mlbam, days_remaining=days_remaining,
+        matchup_length=length, il_ids=il_ids, fetch_fn=fetch_fn)
     opp_inputs, opp_proj_match = _sim_inputs(
         opponent_roster, werth_by_espn=werth_by_espn, mlbam_by_espn=mlbam_by_espn,
-        sigma_by_mlbam=sigma_by_mlbam, days_remaining=days_remaining, il_ids=set(),
-        fetch_fn=fetch_fn)
+        sigma_by_mlbam=sigma_by_mlbam, days_remaining=days_remaining,
+        matchup_length=length, il_ids=set(), fetch_fn=fetch_fn)
 
     my_cat_vals = {cat: st.get("you") for cat, st in (category_state or {}).items()}
     opp_cat_vals = {cat: st.get("opp") for cat, st in (category_state or {}).items()}
@@ -454,4 +539,17 @@ def attach_winprob(context, *, my_roster, opponent_roster, lookups, matchup_meta
     winprob, draws = sim.run_matchup(my_inputs, opp_inputs, banked_my=banked_my,
                                      banked_opp=banked_opp, n=n, seed=seed)
     context["winprob"] = winprob
+
+    # Persist the simulator state to Tier-2 scratch so the EV tools (advisor.tools) can
+    # recompute ev_of_move deterministically without re-fetching/re-deriving everything.
+    sim_state = {
+        "date": context.get("date"), "n": n, "seed": seed,
+        "my_inputs": my_inputs, "opp_inputs": opp_inputs,
+        "banked_my": banked_my, "banked_opp": banked_opp,
+    }
+    try:
+        with open(cfg.sim_state_path(context.get("date")), "w") as f:
+            json.dump(sim_state, f, default=str)
+    except Exception as e:
+        log.warning("could not write sim_state: %s", e)
     return winprob, draws, banked_my, banked_opp

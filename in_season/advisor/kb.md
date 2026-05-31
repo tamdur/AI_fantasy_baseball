@@ -142,7 +142,43 @@ Things true across this task that shouldn't have to be re-discovered.
 - 2026-05-31 — **No `hypothesis`:** property tests = deterministic seeded loops (monotonicity within MC
   noise tol, p∈[0,1], determinism under fixed seed). Regression-golden locks p_win_matchup=0.6067 ±0.01.
 
+## Decisions (implementation — Phases 3-5)
+- 2026-05-31 — **Tools EV needs draws → sim-state scratch.** Draws (np arrays) too big for the compact
+  context, so `attach_winprob` writes `sim_state_<date>.json` (my_inputs/opp_inputs/banked/seed) to Tier-2
+  scratch; `advisor.tools stream_impact/drop_check` reload it and recompute `ev_of_move` deterministically
+  (same seed → same base draws). `_populate_candidate_ev` pre-scores today's probable-starter FAs into
+  `context.candidates.streamers_today` (the D6 bar) so the analyst usually doesn't need a tool call.
+- 2026-05-31 — **Run model:** `advisor.run prepare|publish|score|check`. Idempotency = `docs/archive/
+  <date>.html` exists (committed) → skip. `publish --dry-run` = scratch preview, no git. `_git_commit_push`
+  does add→commit→`pull --rebase`→push of Tier-1 only. routine.md = session-is-analyst, NO nested claude.
+- 2026-05-31 — **render.py is self-contained** (not publish_newsletter) for `<details>` stakes-tier control.
+  Analyst decision dict contract: {type, tier{tweak|stream|significant|hold}, headline, one_liner,
+  drilldown_md?, players, winprob_before/after, ev_estimate, confidence, overturned, rationale}; payload
+  file = bare list OR {decisions:[...], closest_call:"..."}.
+- 2026-05-31 — **Local creds present:** `run check` → ok (ESPN_SWID/ESPN_S2/ODDS_API_KEY in .env, claude in
+  PATH) so live `prepare` runnable locally. FanGraphs `rsteamer` intermittently 500s — multi-system fetch
+  degrades gracefully (other systems fill the σ band).
+
 ## Gotchas
+- 2026-05-31 — **CORRECTION (live data overturned a planned invariant): IL eligibility is NOT slot 17.**
+  ESPN puts slot 17 (IL) in `eligibleSlots` for EVERY player (healthy Ohtani/Acuña included) — the roster
+  HAS IL slots. So `il_eligible = 17 in eligibleSlots` was always True → the whole roster got skipped as
+  IL → empty sim inputs → p_win=0.0 with ERA/WHIP sentinels. **FIX: `il_eligible` from `injuryStatus`** —
+  IL-eligible = status NOT in {ACTIVE, NORMAL, DAY_TO_DAY}; the DL designations seen are TEN_DAY_DL /
+  FIFTEEN_DAY_DL / SIXTY_DAY_DL / INJURY_RESERVE / OUT. (Fixed in `_parse_player` + `feasibility.il_eligible`.)
+  The earlier kb claim "detect via slot 17, robust, not injuryStatus" is WRONG — superseded.
+- 2026-05-31 — **`df.to_dict("records")` silently drops columns when names aren't unique** (the werth
+  frames have dup cols). Wiped projection fields (PA/IP) → broke proj_per_game. FIX: `df.loc[:, ~df.columns
+  .duplicated()]` before to_dict in `_build_lookups`.
+- 2026-05-31 — **Banked rate-cat denominator must use FULL-matchup games, not games-remaining.** On the
+  last matchup day, remaining≈1 game → banked pa/outs ≈ 0 → OBP=0, ERA/WHIP sentinel. Compute proj_match
+  from `_games_remaining_for(kind, werth, matchup_length)`, banked = proj_match × elapsed_fraction.
+- 2026-05-31 — **Backend `fetch_fangraphs.fetch_multi_system_ros` crashes** at line ~272
+  `pd.notna(match.iloc[0].get("name"))` → "truth value of a Series is ambiguous" (duplicate "name"
+  columns from a merge → `.get` returns a Series). Same class as napkin's "no `or` with pandas Series".
+  The advisor WRAPS it in try/except (σ band optional; bootstrap unaffected). To restore the §4.4 #2 σ
+  band, fix the backend (dedupe columns / `.item()`), but the user said don't maintain the old pipeline,
+  so it's a deferred follow-up, not a v1 blocker.
 - 2026-05-31 — **Two-way `plays_today` is two signals, not one.** Ohtani's team plays daily (he hits) even
   when he isn't pitching. `optimal_daily_lineup` takes BOTH `plays_today` (hit/team-plays gate) AND
   `pitch_starts_today` (set of espn_ids with a probable pitch start) — the latter alone lets the two-way

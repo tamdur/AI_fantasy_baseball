@@ -44,18 +44,19 @@ def test_advisor_paths_split_committed_vs_scratch(tmp_path, monkeypatch):
 
 
 def test_parse_player_captures_il_eligibility():
-    """§4.4 #7: _parse_player now exposes raw_eligible_slots + il_eligible (slot 17),
-    additively, without changing the existing `positions` filter."""
+    """§4.4 #7: _parse_player exposes raw_eligible_slots + il_eligible. IL eligibility is
+    driven by injuryStatus (NOT slot 17 — ESPN gives slot 17 to every player), additively,
+    without changing the existing `positions` filter."""
     from advisor import config  # noqa: F401  (ensures shim)
     import fetch_espn as espn
 
-    # An injured SS who is IL-eligible (slot 17 present) and also flex-eligible.
+    # An injured SS on the DL — IL-eligible. Slot 17 present (as it is for everyone).
     entry_il = {
         "id": 111,
         "player": {
             "id": 111, "fullName": "Injured Star",
             "eligibleSlots": [4, 6, 12, 16, 17],  # SS, MI, UTIL, BE, IL
-            "defaultPositionId": 6, "proTeamId": 19, "injuryStatus": "INJURY_RESERVE",
+            "defaultPositionId": 6, "proTeamId": 19, "injuryStatus": "FIFTEEN_DAY_DL",
         },
         "lineupSlotId": 17,
     }
@@ -65,20 +66,26 @@ def test_parse_player_captures_il_eligibility():
     assert p["positions"] == ["SS"]          # filtered view unchanged (no 'IL'/'MI'/'UTIL')
     assert p["lineup_slot"] == "IL"
 
-    # A healthy player: no slot 17 -> not IL-eligible.
+    # A HEALTHY player who also carries slot 17 (ESPN does this for everyone) -> NOT IL.
     entry_healthy = {
         "id": 222,
         "player": {
             "id": 222, "fullName": "Healthy Bat",
-            "eligibleSlots": [3, 5, 7, 12, 16],  # 3B, OF, CI, UTIL, BE
+            "eligibleSlots": [3, 5, 7, 12, 16, 17],  # 3B, OF, CI, UTIL, BE, IL
             "defaultPositionId": 5, "proTeamId": 15, "injuryStatus": "ACTIVE",
         },
         "lineupSlotId": 5,
     }
     h = espn._parse_player(entry_healthy)
-    assert h["il_eligible"] is False
-    assert 17 not in h["raw_eligible_slots"]
+    assert h["il_eligible"] is False         # healthy despite slot 17 being present
+    assert 17 in h["raw_eligible_slots"]
     assert set(h["positions"]) == {"3B", "OF"}
+
+    # DAY_TO_DAY is NOT IL-eligible (a real bench cost).
+    entry_dtd = {"id": 333, "player": {"id": 333, "fullName": "DTD Guy",
+                 "eligibleSlots": [5, 12, 16, 17], "defaultPositionId": 7,
+                 "proTeamId": 1, "injuryStatus": "DAY_TO_DAY"}, "lineupSlotId": 16}
+    assert espn._parse_player(entry_dtd)["il_eligible"] is False
 
 
 def test_compact_player_joins_werth_and_flags_missing():
