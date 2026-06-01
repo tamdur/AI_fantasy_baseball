@@ -17,10 +17,11 @@ See `.claude/SKILL.md` for full napkin specification.
 - Season: March 25 – September 20, 2026 (22 regular matchups + 2 playoff rounds)
 
 ## Project Phase
-**In-season.** The draft tool (`draft_tool/index.html`) is complete and was used for the draft. The active development focus is the **daily newsletter pipeline** (`in_season/daily_digest/`), which generates a daily matchup briefing, publishes it to GitHub Pages, and tracks prediction calibration.
+**In-season.** The draft tool (`draft_tool/index.html`) is complete and was used for the draft. The active system is the **in-season advisor** (`in_season/advisor/`): a judgment + execution layer where the Claude session IS the analyst. It builds a compact decision context (RoS WERTH + a deterministic feasibility/lineup optimizer + a bootstrap Monte-Carlo matchup win-probability simulator), reasons with disciplined anti-action-bias judgment + self-critique, and publishes a stakes-tiered decision page to GitHub Pages with a committed decision log for calibration. It runs unattended via a scheduled Routine that invokes the `/advisor` skill. The old multi-persona newsletter pipeline (`in_season/daily_digest/`) is **retired** but kept as the data/fetch backend the advisor imports.
 
 ## Key Slash Commands
-- **`/generate`** — Run the full daily newsletter pipeline: fetch data → compute WERTH → generate newsletter via Claude agents → publish to GitHub Pages → commit and push.
+- **`/advisor`** — Run the daily in-season advisor (the active system, `in_season/advisor/`): fetch live data → build the decision context → reason as the analyst (tools via Bash) → publish the stakes-tiered decision page → log the decision. The scheduled Routine invokes this.
+- **`/generate`** — *Retired.* The old multi-persona newsletter pipeline (`in_season/daily_digest/run_newsletter.py`). Superseded by `/advisor`; kept for reference, not run.
 
 ## Key Files
 
