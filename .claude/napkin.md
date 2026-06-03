@@ -56,6 +56,17 @@
 8. **[2026-03-22] Flaim MCP lacks stats, projections, draft history, and category-level data**
    Do instead: Use Flaim only for roster lookups and basic standings. Use direct ESPN API for analytical data.
 
+11. **[2026-06-02] ESPN acquisition timing: free-agent adds are INSTANT; the "day in advance" effect is the per-player game-time lock, not a waiver/league delay**
+    Do instead: League is `WAIVERS_TRADITIONAL`, `waiverHours:24`, but the pool is ~99.5% `FREEAGENT` (verified: 1493 FA vs 7 on waivers). FREEAGENT adds execute immediately (txn `status=EXECUTED`, `processDate=None`). A streamer's SAME-DAY start DOES count IF you add him into an active slot before his game's individual lock (first pitch). The "Monday pickup → Tuesday" experience = adding after the game locked (then he rides the bench today) OR the rare waived player (24h hold). So `streamers_today` is valid, but should surface each streamer's game/lock time so the user knows the deadline. `lineupLockTimeOffset:None` = standard individual locks, not a day-ahead lock.
+
+12. **[2026-06-02] moves_used (weekly acquisitions) comes from mTeam, NOT mSettings — read transactionCounter.matchupAcquisitionTotals[mp]**
+    Do instead: `fetch_current_matchup_period` (mSettings) only yields `moves_max`. The per-matchup count used is on the team object: `mTeam` → team[id==MY_TEAM_ID] → `transactionCounter.matchupAcquisitionTotals[str(current_mp)]` (adds only; drops/lineup moves don't count). It was never populated → page showed 0/7 when real was 5/7. Show `?` not `0` when unreadable.
+
+9. **[2026-06-03] ESPN's fantasy API 403s from cloud/datacenter IPs + the default python-requests UA, even with VALID cookies**
+   Do instead: Same cookies that work locally can 403 in a hosted CC Routine (ESPN WAF/Akamai bot-detection — it returns 403 *with and without* cookies, i.e. before auth). Send browser-like headers (`fetch_espn.BROWSER_HEADERS`: real UA + Accept/Referer/Origin + X-Fantasy-*). If a 403 persists only from a cloud IP after that, it's an IP-reputation block → needs a residential path (run locally, or a proxy). Don't assume "403 = expired cookies."
+10. **[2026-06-03] Verify on a CLEAN CLONE, not just local — uncommitted files mask missing commits**
+    Do instead: Local "works on my machine" hid that `CACHE_FALLBACK_HOURS` was imported but only defined in an uncommitted `http_utils` change, and that `requirements.txt` was untracked. A fresh clone (the Routine) ImportError'd. After committing a refactor, check `git show HEAD:<file>` or clone fresh. Also: CC Routines work on a `claude/*` branch, so a plain `git push` lands work there, not main — push `HEAD:main` explicitly. Don't hand-transcribe long secrets (300+ char ESPN_S2); have the user set them via the `! ` prompt prefix.
+
 ## Domain Behavior Guardrails
 1. **[2026-03-26] Agent prompts have structural action bias — "no moves" must be the default**
    Do instead: All three agent prompts (tactician, actuary, synthesizer) now enforce "no moves today" as the default. `strategic_posture` field in briefing book constrains agent recommendations by season phase. Confidence scores are calibrated (9/10 = right 90% of time). Don't revert these changes.
