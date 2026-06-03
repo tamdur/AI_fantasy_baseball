@@ -40,6 +40,22 @@ log = logging.getLogger(__name__)
 
 _rate = RateLimiter(ESPN_RATE_LIMIT)
 
+# Browser-like headers. ESPN's fantasy API rejects the default python-requests
+# User-Agent and is hostile to non-browser/datacenter traffic (it returns 403 even
+# with valid cookies — observed when running from Anthropic's cloud). These mimic the
+# ESPN web client so the request isn't bounced before auth. (If a 403 persists from a
+# cloud IP, the block is IP-reputation-based and a residential path is required.)
+BROWSER_HEADERS = {
+    "User-Agent": ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) "
+                   "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"),
+    "Accept": "application/json, text/plain, */*",
+    "Accept-Language": "en-US,en;q=0.9",
+    "Referer": "https://fantasy.espn.com/",
+    "Origin": "https://fantasy.espn.com",
+    "X-Fantasy-Source": "kona",
+    "X-Fantasy-Platform": "kona-PROD",
+}
+
 
 def _espn_get(views, params=None):
     """Make a rate-limited ESPN API request."""
@@ -49,12 +65,13 @@ def _espn_get(views, params=None):
     if params:
         p.update(params)
 
-    r = requests.get(ESPN_BASE_URL, params=p, cookies=ESPN_COOKIES)
+    r = requests.get(ESPN_BASE_URL, params=p, cookies=ESPN_COOKIES, headers=BROWSER_HEADERS)
 
-    if r.status_code == 401 or (r.status_code == 200 and not r.text.strip()):
+    if r.status_code in (401, 403) or (r.status_code == 200 and not r.text.strip()):
         raise PermissionError(
-            "ESPN API auth failed — cookies likely expired. "
-            "Refresh ESPN_SWID and ESPN_S2 in .env file."
+            f"ESPN API auth failed (HTTP {r.status_code}) — cookies likely expired OR the "
+            "request was blocked (datacenter IP / bot detection). Refresh ESPN_SWID/ESPN_S2; "
+            "if it persists only from a cloud IP, ESPN is blocking the IP range."
         )
     r.raise_for_status()
     return r.json()
@@ -402,7 +419,7 @@ def fetch_free_agents(count=250):
             "sortPercOwned": {"sortAsc": False, "sortPriority": 1},
         }
     }
-    headers = {"x-fantasy-filter": json.dumps(filter_obj)}
+    headers = {**BROWSER_HEADERS, "x-fantasy-filter": json.dumps(filter_obj)}
 
     try:
         _rate.throttle()
