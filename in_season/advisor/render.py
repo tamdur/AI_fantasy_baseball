@@ -30,10 +30,11 @@ def _winprob_header(context):
     p = wp.get("p_win_matchup")
     pct = f"{p * 100:.0f}%" if isinstance(p, (int, float)) else "—"
     cats = wp.get("expected_cats_won")
+    mu = context.get("moves_used")
+    moves_str = f"{mu if mu is not None else '?'}/{context.get('moves_max')}"
     meta = (f"Week {context.get('matchup_week')}, day {context.get('matchup_day')} of "
             f"{context.get('matchup_length_days')} · {context.get('days_remaining')}d left · "
-            f"vs {_esc(context.get('opponent'))} · moves {context.get('moves_used') or 0}/"
-            f"{context.get('moves_max')}")
+            f"vs {_esc(context.get('opponent'))} · moves {moves_str}")
     return (f'<div class="hdr"><div class="pwin">{pct}<span>P(win)</span></div>'
             f'<div class="meta">{meta}<br>expected categories won: '
             f'{_esc(round(cats, 1) if isinstance(cats,(int,float)) else "—")}</div></div>')

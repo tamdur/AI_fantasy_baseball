@@ -222,6 +222,23 @@ def fetch_current_scoring_period():
     return data.get("scoringPeriodId", 1)
 
 
+def _fetch_matchup_acquisitions(matchup_period):
+    """Acquisitions MY_TEAM_ID has used in the given matchup period, read from ESPN's
+    authoritative per-team counter (``transactionCounter.matchupAcquisitionTotals``).
+    Counts adds only (drops / lineup moves don't count against the limit), which is
+    exactly what ESPN tracks here. Returns an int, or ``None`` if it can't be read so
+    callers can surface "unknown" rather than a misleading 0."""
+    try:
+        data = _espn_get("mTeam")
+        for t in data.get("teams", []):
+            if t.get("id") == MY_TEAM_ID:
+                totals = (t.get("transactionCounter") or {}).get("matchupAcquisitionTotals") or {}
+                return int(totals.get(str(matchup_period), 0))
+    except Exception as e:
+        log.warning(f"could not read matchup acquisitions for MP {matchup_period}: {e}")
+    return None
+
+
 def fetch_current_matchup_period():
     """
     Get the current matchup period ID and matchup metadata.
@@ -301,6 +318,7 @@ def fetch_current_matchup_period():
         "matchup_start": matchup_entry["start"] if matchup_entry else None,
         "matchup_end": matchup_entry["end"] if matchup_entry else None,
         "moves_max": moves_max,
+        "moves_used": _fetch_matchup_acquisitions(current_mp),
         **opponent_info,
     }
 
