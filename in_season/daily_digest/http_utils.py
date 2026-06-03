@@ -12,6 +12,11 @@ from config import OUTPUT_DIR
 
 log = logging.getLogger(__name__)
 
+# Maximum age (hours) for a cache file to be used as a FALLBACK when a live fetch
+# fails. The fetch_*.py modules import this; it must be defined here. (Restored: it
+# was only present in an uncommitted refactor, so clean clones hit an ImportError.)
+CACHE_FALLBACK_HOURS = 96  # 4 days
+
 
 # ---- Rate Limiting ----
 

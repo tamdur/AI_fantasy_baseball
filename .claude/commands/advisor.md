@@ -15,6 +15,12 @@ the repo root. Required env (set in the Routine environment, never committed): `
 
 ## Steps
 
+0. **Setup** — the remote container is fresh each run, so install the Python deps first
+   (fast; you can later move this to a cached environment setup script for efficiency):
+   ```bash
+   pip install -q -r requirements.txt
+   ```
+
 1. **Prepare** — build the decision context + simulator state from live data:
    ```bash
    PYTHONPATH=in_season python -m advisor.run prepare

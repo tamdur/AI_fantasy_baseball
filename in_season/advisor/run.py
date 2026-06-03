@@ -111,17 +111,23 @@ def _git(*args):
 
 
 def _git_commit_push(date):
-    """Commit the Tier-1 artifacts and push. Pull --rebase first to avoid drift. Returns
-    True on a successful push (or 'nothing to commit')."""
+    """Commit the Tier-1 artifacts and push them to **main** (the branch GitHub Pages
+    serves). Pushing to main explicitly (HEAD:main) means this works whether run locally
+    on main OR in a Routine whose session is on a `claude/*` working branch. Returns True
+    on success (or 'nothing to commit')."""
     _git("add", str(cfg.DOCS_DIR), str(cfg.LOG_DIR))
     commit = _git("commit", "-m", f"Advisor decision page {date}")
     if commit.returncode != 0 and "nothing to commit" in (commit.stdout + commit.stderr):
         log.info("nothing to commit for %s", date)
         return True
-    _git("pull", "--rebase")
-    push = _git("push")
+    _git("fetch", "origin", "main")
+    push = _git("push", "origin", "HEAD:main")
     if push.returncode != 0:
-        log.error("git push failed: %s", push.stderr.strip())
+        # Non-fast-forward (main advanced mid-run): rebase our commit onto latest main, retry once.
+        _git("rebase", "origin/main")
+        push = _git("push", "origin", "HEAD:main")
+    if push.returncode != 0:
+        log.error("git push to main failed: %s", push.stderr.strip())
         return False
     return True
 
