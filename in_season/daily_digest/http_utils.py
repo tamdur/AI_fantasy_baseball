@@ -38,6 +38,11 @@ class RateLimiter:
 
 # ---- JSON File Caching ----
 
+# Max age of a cache file to fall back on when a live fetch fails.
+# Daily runs: a fetch failure can safely reuse the prior day's snapshot.
+CACHE_FALLBACK_HOURS = 24
+
+
 def cache_path(name):
     """Path for a named cache file in the output directory."""
     return OUTPUT_DIR / f"cache_{name}.json"
